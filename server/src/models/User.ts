@@ -31,7 +31,8 @@ const userSchema = new mongoose.Schema({
     },
     locations: [{
         district: { type: String, required: true },
-        address: { type: String, required: true }
+        address: { type: String, required: true },
+        images: [{ type: String }] // Array of image filenames
     }],
 }, {
     timestamps: true,
