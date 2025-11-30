@@ -1,11 +1,11 @@
 import { Router, Request, Response } from 'express';
 import { DonationModel } from '../models/Donation';
-import { authMiddleware, AuthRequest } from '../middleware/auth';
+// import { authMiddleware, AuthRequest } from '../middleware/auth';
 
 const router = Router();
 
 // Get all donations with pagination
-router.get('/', authMiddleware, async (req: AuthRequest, res: Response) => {
+router.get('/', async (req: Request, res: Response) => {
     try {
         console.log('📋 Fetching donations');
         const page = parseInt(req.query.page as string) || 1;
@@ -33,65 +33,68 @@ router.get('/', authMiddleware, async (req: AuthRequest, res: Response) => {
 });
 
 // Create donation
-router.post('/', authMiddleware, async (req: AuthRequest, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
     try {
         console.log('➕ Creating donation');
-        const { name, phone, address, items, description } = req.body;
-        console.log('Donation data:', { name, phone, address, items, description });
+        const { name, phone, district, address, items, description, urgency, availableUntil } = req.body;
+        console.log('Donation data:', { name, phone, district, address, items, description, urgency, availableUntil });
 
         const donation = await DonationModel.create({
             name,
             phone,
+            district,
             address,
             items,
             description: description || '',
-            donor: req.userId,
+            urgency: urgency || 'medium',
+            availableUntil: availableUntil || null
+            // donor field removed to allow unauthenticated creation
         });
 
         console.log('✅ Donation created:', donation._id);
         res.status(201).json(donation);
     } catch (error) {
         console.error('❌ Error creating donation:', error);
-        res.status(500).json({ error: 'Failed to create donation' });
+        console.error('Error details:', error);
+        res.status(500).json({ error: 'Failed to create donation', details: error instanceof Error ? error.message : 'Unknown error' });
     }
 });
 
-// Update donation (only owner can edit)
-router.put('/:id', authMiddleware, async (req: AuthRequest, res: Response) => {
+// Update donation
+router.put('/:id', async (req: Request, res: Response) => {
     try {
-        const { name, phone, address, items, description } = req.body;
+        console.log('✏️ Updating donation:', req.params.id);
+        const { name, phone, district, address, items, description, urgency, availableUntil } = req.body;
 
-        // Find donation and check ownership
+        // Find donation
         const donation = await DonationModel.findById(req.params.id);
         if (!donation) {
             return res.status(404).json({ error: 'Donation not found' });
         }
 
-        if (donation.donor.toString() !== req.userId) {
-            return res.status(403).json({ error: 'You can only edit your own donations' });
-        }
-
         // Update donation
         const updatedDonation = await DonationModel.findByIdAndUpdate(
             req.params.id,
-            { name, phone, address, items, description },
+            { name, phone, district, address, items, description, urgency, availableUntil },
             { new: true }
         );
 
+        console.log('✅ Donation updated:', updatedDonation?._id);
         res.json(updatedDonation);
     } catch (error) {
+        console.error('❌ Error updating donation:', error);
         res.status(500).json({ error: 'Failed to update donation' });
     }
 });
 
 // Mark donation as collected
-router.patch('/:id/collect', authMiddleware, async (req: AuthRequest, res: Response) => {
+router.patch('/:id/collect', async (req: Request, res: Response) => {
     try {
         const donation = await DonationModel.findByIdAndUpdate(
             req.params.id,
             {
                 status: 'collected',
-                collectedBy: req.userId,
+                collectedBy: null, // No userId available
             },
             { new: true }
         );

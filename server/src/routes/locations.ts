@@ -6,11 +6,12 @@ import { upload } from '../config/upload';
 
 const router = Router();
 
-// Get all locations (for donors)
-router.get('/', authMiddleware, async (req: AuthRequest, res: Response) => {
+// Get all locations (public)
+router.get('/', async (req: Request, res: Response) => {
     try {
         console.log('📍 Fetching locations');
         const district = req.query.district as string;
+        console.log('📍 Fetching locations for district:', district || 'All');
 
         // 1. Fetch from LocationModel (Explicitly created locations)
         const locationQuery: any = { status: 'active' };
@@ -83,24 +84,18 @@ router.get('/', authMiddleware, async (req: AuthRequest, res: Response) => {
     }
 });
 
-// Create location (collectors only)
-router.post('/', authMiddleware, upload.array('images', 5), async (req: AuthRequest, res: Response) => {
+// Create location (public)
+router.post('/', upload.array('images', 5), async (req: Request, res: Response) => {
     try {
         console.log('📝 Creating location');
         console.log('Body:', req.body);
         console.log('Files:', req.files);
 
-        const { name, district, address, description, startDate, endDate, startTime, endTime } = req.body;
-
-        // Check if user is a collector
-        const user = await UserModel.findById(req.userId);
-        if (!user || user.role !== 'collector') {
-            return res.status(403).json({ error: 'Only collectors can add locations' });
-        }
+        const { name, district, address, description, startDate, endDate, startTime, endTime, contactName, contactPhone, additionalPhone } = req.body;
 
         // Validate required fields
-        if (!name || !district || !address || !description || !startDate || !endDate || !startTime || !endTime) {
-            return res.status(400).json({ error: 'All fields are required' });
+        if (!name || !district || !address || !description || !startDate || !endDate || !startTime || !endTime || !contactName || !contactPhone) {
+            return res.status(400).json({ error: 'All fields are required including contact details' });
         }
 
         // Check if images are uploaded
@@ -112,8 +107,15 @@ router.post('/', authMiddleware, upload.array('images', 5), async (req: AuthRequ
             return res.status(400).json({ error: 'Maximum 5 images allowed' });
         }
 
-        // Get image filenames
-        const images = (req.files as Express.Multer.File[]).map(file => file.filename);
+        // Get image filenames - first image is contact image, rest are location images
+        const allFiles = req.files as Express.Multer.File[];
+        const contactImage = allFiles[0]?.filename;
+        const images = allFiles.slice(1).map(file => file.filename);
+
+        // At least 1 location image is required
+        if (images.length === 0) {
+            return res.status(400).json({ error: 'At least one location image is required (in addition to contact image)' });
+        }
 
         const location = await LocationModel.create({
             name,
@@ -125,7 +127,11 @@ router.post('/', authMiddleware, upload.array('images', 5), async (req: AuthRequ
             startTime,
             endTime,
             images,
-            collector: req.userId,
+            contactName,
+            contactPhone,
+            contactImage,
+            additionalPhone: additionalPhone || undefined,
+            // collector: req.userId, // No longer linking to user for anonymous posts
         });
 
         console.log('✅ Location created:', location._id);

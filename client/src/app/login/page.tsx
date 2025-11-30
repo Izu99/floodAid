@@ -1,4 +1,4 @@
-'use client';    
+'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -61,32 +61,36 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-background px-4">
-            <Card className="w-full max-w-md">
-                <CardHeader>
-                    <CardTitle className="text-2xl text-center">FloodAid වෙත ප්‍රවේශ වන්න</CardTitle>
-                    <CardDescription className="text-center">
+        <div className="min-h-screen flex items-center justify-center bg-background px-4 py-8">
+            <Card className="w-full max-w-lg">
+                <CardHeader className="px-6 pt-8 pb-6">
+                    <CardTitle className="text-2xl sm:text-3xl text-center font-bold">FloodAid වෙත ප්‍රවේශ වන්න</CardTitle>
+                    <CardDescription className="text-center text-base mt-2">
                         ගංවතුර වින්දිතයින්ට උදව් කිරීම සඳහා ඔබේ ගිණුමට ප්‍රවේශ වන්න
                     </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="px-6 pb-8">
                     {error && (
-                        <div className="bg-destructive/10 text-destructive px-4 py-3 rounded-lg flex items-center gap-2 mb-4">
-                            <AlertCircle className="w-5 h-5" />
+                        <div className="bg-destructive/10 text-destructive px-4 py-3 rounded-lg flex items-center gap-3 mb-6">
+                            <AlertCircle className="w-5 h-5 flex-shrink-0" />
                             <span className="text-sm">{error}</span>
                         </div>
                     )}
 
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                             <FormField
                                 control={form.control}
                                 name="phone"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>දුරකථන අංකය</FormLabel>
+                                        <FormLabel className="text-base font-medium">දුරකථන අංකය</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="077XXXXXXX" {...field} />
+                                            <Input
+                                                placeholder="077XXXXXXX"
+                                                className="h-12 text-base px-4"
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -98,24 +102,33 @@ export default function LoginPage() {
                                 name="password"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>මුරපදය</FormLabel>
+                                        <FormLabel className="text-base font-medium">මුරපදය</FormLabel>
                                         <FormControl>
-                                            <Input type="password" placeholder="ඔබේ මුරපදය ඇතුලත් කරන්න" {...field} />
+                                            <Input
+                                                type="password"
+                                                placeholder="ඔබේ මුරපදය ඇතුලත් කරන්න"
+                                                className="h-12 text-base px-4"
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
                                 )}
                             />
 
-                            <Button type="submit" disabled={isLoading} className="w-full">
+                            <Button
+                                type="submit"
+                                disabled={isLoading}
+                                className="w-full h-12 text-base font-semibold mt-6"
+                            >
                                 {isLoading ? 'ප්‍රවේශ වෙමින්...' : 'ප්‍රවේශ වන්න'}
                             </Button>
                         </form>
                     </Form>
 
-                    <div className="mt-4 text-center text-sm">
+                    <div className="mt-6 text-center text-base">
                         ගිණුමක් නොමැතිද?{' '}
-                        <Link href="/register" className="text-primary hover:underline">
+                        <Link href="/register" className="text-primary hover:underline font-medium">
                             මෙතනින් ලියාපදිංචි වන්න
                         </Link>
                     </div>

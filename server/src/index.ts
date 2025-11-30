@@ -5,6 +5,9 @@ import path from 'path';
 import { connectDB } from './config/database';
 import donationRoutes from './routes/donations';
 import authRoutes from './routes/auth';
+import helpRequestRoutes from './routes/help-requests';
+import locationRoutes from './routes/locations';
+import imageRoutes from './routes/images';
 
 dotenv.config();
 
@@ -35,7 +38,10 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 // Middleware
 app.use(cors({
-    origin: 'https://flood-aid-one.vercel.app',
+    origin: [
+        'http://localhost:3000',
+        'https://flood-aid-one.vercel.app'
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
@@ -60,12 +66,13 @@ app.use('/api/auth', authRoutes);
 // Donation routes
 app.use('/api/donations', donationRoutes);
 
+// Help request routes
+app.use('/api/help-requests', helpRequestRoutes);
+
 // Location routes
-import locationRoutes from './routes/locations';
 app.use('/api/locations', locationRoutes);
 
 // Image routes
-import imageRoutes from './routes/images';
 app.use('/api/images', imageRoutes);
 
 // Error handling middleware

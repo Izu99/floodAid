@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { authApi, tokenStorage } from '@/lib/auth-api';
+import { API_URL, BASE_URL } from '@/lib/config';
 
 const DISTRICTS = [
     'කොළඹ', 'ගම්පහ', 'කළුතර', 'මහනුවර', 'මාතලේ', 'නුවරඑළිය', 'ගාල්ල', 'මාතර', 'හම්බන්තොට',
@@ -142,7 +143,7 @@ export default function CollectorProfile() {
                                 <div className="flex items-center gap-4">
                                     <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-200">
                                         <img
-                                            src={`${process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'http://localhost:5000'}/uploads/faces/${user.faceImage}`}
+                                            src={`${BASE_URL}/uploads/faces/${user.faceImage}`}
                                             alt="Profile"
                                             className="w-full h-full object-cover"
                                         />
@@ -166,7 +167,7 @@ export default function CollectorProfile() {
                                                         formData.append('faceImage', file);
 
                                                         const token = tokenStorage.getToken();
-                                                        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/update-face-image`, {
+                                                        const response = await fetch(`${API_URL}/auth/update-face-image`, {
                                                             method: 'POST',
                                                             headers: {
                                                                 'Authorization': `Bearer ${token}`
@@ -311,7 +312,7 @@ export default function CollectorProfile() {
                                         {location.images?.map((img, imgIndex) => (
                                             <div key={imgIndex} className="relative w-20 h-20 rounded-lg overflow-hidden border">
                                                 <img
-                                                    src={`${process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'http://localhost:5000'}/uploads/locations/${img}`}
+                                                    src={`${BASE_URL}/uploads/locations/${img}`}
                                                     alt={`Location ${index + 1} Image ${imgIndex + 1}`}
                                                     className="w-full h-full object-cover"
                                                 />

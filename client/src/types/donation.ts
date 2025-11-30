@@ -3,21 +3,26 @@ export interface Donation {
     name: string;
     phone: string;
     address: string;
+    district?: string;
     items: string;
     description: string;
-    status: 'available' | 'collected';
+    urgency?: 'low' | 'medium' | 'high';
+    availableUntil?: string;
     collectedBy?: string;
+    status: 'available' | 'collected';
     donor: string;
     createdAt: string;
-    updatedAt: string;
 }
 
 export interface CreateDonationDto {
     name: string;
     phone: string;
     address: string;
+    district: string;
     items: string;
     description?: string;
+    urgency?: 'low' | 'medium' | 'high';
+    availableUntil?: string;
 }
 
 export interface PaginatedResponse<T> {

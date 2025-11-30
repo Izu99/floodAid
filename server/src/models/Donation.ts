@@ -9,6 +9,10 @@ const donationSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    district: {
+        type: String,
+        required: true,
+    },
     address: {
         type: String,
         required: true,
@@ -20,6 +24,15 @@ const donationSchema = new mongoose.Schema({
     description: {
         type: String,
         default: '',
+    },
+    urgency: {
+        type: String,
+        enum: ['low', 'medium', 'high'],
+        default: 'medium',
+    },
+    availableUntil: {
+        type: Date,
+        default: null,
     },
     status: {
         type: String,
@@ -33,7 +46,7 @@ const donationSchema = new mongoose.Schema({
     donor: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
+        required: false,
     },
 }, {
     timestamps: true,

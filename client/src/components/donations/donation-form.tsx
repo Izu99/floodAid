@@ -1,6 +1,4 @@
-'use client';
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -22,83 +20,155 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { CreateDonationDto } from '@/types/donation';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Loader2 } from 'lucide-react';
+import { donationApi } from '@/lib/api';
+import { CreateDonationDto, Donation } from '@/types/donation';
+import { DISTRICTS } from '@/lib/districts';
 
 const formSchema = z.object({
-    name: z.string().min(2, 'Name must be at least 2 characters'),
-    phone: z.string().min(10, 'Please enter a valid phone number'),
-    address: z.string().min(5, 'Address must be at least 5 characters'),
-    items: z.string().min(2, 'Please specify what you can donate'),
-    note: z.string().optional(),
+    name: z.string().min(1, 'නම ඇතුළත් කරන්න'),
+    phone: z.string().min(10, 'වලංගු දුරකථන අංකයක් ඇතුළත් කරන්න'),
+    district: z.string().min(1, 'දිස්ත්‍රික්කයක් තෝරන්න'),
+    address: z.string().min(1, 'ලිපිනය ඇතුළත් කරන්න'),
+    items: z.string().min(1, 'ද්‍රව්‍ය ඇතුළත් කරන්න'),
+    description: z.string().optional(),
 });
 
 interface DonationFormProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
-    onSubmit: (data: CreateDonationDto) => Promise<void>;
+    onSuccess: () => void;
+    initialData?: Donation | null;
+    userData?: any;
 }
 
-export function DonationForm({ open, onOpenChange, onSubmit }: DonationFormProps) {
-    const [isSubmitting, setIsSubmitting] = useState(false);
+export function DonationForm({ open, onOpenChange, onSuccess, initialData, userData }: DonationFormProps) {
+    const [isLoading, setIsLoading] = useState(false);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: '',
             phone: '',
+            district: '',
             address: '',
             items: '',
-            note: '',
+            description: '',
         },
     });
 
-    const handleSubmit = async (values: z.infer<typeof formSchema>) => {
-        setIsSubmitting(true);
+    useEffect(() => {
+        if (open) {
+            if (initialData) {
+                form.reset({
+                    name: initialData.name,
+                    phone: initialData.phone,
+                    district: initialData.district || '',
+                    address: initialData.address,
+                    items: initialData.items,
+                    description: initialData.description || '',
+                });
+            } else if (userData) {
+                form.reset({
+                    name: userData.name || '',
+                    phone: userData.phone || '',
+                    district: userData.district || '',
+                    address: '',
+                    items: '',
+                    description: '',
+                });
+            } else {
+                form.reset({
+                    name: '',
+                    phone: '',
+                    district: '',
+                    address: '',
+                    items: '',
+                    description: '',
+                });
+            }
+        }
+    }, [open, initialData, userData, form]);
+
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
-            await onSubmit(values);
+            setIsLoading(true);
+            if (initialData) {
+                await donationApi.updateDonation(initialData._id, values);
+            } else {
+                await donationApi.createDonation(values as CreateDonationDto);
+            }
             form.reset();
+            onSuccess();
             onOpenChange(false);
         } catch (error) {
-            console.error('Error submitting donation:', error);
+            console.error('Failed to submit donation:', error);
         } finally {
-            setIsSubmitting(false);
+            setIsLoading(false);
         }
     };
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[550px] max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle className="text-xl">Offer Help - FloodAid</DialogTitle>
+                    <DialogTitle>{initialData ? 'පරිත්‍යාගය සංස්කරණය කරන්න' : 'නව පරිත්‍යාගයක් එක් කරන්න'}</DialogTitle>
                     <DialogDescription>
-                        Fill in the details of what you can donate to help flood victims
+                        ඔබේ පරිත්‍යාග තොරතුරු පහත පුරවන්න
                     </DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
-                        <FormField
-                            control={form.control}
-                            name="name"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Name</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="Your name" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <FormField
+                                control={form.control}
+                                name="name"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>නම *</FormLabel>
+                                        <FormControl>
+                                            <Input {...field} placeholder="ඔබේ නම" />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="phone"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>දුරකථන අංකය *</FormLabel>
+                                        <FormControl>
+                                            <Input {...field} placeholder="07xxxxxxxx" />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
 
                         <FormField
                             control={form.control}
-                            name="phone"
+                            name="district"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Phone Number</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="077XXXXXXX" {...field} />
-                                    </FormControl>
+                                    <FormLabel>දිස්ත්‍රික්කය *</FormLabel>
+                                    <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="දිස්ත්‍රික්කය තෝරන්න" />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            {DISTRICTS.map((d) => (
+                                                <SelectItem key={d.value} value={d.value}>
+                                                    {d.label}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -109,9 +179,9 @@ export function DonationForm({ open, onOpenChange, onSubmit }: DonationFormProps
                             name="address"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Address</FormLabel>
+                                    <FormLabel>සම්පූර්ණ ලිපිනය *</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Your address" {...field} />
+                                        <Input {...field} placeholder="නිවස අංකය, වීථිය, ගම" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -123,46 +193,35 @@ export function DonationForm({ open, onOpenChange, onSubmit }: DonationFormProps
                             name="items"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Items to Donate</FormLabel>
+                                    <FormLabel>ඔබට සපයිය හැකි ද්‍රව්‍ය *</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="e.g., Books, Clothes, Food" {...field} />
+                                        <Input {...field} placeholder="උදා: සහල් 10kg, පාන් 5, බ්ලැන්කට් 3" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
+
+
 
                         <FormField
                             control={form.control}
-                            name="note"
+                            name="description"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Additional Notes (Optional)</FormLabel>
+                                    <FormLabel>අමතර විස්තර</FormLabel>
                                     <FormControl>
-                                        <Textarea
-                                            placeholder="Any additional information"
-                                            {...field}
-                                            rows={3}
-                                        />
+                                        <Textarea {...field} placeholder="විශේෂ උපදෙස්, ස්ථානයට යන ආකාරය, හෝ වෙනත් වැදගත් තොරතුරු" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
 
-                        <div className="flex gap-3 pt-2">
-                            <Button
-                                type="button"
-                                variant="outline"
-                                onClick={() => onOpenChange(false)}
-                                className="flex-1"
-                            >
-                                Cancel
-                            </Button>
-                            <Button type="submit" disabled={isSubmitting} className="flex-1">
-                                {isSubmitting ? 'Submitting...' : 'Submit Donation'}
-                            </Button>
-                        </div>
+                        <Button type="submit" className="w-full" disabled={isLoading}>
+                            {isLoading ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
+                            {initialData ? 'යාවත්කාලීන කරන්න' : 'පරිත්‍යාගය එක් කරන්න'}
+                        </Button>
                     </form>
                 </Form>
             </DialogContent>

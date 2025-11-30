@@ -1,14 +1,13 @@
 import { Location, CreateLocationDto } from '@/types/location';
 import { tokenStorage } from './auth-api';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
+import { API_URL } from './config';
 
 export const locationApi = {
     async getLocations(district?: string, page: number = 1, limit: number = 15): Promise<{ data: Location[], totalPages: number, currentPage: number, totalItems: number }> {
         console.log('📍 Fetching locations', district ? `for district: ${district}` : '', `page: ${page}`);
 
-        const token = tokenStorage.getToken();
-        let url = `${API_URL}/locations?page=${page}&limit=${limit}`;
+        // const token = tokenStorage.getToken();
+        let url = `${API_URL}/api/locations?page=${page}&limit=${limit}`;
 
         if (district) {
             url += `&district=${encodeURIComponent(district)}`;
@@ -16,7 +15,7 @@ export const locationApi = {
 
         const response = await fetch(url, {
             headers: {
-                'Authorization': `Bearer ${token}`,
+                // 'Authorization': `Bearer ${token}`,
             },
         });
 
@@ -48,15 +47,21 @@ export const locationApi = {
         formData.append('startTime', data.startTime);
         formData.append('endTime', data.endTime);
 
+        formData.append('contactName', data.contactName || '');
+        formData.append('contactPhone', data.contactPhone || '');
+        if (data.additionalPhone) {
+            formData.append('additionalPhone', data.additionalPhone);
+        }
+
         images.forEach((image) => {
             formData.append('images', image);
         });
 
-        const response = await fetch(`${API_URL}/locations`, {
+        const response = await fetch(`${API_URL}/api/locations`, {
             method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-            },
+            // headers: {
+            //     'Authorization': `Bearer ${token}`,
+            // },
             body: formData,
         });
 
@@ -75,10 +80,10 @@ export const locationApi = {
 
     async getDistricts(): Promise<string[]> {
         const token = tokenStorage.getToken();
-        const response = await fetch(`${API_URL}/locations/districts`, {
-            headers: {
-                'Authorization': `Bearer ${token}`,
-            },
+        const response = await fetch(`${API_URL}/api/locations/districts`, {
+            // headers: {
+            //     'Authorization': `Bearer ${token}`,
+            // },
         });
 
         if (!response.ok) {

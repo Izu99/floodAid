@@ -40,7 +40,23 @@ const locationSchema = new mongoose.Schema({
     collector: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
+        required: false,
+    },
+    contactName: {
+        type: String,
+        required: false,
+    },
+    contactPhone: {
+        type: String,
+        required: false,
+    },
+    contactImage: {
+        type: String,
+        required: false,
+    },
+    additionalPhone: {
+        type: String,
+        required: false,
     },
     status: {
         type: String,
@@ -61,7 +77,11 @@ export interface ILocation extends mongoose.Document {
     startTime: string;
     endTime: string;
     images: string[];
-    collector: mongoose.Types.ObjectId;
+    collector?: mongoose.Types.ObjectId;
+    contactName?: string;
+    contactPhone?: string;
+    contactImage?: string;
+    additionalPhone?: string;
     status: 'active' | 'inactive';
     createdAt: Date;
     updatedAt: Date;

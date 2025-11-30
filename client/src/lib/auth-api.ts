@@ -1,13 +1,11 @@
 import { AuthResponse, RegisterDto, LoginDto } from '@/types/auth';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
+import { API_URL } from './config';
 
 export const authApi = {
     async register(data: RegisterDto, faceImage?: File): Promise<AuthResponse> {
         console.log('📤 Frontend: Sending registration request');
         console.log('Data:', { ...data, password: '***' });
         console.log('Face image:', faceImage ? `${faceImage.name} (${faceImage.size} bytes)` : 'None');
-
         const formData = new FormData();
         formData.append('name', data.name);
         formData.append('phone', data.phone);
