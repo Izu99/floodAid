@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { Location } from '@/types/location';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { MapPin, Phone, User, Calendar, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Phone, Calendar, X, ChevronLeft, ChevronRight, ImageIcon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface LocationCardProps {
     location: Location;
@@ -14,7 +15,6 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 export function LocationCard({ location }: LocationCardProps) {
     const [showImages, setShowImages] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
     const [showCollectorImage, setShowCollectorImage] = useState(false);
 
     const openGallery = (index: number) => {
@@ -33,48 +33,6 @@ export function LocationCard({ location }: LocationCardProps) {
     return (
         <>
             <Card className="overflow-hidden flex flex-col h-full">
-                <div className="relative group cursor-pointer" onClick={() => openGallery(0)}>
-                    <div className="grid grid-cols-3 gap-1 p-2 bg-gray-50 hover:opacity-90 transition-opacity">
-                        {location.images.length > 0 ? (
-                            <>
-                                {location.images.slice(0, 3).map((image, index) => (
-                                    <img
-                                        key={index}
-                                        src={`${API_URL}/uploads/locations/${image}`}
-                                        alt={`${location.name} ${index + 1}`}
-                                        className="w-full h-24 object-cover rounded"
-                                    />
-                                ))}
-                                {location.images.length > 3 && (
-                                    <div className="relative w-full h-24 rounded overflow-hidden">
-                                        <img
-                                            src={`${API_URL}/uploads/locations/${location.images[3]}`}
-                                            alt={`${location.name} 4`}
-                                            className="w-full h-full object-cover"
-                                        />
-                                        {location.images.length > 4 && (
-                                            <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-white font-bold text-lg">
-                                                +{location.images.length - 3}
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
-                            </>
-                        ) : (
-                            <div className="col-span-3 h-24 bg-gray-200 flex items-center justify-center text-gray-400 rounded">
-                                <MapPin className="w-8 h-8 opacity-50" />
-                            </div>
-                        )}
-                    </div>
-                    {location.images.length > 0 && (
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 pointer-events-none">
-                            <span className="bg-black/70 text-white text-xs px-3 py-1.5 rounded-full font-medium backdrop-blur-sm">
-                                ඡායාරූප බලන්න
-                            </span>
-                        </div>
-                    )}
-                </div>
-
                 <CardHeader className="pb-2">
                     <CardTitle className="text-lg leading-tight">{location.name}</CardTitle>
                     <div className="flex items-center gap-2 text-sm text-gray-600 mt-1">
@@ -89,6 +47,19 @@ export function LocationCard({ location }: LocationCardProps) {
                             <p className="text-xs font-semibold text-gray-500 uppercase mb-1">ලිපිනය</p>
                             <p className="text-sm text-gray-900">{location.address}</p>
                         </div>
+
+                        {/* View Location Button */}
+                        {location.images.length > 0 && (
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => openGallery(0)}
+                                className="w-full flex items-center justify-center gap-2"
+                            >
+                                <ImageIcon size={16} />
+                                ස්ථානය බලන්න ({location.images.length} ඡායාරූප)
+                            </Button>
+                        )}
 
                         <div>
                             <p className="text-xs font-semibold text-gray-500 uppercase mb-1">විස්තරය</p>
