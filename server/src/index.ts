@@ -1,0 +1,93 @@
+import express, { Express, Request, Response, NextFunction } from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import path from 'path';
+import { connectDB } from './config/database';
+import donationRoutes from './routes/donations';
+import authRoutes from './routes/auth';
+
+dotenv.config();
+
+const app: Express = express();
+const port = process.env.PORT || 5000;
+
+// Connect to MongoDB
+connectDB();
+
+// Request logging middleware
+app.use((req: Request, res: Response, next: NextFunction) => {
+    const timestamp = new Date().toISOString();
+    console.log(`\n📨 [${timestamp}] ${req.method} ${req.url}`);
+    console.log('Headers:', JSON.stringify(req.headers, null, 2));
+    if (req.body && Object.keys(req.body).length > 0) {
+        console.log('Body:', JSON.stringify(req.body, null, 2));
+    }
+
+    // Log response
+    const originalSend = res.send;
+    res.send = function (data: any) {
+        console.log(`📤 [${timestamp}] Response ${res.statusCode}`);
+        return originalSend.call(this, data);
+    };
+
+    next();
+});
+
+// Middleware
+app.use(cors());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+
+// Serve uploaded files
+// Serve uploaded files
+// Ensure we're pointing to the root uploads folder
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
+// Routes
+app.get('/', (req: Request, res: Response) => {
+    res.json({ message: 'Welcome to FloodAid API' });
+});
+
+app.get('/api/health', (req: Request, res: Response) => {
+    res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+// Auth routes
+app.use('/api/auth', authRoutes);
+
+// Donation routes
+app.use('/api/donations', donationRoutes);
+
+// Location routes
+import locationRoutes from './routes/locations';
+app.use('/api/locations', locationRoutes);
+
+// Image routes
+import imageRoutes from './routes/images';
+app.use('/api/images', imageRoutes);
+
+// Error handling middleware
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+    console.error('❌ ERROR CAUGHT:');
+    console.error('Error:', err);
+    console.error('Stack:', err.stack);
+    res.status(500).json({
+        error: err.message || 'Internal server error',
+        details: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    });
+});
+
+// 404 handler
+app.use((req: Request, res: Response) => {
+    console.log(`⚠️ 404 Not Found: ${req.method} ${req.url}`);
+    res.status(404).json({ error: 'Route not found' });
+});
+
+// Start server
+app.listen(port, () => {
+    console.log(`\n${'='.repeat(60)}`);
+    console.log(`⚡️ FloodAid Server is running`);
+    console.log(`🌐 URL: http://localhost:${port}`);
+    console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`${'='.repeat(60)}\n`);
+});
