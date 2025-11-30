@@ -49,8 +49,12 @@ export default function LoginPage() {
             tokenStorage.setUserData(response.user);
 
             router.push('/');
-        } catch (err: any) {
-            setError(err.message || 'ප්‍රවේශය අසාර්ථක විය');
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message || 'ප්‍රවේශය අසාර්ථක විය');
+            } else {
+                setError(String(err) || 'ප්‍රවේශය අසාර්ථක විය');
+            }
         } finally {
             setIsLoading(false);
         }
