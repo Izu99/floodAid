@@ -61,31 +61,14 @@ export function LocationCard({ location }: LocationCardProps) {
                             </Button>
                         )}
 
-                        <div>
-                            <p className="text-xs font-semibold text-gray-500 uppercase mb-1">විස්තරය</p>
-                            <p className="text-sm text-gray-700 line-clamp-3">{location.description}</p>
-                        </div>
-
                         {(location.startDate || location.endDate || location.startTime || location.endTime) && (
                             <div>
-                                <p className="text-xs font-semibold text-gray-500 uppercase mb-1">එකතු කරන දින සහ වේලාවන්</p>
-                                <div className="flex flex-col gap-2 text-sm text-gray-700 bg-blue-50 p-2 rounded border border-blue-100">
-                                    {(location.startDate || location.endDate) && (
-                                        <div className="flex items-center gap-2">
-                                            <Calendar size={14} className="text-blue-600" />
-                                            <span>
-                                                {location.startDate ? new Date(location.startDate).toLocaleDateString('si-LK') : '---'} සිට {location.endDate ? new Date(location.endDate).toLocaleDateString('si-LK') : '---'} දක්වා
-                                            </span>
-                                        </div>
-                                    )}
-                                    {(location.startTime || location.endTime) && (
-                                        <div className="flex items-center gap-2 pl-6">
-                                            <span className="text-blue-600">⏰</span>
-                                            <span>
-                                                {location.startTime || '---'} සිට {location.endTime || '---'} දක්වා
-                                            </span>
-                                        </div>
-                                    )}
+                                <p className="text-xs font-semibold text-gray-500 uppercase mb-1">එකතු කරන වේලාවන්</p>
+                                <div className="flex items-center gap-2 text-sm text-gray-700 bg-blue-50 p-2 rounded border border-blue-100">
+                                    <Calendar size={14} className="text-blue-600" />
+                                    <span>
+                                        {location.startDate ? new Date(location.startDate).toLocaleDateString('si-LK') : '---'} {location.startTime || '---'} සිට {location.endDate ? new Date(location.endDate).toLocaleDateString('si-LK') : '---'} {location.endTime || '---'} දක්වා
+                                    </span>
                                 </div>
                             </div>
                         )}
