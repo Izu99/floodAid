@@ -1,0 +1,176 @@
+{
+    "main": {
+        "title": "ශ්‍රී ලංකා ආධාර ලැයිස්තුව",
+        "subtitle": "ගංවතුරින් විපතට පත් ජනතාවට සහන",
+        "helpCard": {
+            "title": "උදව් අවශ්‍යද?",
+            "description": "ඔබට හෝ ඔබ දන්නා අයෙකුට ආධාර අවශ්‍ය නම් මෙතැනින් ඉල්ලීම් කරන්න"
+        },
+        "donationsCard": {
+            "title": "ආධාර ලබාදෙන්න",
+            "description": "ඔබට හැකි අයුරින් විපතට පත් ජනතාවට ආධාර ලබාදෙන්න"
+        },
+        "locationsCard": {
+            "title": "එකතු කරන ස්ථාන",
+            "description": "ආධාර භාර දිය හැකි ළඟම ඇති මධ්‍යස්ථාන සොයාගන්න"
+        }
+    },
+    "helpRequests": {
+        "title": "උදව් ඉල්ලීම්",
+        "subtitle": "ඔබට හෝ ඔබ දන්නා අයෙකුට ආධාර අවශ්‍ය නම් මෙතැනින් ඉල්ලීම් කරන්න",
+        "noRequests": "දැනට උදව් ඉල්ලීම් කිසිවක් නොමැත",
+        "firstRequest": "පළමු ඉල්ලීම එක් කරන්න",
+        "loading": "තොරතුරු ලබා ගනිමින්...",
+        "status": {
+            "pending": "උදව් අවශ්‍යයි",
+            "fulfilled": "විසඳන ලදී"
+        },
+        "card": {
+            "address": "ලිපිනය",
+            "helpNeeded": "අවශ්‍ය උදව්",
+            "additionalDetails": "අමතර විස්තර",
+            "contactInfo": "සම්බන්ධ කරගන්න",
+            "requestedOn": "ඉල්ලීම කළේ"
+        },
+        "form": {
+            "title": "උදව් ඉල්ලීමක් එක් කරන්න",
+            "description": "ඔබට හෝ ඔබ දන්නා කෙනෙකුට අවශ්‍ය උදව් පිළිබඳ තොරතුරු ලබා දෙන්න",
+            "name": "නම",
+            "namePlaceholder": "ඔබේ නම",
+            "district": "දිස්ත්‍රික්කය",
+            "districtPlaceholder": "තෝරන්න",
+            "address": "ලිපිනය",
+            "addressPlaceholder": "සම්පූර්ණ ලිපිනය",
+            "phone": "දුරකථන අංකය",
+            "phonePlaceholder": "07x xxxxxxx",
+            "additionalPhone": "අමතර දුරකථන (විකල්ප)",
+            "helpDescription": "අවශ්‍ය උදව්",
+            "helpDescriptionPlaceholder": "උදා: ආහාර, පානීය ජලය, ඖෂධ",
+            "additionalDetails": "අමතර විස්තර (විකල්ප)",
+            "additionalDetailsPlaceholder": "අතිරේක තොරතුරු"
+        }
+    },
+    "donations": {
+        "title": "පරිත්‍යාග",
+        "subtitle": "ගංවතුරින් විපතට පත් ජනතාවට සහන",
+        "instructions": "ඔබට මෙම ද්‍රව්‍ය අවශ්‍ය නම්, අදාළ පරිත්‍යාගශීලියාගේ දුරකථන අංකයට අමතන්න",
+        "noDonations": "දැනට පරිත්‍යාග කිසිවක් නොමැත",
+        "loading": "තොරතුරු ලබා ගනිමින්...",
+        "status": {
+            "available": "ලබා ගත හැක",
+            "collected": "එකතු කළා"
+        },
+        "card": {
+            "label": "ලබාගත හැකි පරිත්‍යාගය",
+            "badge": "පරිත්‍යාගය",
+            "address": "ලිපිනය",
+            "description": "විස්තරය",
+            "donor": "පරිත්‍යාගශීලියා",
+            "donatedOn": "පරිත්‍යාගය කළේ",
+            "collectButton": "එකතු කරන්න"
+        },
+        "form": {
+            "title": "පරිත්‍යාගයක් එක් කරන්න",
+            "description": "ඔබට පරිත්‍යාග කළ හැකි ද්‍රව්‍ය පිළිබඳ තොරතුරු ලබා දෙන්න",
+            "name": "නම",
+            "namePlaceholder": "ඔබේ නම",
+            "district": "දිස්ත්‍රික්කය",
+            "districtPlaceholder": "තෝරන්න",
+            "address": "ලිපිනය",
+            "addressPlaceholder": "පරිත්‍යාග ලබා ගත හැකි ස්ථානය",
+            "phone": "දුරකථන අංකය",
+            "phonePlaceholder": "07x xxxxxxx",
+            "items": "පරිත්‍යාග කරන ද්‍රව්‍ය",
+            "itemsPlaceholder": "උදා: සහල්, කිරිපිටි, වතුර",
+            "description": "විස්තරය (විකල්ප)",
+            "descriptionPlaceholder": "ද්‍රව්‍ය පිළිබඳ අමතර තොරතුරු"
+        }
+    },
+    "locations": {
+        "title": "ආධාර එකතු කරන ස්ථාන",
+        "subtitle": "ආධාර භාර දිය හැකි එකතු කිරීමේ ස්ථාන",
+        "noLocations": "දැනට ස්ථාන කිසිවක් නොමැත",
+        "loading": "තොරතුරු ලබා ගනිමින්...",
+        "card": {
+            "address": "ලිපිනය",
+            "time": "කාලය",
+            "description": "විස්තරය",
+            "viewPhotos": "එකතු කිරීමේ ස්ථානයේ ඡායාරූප බලන්න",
+            "collectorInfo": "එකතු කරන්නාගේ තොරතුරු (ආරක්ෂිතව සම්බන්ධ වන්න)",
+            "addedOn": "ස්ථානය එකතු කළේ"
+        },
+        "form": {
+            "title": "එකතු කිරීමේ ස්ථානයක් එක් කරන්න",
+            "description": "ආධාර භාර දිය හැකි එකතු කිරීමේ ස්ථානයක් පිළිබඳ විස්තර එක් කරන්න",
+            "name": "ස්ථානයේ නම",
+            "namePlaceholder": "උදා: කොළඹ සහන මධ්‍යස්ථානය",
+            "district": "දිස්ත්‍රික්කය",
+            "districtPlaceholder": "තෝරන්න",
+            "address": "ලිපිනය",
+            "addressPlaceholder": "සම්පූර්ණ ලිපිනය",
+            "startDate": "ආරම්භක දිනය",
+            "endDate": "අවසාන දිනය",
+            "startTime": "ආරම්භක වේලාව",
+            "endTime": "අවසාන වේලාව",
+            "contactSection": "සම්බන්ධතා විස්තර",
+            "contactName": "සම්බන්ධ කරගත හැකි අයගේ නම",
+            "contactNamePlaceholder": "නම",
+            "contactPhone": "දුරකථන අංකය",
+            "contactPhonePlaceholder": "07x xxxxxxx",
+            "additionalPhone": "අමතර දුරකථන (විකල්ප)",
+            "description": "විස්තරය",
+            "descriptionPlaceholder": "ස්ථානයේ එකතු කරන්නා විශේෂිත ද්‍රව්‍ය කරන්න (උදා: ආහාර, ඇඳුම් පැළඳුම්, ඖෂධ)",
+            "contactImage": "සම්බන්ධ කරගත හැකි අයගේ ඡායාරූපය (අනිවාර්යයි)",
+            "contactImageNote": "මෙම ඡායාරූපය කාඩ්පතේ දර්ශනය වේ",
+            "locationImages": "එකතු කිරීමේ ස්ථානයේ ඡායාරූප (අවම 1ක් - උපරිම 5ක්)"
+        }
+    },
+    "common": {
+        "back": "ආපසු",
+        "submit": "යොමු කරන්න",
+        "cancel": "අවලංගු කරන්න",
+        "add": "එක් කරන්න",
+        "edit": "සංස්කරණය කරන්න",
+        "delete": "මකන්න",
+        "save": "සුරකින්න",
+        "search": "සොයන්න",
+        "filter": "පෙරීම",
+        "all": "සියල්ල",
+        "page": "පිටුව",
+        "previous": "පෙර",
+        "next": "ඊළඟ",
+        "loading": "පූරණය වෙමින්...",
+        "error": "දෝෂයක් ඇතිවිය",
+        "success": "සාර්ථකයි",
+        "close": "වසන්න",
+        "select": "තෝරන්න"
+    },
+    "districts": {
+        "all": "සියල්ල",
+        "colombo": "කොළඹ",
+        "gampaha": "ගම්පහ",
+        "kalutara": "කළුතර",
+        "kandy": "මහනුවර",
+        "matale": "මාතලේ",
+        "nuwara_eliya": "නුවරඑළිය",
+        "galle": "ගාල්ල",
+        "matara": "මාතර",
+        "hambantota": "හම්බන්තොට",
+        "jaffna": "යාපනය",
+        "kilinochchi": "කිලිනොච්චිය",
+        "mannar": "මන්නාරම",
+        "vavuniya": "වවුනියාව",
+        "mullaitivu": "මුලතිව්",
+        "batticaloa": "මඩකලපුව",
+        "ampara": "අම්පාර",
+        "trincomalee": "ත්‍රිකුණාමලය",
+        "kurunegala": "කුරුණෑගල",
+        "puttalam": "පුත්තලම",
+        "anuradhapura": "අනුරාධපුරය",
+        "polonnaruwa": "පොළොන්නරුව",
+        "badulla": "බදුල්ල",
+        "monaragala": "මොණරාගල",
+        "ratnapura": "රත්නපුර",
+        "kegalle": "කෑගල්ල"
+    }
+}

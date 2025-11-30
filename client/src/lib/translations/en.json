@@ -1,0 +1,176 @@
+{
+    "main": {
+        "title": "Sri Lanka Aid Registry",
+        "subtitle": "Relief for flood-affected communities",
+        "helpCard": {
+            "title": "Need Help?",
+            "description": "Request assistance if you or someone you know needs help"
+        },
+        "donationsCard": {
+            "title": "Give Help",
+            "description": "Provide assistance to those affected by the disaster"
+        },
+        "locationsCard": {
+            "title": "Collection Points",
+            "description": "Find nearest centers where you can drop off donations"
+        }
+    },
+    "helpRequests": {
+        "title": "Help Requests",
+        "subtitle": "Request assistance if you or someone you know needs help",
+        "noRequests": "No help requests available",
+        "firstRequest": "Add the first request",
+        "loading": "Loading information...",
+        "status": {
+            "pending": "Help Needed",
+            "fulfilled": "Resolved"
+        },
+        "card": {
+            "address": "Address",
+            "helpNeeded": "Help Needed",
+            "additionalDetails": "Additional Details",
+            "contactInfo": "Contact",
+            "requestedOn": "Requested on"
+        },
+        "form": {
+            "title": "Add Help Request",
+            "description": "Provide information about help needed for you or someone you know",
+            "name": "Name",
+            "namePlaceholder": "Your name",
+            "district": "District",
+            "districtPlaceholder": "Select",
+            "address": "Address",
+            "addressPlaceholder": "Full address",
+            "phone": "Phone Number",
+            "phonePlaceholder": "07x xxxxxxx",
+            "additionalPhone": "Additional Phone (Optional)",
+            "helpDescription": "Help Needed",
+            "helpDescriptionPlaceholder": "E.g.: Food, drinking water, medicine",
+            "additionalDetails": "Additional Details (Optional)",
+            "additionalDetailsPlaceholder": "Additional information"
+        }
+    },
+    "donations": {
+        "title": "Donations",
+        "subtitle": "Relief for flood-affected communities",
+        "instructions": "If you need these items, please call the donor's phone number",
+        "noDonations": "No donations available",
+        "loading": "Loading information...",
+        "status": {
+            "available": "Available",
+            "collected": "Collected"
+        },
+        "card": {
+            "label": "Available Donation",
+            "badge": "Donation",
+            "address": "Address",
+            "description": "Description",
+            "donor": "Donor",
+            "donatedOn": "Donated on",
+            "collectButton": "Collect"
+        },
+        "form": {
+            "title": "Add Donation",
+            "description": "Provide information about items you can donate",
+            "name": "Name",
+            "namePlaceholder": "Your name",
+            "district": "District",
+            "districtPlaceholder": "Select",
+            "address": "Address",
+            "addressPlaceholder": "Location where donations can be collected",
+            "phone": "Phone Number",
+            "phonePlaceholder": "07x xxxxxxx",
+            "items": "Items to Donate",
+            "itemsPlaceholder": "E.g.: Rice, milk powder, water",
+            "description": "Description (Optional)",
+            "descriptionPlaceholder": "Additional information about items"
+        }
+    },
+    "locations": {
+        "title": "Aid Collection Points",
+        "subtitle": "Collection centers where you can drop off donations",
+        "noLocations": "No locations available",
+        "loading": "Loading information...",
+        "card": {
+            "address": "Address",
+            "time": "Time",
+            "description": "Description",
+            "viewPhotos": "View collection point photos",
+            "collectorInfo": "Collector Information (Connect Safely)",
+            "addedOn": "Location added on"
+        },
+        "form": {
+            "title": "Add Collection Point",
+            "description": "Add details about a collection point where donations can be dropped off",
+            "name": "Location Name",
+            "namePlaceholder": "E.g.: Colombo Relief Center",
+            "district": "District",
+            "districtPlaceholder": "Select",
+            "address": "Address",
+            "addressPlaceholder": "Full address",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "startTime": "Start Time",
+            "endTime": "End Time",
+            "contactSection": "Contact Details",
+            "contactName": "Contact Person Name",
+            "contactNamePlaceholder": "Name",
+            "contactPhone": "Phone Number",
+            "contactPhonePlaceholder": "07x xxxxxxx",
+            "additionalPhone": "Additional Phone (Optional)",
+            "description": "Description",
+            "descriptionPlaceholder": "Specify items collected at this location (e.g.: food, clothing, medicine)",
+            "contactImage": "Contact Person Photo (Required)",
+            "contactImageNote": "This photo will be displayed on the card",
+            "locationImages": "Collection Point Photos (Minimum 1 - Maximum 5)"
+        }
+    },
+    "common": {
+        "back": "Back",
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "add": "Add",
+        "edit": "Edit",
+        "delete": "Delete",
+        "save": "Save",
+        "search": "Search",
+        "filter": "Filter",
+        "all": "All",
+        "page": "Page",
+        "previous": "Previous",
+        "next": "Next",
+        "loading": "Loading...",
+        "error": "An error occurred",
+        "success": "Success",
+        "close": "Close",
+        "select": "Select"
+    },
+    "districts": {
+        "all": "All",
+        "colombo": "Colombo",
+        "gampaha": "Gampaha",
+        "kalutara": "Kalutara",
+        "kandy": "Kandy",
+        "matale": "Matale",
+        "nuwara_eliya": "Nuwara Eliya",
+        "galle": "Galle",
+        "matara": "Matara",
+        "hambantota": "Hambantota",
+        "jaffna": "Jaffna",
+        "kilinochchi": "Kilinochchi",
+        "mannar": "Mannar",
+        "vavuniya": "Vavuniya",
+        "mullaitivu": "Mullaitivu",
+        "batticaloa": "Batticaloa",
+        "ampara": "Ampara",
+        "trincomalee": "Trincomalee",
+        "kurunegala": "Kurunegala",
+        "puttalam": "Puttalam",
+        "anuradhapura": "Anuradhapura",
+        "polonnaruwa": "Polonnaruwa",
+        "badulla": "Badulla",
+        "monaragala": "Monaragala",
+        "ratnapura": "Ratnapura",
+        "kegalle": "Kegalle"
+    }
+}

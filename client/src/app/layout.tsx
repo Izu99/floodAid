@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
+import { LanguageProvider } from "@/lib/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FloodAid - Help Flood Victims",
-  description: "Donate items to help people affected by floods",
+  title: "FloodAid - Sri Lanka Relief Registry",
+  description: "Platform for flood relief coordination in Sri Lanka",
 };
 
 export default function RootLayout({
@@ -24,14 +25,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        <main>
-          {children}
-        </main>
+        <LanguageProvider>
+          <Header />
+          <main>
+            {children}
+          </main>
+        </LanguageProvider>
       </body>
     </html>
   );
