@@ -21,14 +21,14 @@ export function DonationCard({ donation, onMarkCollected }: DonationCardProps) {
     };
 
     return (
-        <Card className={`transition-all ${donation.collected ? 'opacity-60 bg-muted' : ''}`}>
+        <Card className={`transition-all ${donation.status === 'collected' ? 'opacity-60 bg-muted' : ''}`}>
             <CardContent className="p-4 space-y-3">
                 <div className="flex items-start justify-between">
                     <div className="flex items-center gap-2">
                         <User className="w-4 h-4 text-muted-foreground" />
                         <span className="font-semibold">{donation.name}</span>
                     </div>
-                    {donation.collected ? (
+                    {donation.status === 'collected' ? (
                         <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full flex items-center gap-1">
                             <CheckCircle2 className="w-3 h-3" />
                             Collected
@@ -59,9 +59,9 @@ export function DonationCard({ donation, onMarkCollected }: DonationCardProps) {
                         <span className="text-muted-foreground text-xs">{donation.address}</span>
                     </div>
 
-                    {donation.note && (
+                    {donation.description && (
                         <div className="bg-muted p-2 rounded text-xs">
-                            <span className="text-foreground">{donation.note}</span>
+                            <span className="text-foreground">{donation.description}</span>
                         </div>
                     )}
 
@@ -71,7 +71,7 @@ export function DonationCard({ donation, onMarkCollected }: DonationCardProps) {
                             {formatDate(donation.createdAt)}
                         </span>
 
-                        {!donation.collected && (
+                        {donation.status !== 'collected' && (
                             <Button
                                 size="sm"
                                 variant="default"
