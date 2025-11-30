@@ -32,6 +32,10 @@ const userSchema = new mongoose.Schema({
     locations: [{
         district: { type: String, required: true },
         address: { type: String, required: true },
+        startDate: { type: String, required: false },
+        endDate: { type: String, required: false },
+        startTime: { type: String, required: false },
+        endTime: { type: String, required: false },
         images: [{ type: String }] // Array of image filenames
     }],
 }, {

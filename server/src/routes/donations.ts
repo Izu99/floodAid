@@ -7,15 +7,18 @@ const router = Router();
 // Get all donations with pagination
 router.get('/', authMiddleware, async (req: AuthRequest, res: Response) => {
     try {
+        console.log('📋 Fetching donations');
         const page = parseInt(req.query.page as string) || 1;
         const limit = parseInt(req.query.limit as string) || 15;
         const skip = (page - 1) * limit;
+        console.log(`Page: ${page}, Limit: ${limit}, Skip: ${skip}`);
 
         const [donations, total] = await Promise.all([
             DonationModel.find().sort({ createdAt: -1 }).skip(skip).limit(limit),
             DonationModel.countDocuments(),
         ]);
 
+        console.log(`✅ Found ${donations.length} donations (total: ${total})`);
         res.json({
             data: donations,
             total,
@@ -24,6 +27,7 @@ router.get('/', authMiddleware, async (req: AuthRequest, res: Response) => {
             totalPages: Math.ceil(total / limit),
         });
     } catch (error) {
+        console.error('❌ Error fetching donations:', error);
         res.status(500).json({ error: 'Failed to fetch donations' });
     }
 });
@@ -31,7 +35,9 @@ router.get('/', authMiddleware, async (req: AuthRequest, res: Response) => {
 // Create donation
 router.post('/', authMiddleware, async (req: AuthRequest, res: Response) => {
     try {
+        console.log('➕ Creating donation');
         const { name, phone, address, items, description } = req.body;
+        console.log('Donation data:', { name, phone, address, items, description });
 
         const donation = await DonationModel.create({
             name,
@@ -42,8 +48,10 @@ router.post('/', authMiddleware, async (req: AuthRequest, res: Response) => {
             donor: req.userId,
         });
 
+        console.log('✅ Donation created:', donation._id);
         res.status(201).json(donation);
     } catch (error) {
+        console.error('❌ Error creating donation:', error);
         res.status(500).json({ error: 'Failed to create donation' });
     }
 });

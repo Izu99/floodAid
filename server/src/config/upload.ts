@@ -2,20 +2,36 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 
-// Create uploads directory if it doesn't exist
-const uploadDir = path.join(__dirname, '../../uploads/faces');
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
+// Create uploads directories if they don't exist
+const faceUploadDir = path.join(__dirname, '../../uploads/faces');
+const locationUploadDir = path.join(__dirname, '../../uploads/locations');
+
+if (!fs.existsSync(faceUploadDir)) {
+    fs.mkdirSync(faceUploadDir, { recursive: true });
+}
+if (!fs.existsSync(locationUploadDir)) {
+    fs.mkdirSync(locationUploadDir, { recursive: true });
 }
 
-// Configure storage
-const storage = multer.diskStorage({
+// Configure storage for face images
+const faceStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, uploadDir);
+        cb(null, faceUploadDir);
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
         cb(null, 'face-' + uniqueSuffix + path.extname(file.originalname));
+    },
+});
+
+// Configure storage for location images
+const locationStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, locationUploadDir);
+    },
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, 'location-' + uniqueSuffix + path.extname(file.originalname));
     },
 });
 
@@ -33,9 +49,17 @@ const fileFilter = (req: any, file: Express.Multer.File, cb: multer.FileFilterCa
 };
 
 export const upload = multer({
-    storage,
+    storage: locationStorage,
     fileFilter,
     limits: {
-        fileSize: 5 * 1024 * 1024, // 5MB limit
+        fileSize: 100 * 1024 * 1024, // 100MB limit
+    },
+});
+
+export const faceUpload = multer({
+    storage: faceStorage,
+    fileFilter,
+    limits: {
+        fileSize: 100 * 1024 * 1024, // 100MB limit
     },
 });
