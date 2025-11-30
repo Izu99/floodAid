@@ -10,7 +10,7 @@ interface LocationCardProps {
     location: Location;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || '';
 
 export function LocationCard({ location }: LocationCardProps) {
     const [showImages, setShowImages] = useState(false);

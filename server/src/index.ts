@@ -35,15 +35,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 // Middleware
 app.use(cors({
-    origin: [
-        'http://localhost:3000', // Local development
-        'https://floodaid.vercel.app', // Old Vercel production
-        'https://flood-aid-one.vercel.app', // NEW Vercel production
-        'https://*.vercel.app', // Vercel preview deployments
-        'http://82.25.180.20', // Backend VPS direct (if needed)
-        'https://82.25.180.20', // Backend VPS direct (if needed)
-    ],
-    credentials: true,
+    origin: 'https://flood-aid-one.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
 }));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));

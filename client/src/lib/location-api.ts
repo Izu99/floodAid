@@ -1,7 +1,7 @@
 import { Location, CreateLocationDto } from '@/types/location';
 import { tokenStorage } from './auth-api';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
 export const locationApi = {
     async getLocations(district?: string, page: number = 1, limit: number = 15): Promise<{ data: Location[], totalPages: number, currentPage: number, totalItems: number }> {
