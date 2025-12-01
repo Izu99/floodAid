@@ -6,6 +6,10 @@ import fs from 'fs';
 const faceUploadDir = path.join(__dirname, '../../uploads/faces');
 const locationUploadDir = path.join(__dirname, '../../uploads/locations');
 
+console.log('📂 Upload directories config:');
+console.log('   - Face dir:', faceUploadDir);
+console.log('   - Location dir:', locationUploadDir);
+
 if (!fs.existsSync(faceUploadDir)) {
     fs.mkdirSync(faceUploadDir, { recursive: true });
 }
