@@ -79,7 +79,7 @@ export default function HelpRequestsPage() {
     return (
         <div className="min-h-screen bg-gray-50 relative pb-12">
             {/* Fixed Header */}
-            <Header showBackButton={false} />
+            <Header />
 
             {/* Page Header */}
             <div className="bg-gradient-to-r from-rose-800 to-rose-700 text-white">

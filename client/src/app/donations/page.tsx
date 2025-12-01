@@ -95,7 +95,7 @@ export default function DonationsPage() {
     return (
         <div className="min-h-screen bg-gray-50 relative pb-12">
             {/* Fixed Header */}
-            <Header showBackButton={false} />
+            <Header />
 
             {/* Page Header */}
             <div className="bg-gradient-to-r from-emerald-800 to-emerald-700 text-white">

@@ -72,7 +72,7 @@ export default function TransportPage() {
     return (
         <main className="min-h-screen bg-gray-50 pb-12 relative">
             {/* Fixed Header */}
-            <Header showBackButton={false} />
+            <Header />
 
             {/* Page Header */}
             <div className="bg-gradient-to-r from-amber-800 to-amber-700 text-white">

@@ -80,7 +80,7 @@ export default function LocationsPage() {
     return (
         <div className="min-h-screen bg-gray-50 relative pb-12">
             {/* Fixed Header */}
-            <Header showBackButton={false} />
+            <Header />
 
             {/* Page Header */}
             <div className="bg-gradient-to-r from-sky-800 to-sky-700 text-white">

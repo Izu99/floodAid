@@ -72,7 +72,7 @@ export default function EducationPage() {
     return (
         <main className="min-h-screen bg-gray-50 pb-12 relative">
             {/* Fixed Header */}
-            <Header showBackButton={false} />
+            <Header />
 
             {/* Page Header */}
             <div className="bg-gradient-to-r from-blue-800 to-blue-700 text-white">
