@@ -25,20 +25,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { CreateLocationDto } from '@/types/location';
 import { X } from 'lucide-react';
-
-const formSchema = z.object({
-    name: z.string().min(2, 'Name must be at least 2 characters'),
-    district: z.string().min(2, 'District is required'),
-    address: z.string().min(5, 'Address must be at least 5 characters'),
-    description: z.string().min(10, 'Description must be at least 10 characters'),
-    startDate: z.string().min(1, 'Start date is required'),
-    endDate: z.string().min(1, 'End date is required'),
-    startTime: z.string().min(1, 'Start time is required'),
-    endTime: z.string().min(1, 'End time is required'),
-    contactName: z.string().min(2, 'Contact name is required'),
-    contactPhone: z.string().min(9, 'Contact phone is required'),
-    additionalPhone: z.string().optional(),
-});
+import { useLanguage } from '@/lib/LanguageContext';
 
 interface LocationFormProps {
     open: boolean;
@@ -47,11 +34,32 @@ interface LocationFormProps {
 }
 
 export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps) {
+    const { t } = useLanguage();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [images, setImages] = useState<File[]>([]);
     const [imagePreviews, setImagePreviews] = useState<string[]>([]);
     const [contactImage, setContactImage] = useState<File | null>(null);
     const [contactImagePreview, setContactImagePreview] = useState<string>('');
+
+    const DISTRICTS = [
+        'colombo', 'gampaha', 'kalutara', 'kandy', 'matale', 'nuwara_eliya', 'galle', 'matara', 'hambantota',
+        'jaffna', 'kilinochchi', 'mannar', 'vavuniya', 'mullaitivu', 'batticaloa', 'ampara', 'trincomalee',
+        'kurunegala', 'puttalam', 'anuradhapura', 'polonnaruwa', 'badulla', 'monaragala', 'ratnapura', 'kegalle'
+    ];
+
+    const formSchema = z.object({
+        name: z.string().min(2, t('locations.form.name') + ' ' + t('common.error')),
+        district: z.string().min(2, t('locations.form.district') + ' ' + t('common.error')),
+        address: z.string().min(5, t('locations.form.address') + ' ' + t('common.error')),
+        description: z.string().min(10, t('locations.form.description') + ' ' + t('common.error')),
+        startDate: z.string().min(1, t('locations.form.startDate') + ' ' + t('common.error')),
+        endDate: z.string().min(1, t('locations.form.endDate') + ' ' + t('common.error')),
+        startTime: z.string().min(1, t('locations.form.startTime') + ' ' + t('common.error')),
+        endTime: z.string().min(1, t('locations.form.endTime') + ' ' + t('common.error')),
+        contactName: z.string().min(2, t('locations.form.contactName') + ' ' + t('common.error')),
+        contactPhone: z.string().min(9, t('locations.form.contactPhone') + ' ' + t('common.error')),
+        additionalPhone: z.string().optional(),
+    });
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -108,12 +116,12 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
 
     const handleSubmit = async (values: z.infer<typeof formSchema>) => {
         if (!contactImage) {
-            alert('සම්බන්ධ කරගත හැකි අයගේ ඡායාරූපය උඩුගත කරන්න');
+            alert(t('locations.form.contactImage') + ' ' + t('common.error'));
             return;
         }
 
         if (images.length === 0) {
-            alert('ස්ථානයේ අවම වශයෙන් එක් ඡායාරූපයක් උඩුගත කරන්න');
+            alert(t('locations.form.locationImages') + ' ' + t('common.error'));
             return;
         }
 
@@ -139,9 +147,9 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle className="text-xl">එකතු කිරීමේ ස්ථානයක් එක් කරන්න</DialogTitle>
+                    <DialogTitle className="text-xl">{t('locations.form.title')}</DialogTitle>
                     <DialogDescription>
-                        ආධාර භාර දිය හැකි එකතු කිරීමේ ස්ථානයක් පිළිබඳ විස්තර එක් කරන්න
+                        {t('locations.form.description')}
                     </DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
@@ -151,9 +159,9 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>ස්ථානයේ නම</FormLabel>
+                                    <FormLabel>{t('locations.form.name')}</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="උදා: කොළඹ සහන මධ්‍යස්ථානය" {...field} />
+                                        <Input placeholder={t('locations.form.namePlaceholder')} {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -165,39 +173,19 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                             name="district"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>දිස්ත්‍රික්කය</FormLabel>
+                                    <FormLabel>{t('locations.form.district')}</FormLabel>
                                     <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                                         <FormControl>
                                             <SelectTrigger>
-                                                <SelectValue placeholder="තෝරන්න" />
+                                                <SelectValue placeholder={t('locations.form.districtPlaceholder')} />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
-                                            <SelectItem value="කොළඹ">කොළඹ</SelectItem>
-                                            <SelectItem value="ගම්පහ">ගම්පහ</SelectItem>
-                                            <SelectItem value="කළුතර">කළුතර</SelectItem>
-                                            <SelectItem value="මහනුවර">මහනුවර</SelectItem>
-                                            <SelectItem value="මාතලේ">මාතලේ</SelectItem>
-                                            <SelectItem value="නුවරඑළිය">නුවරඑළිය</SelectItem>
-                                            <SelectItem value="ගාල්ල">ගාල්ල</SelectItem>
-                                            <SelectItem value="මාතර">මාතර</SelectItem>
-                                            <SelectItem value="හම්බන්තොට">හම්බන්තොට</SelectItem>
-                                            <SelectItem value="යාපනය">යාපනය</SelectItem>
-                                            <SelectItem value="කිලිනොච්චිය">කිලිනොච්චිය</SelectItem>
-                                            <SelectItem value="මන්නාරම">මන්නාරම</SelectItem>
-                                            <SelectItem value="වවුනියාව">වවුනියාව</SelectItem>
-                                            <SelectItem value="මුලතිව්">මුලතිව්</SelectItem>
-                                            <SelectItem value="මඩකලපුව">මඩකලපුව</SelectItem>
-                                            <SelectItem value="අම්පාර">අම්පාර</SelectItem>
-                                            <SelectItem value="ත්‍රිකුණාමලය">ත්‍රිකුණාමලය</SelectItem>
-                                            <SelectItem value="කුරුණෑගල">කුරුණෑගල</SelectItem>
-                                            <SelectItem value="පුත්තලම">පුත්තලම</SelectItem>
-                                            <SelectItem value="අනුරාධපුරය">අනුරාධපුරය</SelectItem>
-                                            <SelectItem value="පොළොන්නරුව">පොළොන්නරුව</SelectItem>
-                                            <SelectItem value="බදුල්ල">බදුල්ල</SelectItem>
-                                            <SelectItem value="මොණරාගල">මොණරාගල</SelectItem>
-                                            <SelectItem value="රත්නපුර">රත්නපුර</SelectItem>
-                                            <SelectItem value="කෑගල්ල">කෑගල්ල</SelectItem>
+                                            {DISTRICTS.map((d) => (
+                                                <SelectItem key={d} value={t(`districts.${d}`)}>
+                                                    {t(`districts.${d}`)}
+                                                </SelectItem>
+                                            ))}
                                         </SelectContent>
                                     </Select>
                                     <FormMessage />
@@ -210,9 +198,9 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                             name="address"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>ලිපිනය</FormLabel>
+                                    <FormLabel>{t('locations.form.address')}</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="සම්පූර්ණ ලිපිනය" {...field} />
+                                        <Input placeholder={t('locations.form.addressPlaceholder')} {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -225,7 +213,7 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                                 name="startDate"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>ආරම්භක දිනය</FormLabel>
+                                        <FormLabel>{t('locations.form.startDate')}</FormLabel>
                                         <FormControl>
                                             <Input type="date" {...field} />
                                         </FormControl>
@@ -239,7 +227,7 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                                 name="endDate"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>අවසාන දිනය</FormLabel>
+                                        <FormLabel>{t('locations.form.endDate')}</FormLabel>
                                         <FormControl>
                                             <Input type="date" {...field} />
                                         </FormControl>
@@ -255,7 +243,7 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                                 name="startTime"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>ආරම්භක වේලාව</FormLabel>
+                                        <FormLabel>{t('locations.form.startTime')}</FormLabel>
                                         <FormControl>
                                             <Input type="time" {...field} />
                                         </FormControl>
@@ -269,7 +257,7 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                                 name="endTime"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>අවසාන වේලාව</FormLabel>
+                                        <FormLabel>{t('locations.form.endTime')}</FormLabel>
                                         <FormControl>
                                             <Input type="time" {...field} />
                                         </FormControl>
@@ -281,7 +269,7 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
 
                         {/* Contact Information Section */}
                         <div className="pt-3 mt-2 border-t border-gray-200">
-                            <h3 className="text-sm font-semibold text-gray-700 mb-3">සම්බන්ධතා විස්තර</h3>
+                            <h3 className="text-sm font-semibold text-gray-700 mb-3">{t('locations.form.contactSection')}</h3>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
@@ -290,9 +278,9 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                                 name="contactName"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>සම්බන්ධ කරගත හැකි අයගේ නම</FormLabel>
+                                        <FormLabel>{t('locations.form.contactName')}</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="නම" {...field} />
+                                            <Input placeholder={t('locations.form.contactNamePlaceholder')} {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -304,9 +292,9 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                                 name="contactPhone"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>දුරකථන අංකය</FormLabel>
+                                        <FormLabel>{t('locations.form.contactPhone')}</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="07x xxxxxxx" {...field} />
+                                            <Input placeholder={t('locations.form.contactPhonePlaceholder')} {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -319,9 +307,9 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                             name="additionalPhone"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>අමතර දුරකථන (විකල්ප)</FormLabel>
+                                    <FormLabel>{t('locations.form.additionalPhone')}</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="07x xxxxxxx" {...field} />
+                                        <Input placeholder={t('locations.form.contactPhonePlaceholder')} {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -333,10 +321,10 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                             name="description"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>විස්තරය</FormLabel>
+                                    <FormLabel>{t('locations.form.description')}</FormLabel>
                                     <FormControl>
                                         <Textarea
-                                            placeholder="ස්ථානයේ එකතු කරන්නා විශේෂිත ද්‍රව්‍ය කරන්න (උදා: ආහාර, ඇඳුම් පැළඳුම්, ඖෂධ)"
+                                            placeholder={t('locations.form.descriptionPlaceholder')}
                                             {...field}
                                             rows={4}
                                         />
@@ -347,7 +335,7 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                         />
 
                         <div>
-                            <FormLabel>සම්බන්ධ කරගත හැකි අයගේ ඡායාරූපය (අනිවාර්යයි)</FormLabel>
+                            <FormLabel>{t('locations.form.contactImage')}</FormLabel>
                             <Input
                                 type="file"
                                 accept="image/*"
@@ -370,11 +358,11 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                                     </button>
                                 </div>
                             )}
-                            <p className="text-xs text-gray-500 mt-1">මෙම ඡායාරූපය කාඩ්පතේ දර්ශනය වේ</p>
+                            <p className="text-xs text-gray-500 mt-1">{t('locations.form.contactImageNote')}</p>
                         </div>
 
                         <div>
-                            <FormLabel>එකතු කිරීමේ ස්ථානයේ ඡායාරූප (අවම 1ක් - උපරිම 5ක්)</FormLabel>
+                            <FormLabel>{t('locations.form.locationImages')}</FormLabel>
                             <Input
                                 type="file"
                                 accept="image/*"
@@ -412,10 +400,10 @@ export function LocationForm({ open, onOpenChange, onSubmit }: LocationFormProps
                                 onClick={() => onOpenChange(false)}
                                 className="flex-1"
                             >
-                                අවලංගු කරන්න
+                                {t('common.cancel')}
                             </Button>
                             <Button type="submit" disabled={isSubmitting} className="flex-1">
-                                {isSubmitting ? 'එක් කරමින්...' : 'ස්ථානය එක් කරන්න'}
+                                {isSubmitting ? t('common.loading') : t('common.submit')}
                             </Button>
                         </div>
                     </form>

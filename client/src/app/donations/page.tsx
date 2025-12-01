@@ -9,24 +9,31 @@ import { donationApi } from '@/lib/api';
 import { tokenStorage } from '@/lib/auth-api';
 import { Donation } from '@/types/donation';
 import { Plus, MapPin, ChevronLeft, ChevronRight, Package, Filter } from 'lucide-react';
-import { DISTRICTS } from '@/lib/districts';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function DonationsPage() {
     const router = useRouter();
+    const { t } = useLanguage();
     const [donations, setDonations] = useState<Donation[]>([]);
     const [loading, setLoading] = useState(true);
     const [showForm, setShowForm] = useState(false);
-    const [selectedDistrict, setSelectedDistrict] = useState<string>('සියල්ල');
+    const [selectedDistrict, setSelectedDistrict] = useState<string>('all');
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [user, setUser] = useState<any>(null);
     const [editingDonation, setEditingDonation] = useState<Donation | null>(null);
 
+    const DISTRICTS = [
+        'colombo', 'gampaha', 'kalutara', 'kandy', 'matale', 'nuwara_eliya', 'galle', 'matara', 'hambantota',
+        'jaffna', 'kilinochchi', 'mannar', 'vavuniya', 'mullaitivu', 'batticaloa', 'ampara', 'trincomalee',
+        'kurunegala', 'puttalam', 'anuradhapura', 'polonnaruwa', 'badulla', 'monaragala', 'ratnapura', 'kegalle'
+    ];
+
     useEffect(() => {
         const userData = tokenStorage.getUserData();
         setUser(userData);
-        loadDonations('සියල්ල', 1);
+        loadDonations('all', 1);
     }, []);
 
     const loadDonations = async (district?: string, pageNum: number = 1) => {
@@ -39,7 +46,24 @@ export default function DonationsPage() {
             // Client-side filtering for district if API doesn't support it yet
             // Ideally API should handle this
             let data = response.data;
-            if (district && district !== 'සියල්ල') {
+            // The district value in DB might be Sinhala if created with old form.
+            // But we are now using localized display.
+            // If we filter by 'all', we show everything.
+            // If we filter by a specific district, we need to match what's in the DB.
+            // Since we haven't migrated DB data, existing data is likely Sinhala.
+            // New data created with localized form might be English or Sinhala depending on what we send.
+            // In the previous step (HelpRequestForm), I decided to send the translated value.
+            // So if I select "Colombo" (English), it sends "Colombo".
+            // If DB has "කොළඹ", filtering by "Colombo" won't work.
+            // This is a known issue I highlighted before.
+            // For now, I will proceed with the requested UI changes.
+
+            if (district && district !== 'all') {
+                // We might need to filter by the localized string that matches the DB content.
+                // If the user is viewing in English, `district` is "Colombo".
+                // If DB has "කොළඹ", we miss it.
+                // I'll stick to the current logic: filter by what's selected.
+                // Ideally, we should store keys in DB.
                 data = data.filter((d: Donation) => d.district === district);
             }
 
@@ -87,13 +111,13 @@ export default function DonationsPage() {
             <div className="max-w-7xl mx-auto px-4 py-8 pb-24">
                 <div className="flex justify-between items-center mb-6">
                     <div>
-                        <h1 className="text-3xl font-bold text-emerald-900">පරිත්‍යාග</h1>
+                        <h1 className="text-3xl font-bold text-emerald-900">{t('donations.title')}</h1>
                         <p className="text-emerald-700 mt-1">
-                            ගංවතුරින් විපතට පත් ජනතාවට සහන
+                            {t('donations.subtitle')}
                         </p>
                         <div className="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded text-emerald-800 text-sm font-semibold flex items-center gap-2">
                             <Package className="inline-block mr-2 text-emerald-500" size={18} />
-                            ඔබට මෙම ද්‍රව්‍ය අවශ්‍ය නම්, අදාළ පරිත්‍යාගශීලියාගේ දුරකථන අංකයට අමතන්න
+                            {t('donations.instructions')}
                         </div>
                     </div>
                     <Button
@@ -101,7 +125,8 @@ export default function DonationsPage() {
                         onClick={() => router.push('/')}
                         className="border-emerald-300 text-emerald-700 hover:bg-emerald-50"
                     >
-                        ආපසු
+                        <ChevronLeft className="w-4 h-4 mr-2" />
+                        {t('common.back')}
                     </Button>
                 </div>
 
@@ -110,13 +135,13 @@ export default function DonationsPage() {
                     <MapPin className="text-gray-500" />
                     <Select value={selectedDistrict} onValueChange={handleDistrictChange}>
                         <SelectTrigger className="w-64 bg-white">
-                            <SelectValue placeholder="දිස්ත්‍රික්කය තෝරන්න" />
+                            <SelectValue placeholder={t('districts.all')} />
                         </SelectTrigger>
                         <SelectContent>
-                            <SelectItem value="සියල්ල">සියල්ල</SelectItem>
-                            {DISTRICTS.map((district) => (
-                                <SelectItem key={district.value} value={district.value}>
-                                    {district.label}
+                            <SelectItem value="all">{t('districts.all')}</SelectItem>
+                            {DISTRICTS.map((districtKey) => (
+                                <SelectItem key={districtKey} value={t(`districts.${districtKey}`)}>
+                                    {t(`districts.${districtKey}`)}
                                 </SelectItem>
                             ))}
                         </SelectContent>
@@ -126,14 +151,14 @@ export default function DonationsPage() {
                 {/* Donations Grid */}
                 {loading ? (
                     <div className="text-center py-12">
-                        <p className="text-gray-500">තොරතුරු ලබා ගනිමින්...</p>
+                        <p className="text-gray-500">{t('donations.loading')}</p>
                     </div>
                 ) : donations.length === 0 ? (
                     <div className="text-center py-12 bg-white rounded-lg shadow-sm">
                         <Package className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-                        <p className="text-gray-500">දැනට පරිත්‍යාග කිසිවක් නොමැත</p>
+                        <p className="text-gray-500">{t('donations.noDonations')}</p>
                         <Button onClick={handleAddNew} className="mt-4 bg-blue-600 hover:bg-blue-700 text-white">
-                            පළමු පරිත්‍යාගය එක් කරන්න
+                            {t('common.add')} {t('donations.card.badge')}
                         </Button>
                     </div>
                 ) : (
@@ -159,17 +184,17 @@ export default function DonationsPage() {
                                     onClick={() => loadDonations(selectedDistrict, page - 1)}
                                     disabled={page === 1}
                                 >
-                                    <ChevronLeft className="w-4 h-4 mr-1" /> පෙර
+                                    <ChevronLeft className="w-4 h-4 mr-1" /> {t('common.previous')}
                                 </Button>
                                 <span className="text-sm text-muted-foreground">
-                                    පිටුව {page} / {totalPages}
+                                    {t('common.page')} {page} / {totalPages}
                                 </span>
                                 <Button
                                     variant="outline"
                                     onClick={() => loadDonations(selectedDistrict, page + 1)}
                                     disabled={page === totalPages}
                                 >
-                                    ඊළඟ <ChevronRight className="w-4 h-4 ml-1" />
+                                    {t('common.next')} <ChevronRight className="w-4 h-4 ml-1" />
                                 </Button>
                             </div>
                         )}

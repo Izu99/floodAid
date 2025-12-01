@@ -24,16 +24,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Loader2 } from 'lucide-react';
 import { donationApi } from '@/lib/api';
 import { CreateDonationDto, Donation } from '@/types/donation';
-import { DISTRICTS } from '@/lib/districts';
-
-const formSchema = z.object({
-    name: z.string().min(1, 'නම ඇතුළත් කරන්න'),
-    phone: z.string().min(10, 'වලංගු දුරකථන අංකයක් ඇතුළත් කරන්න'),
-    district: z.string().min(1, 'දිස්ත්‍රික්කයක් තෝරන්න'),
-    address: z.string().min(1, 'ලිපිනය ඇතුළත් කරන්න'),
-    items: z.string().min(1, 'ද්‍රව්‍ය ඇතුළත් කරන්න'),
-    description: z.string().optional(),
-});
+import { useLanguage } from '@/lib/LanguageContext';
 
 interface DonationFormProps {
     open: boolean;
@@ -44,7 +35,23 @@ interface DonationFormProps {
 }
 
 export function DonationForm({ open, onOpenChange, onSuccess, initialData, userData }: DonationFormProps) {
+    const { t } = useLanguage();
     const [isLoading, setIsLoading] = useState(false);
+
+    const DISTRICTS = [
+        'colombo', 'gampaha', 'kalutara', 'kandy', 'matale', 'nuwara_eliya', 'galle', 'matara', 'hambantota',
+        'jaffna', 'kilinochchi', 'mannar', 'vavuniya', 'mullaitivu', 'batticaloa', 'ampara', 'trincomalee',
+        'kurunegala', 'puttalam', 'anuradhapura', 'polonnaruwa', 'badulla', 'monaragala', 'ratnapura', 'kegalle'
+    ];
+
+    const formSchema = z.object({
+        name: z.string().min(1, t('donations.form.name') + ' ' + t('common.error')),
+        phone: z.string().min(10, t('donations.form.phone') + ' ' + t('common.error')),
+        district: z.string().min(1, t('donations.form.district') + ' ' + t('common.error')),
+        address: z.string().min(1, t('donations.form.address') + ' ' + t('common.error')),
+        items: z.string().min(1, t('donations.form.items') + ' ' + t('common.error')),
+        description: z.string().optional(),
+    });
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -94,6 +101,7 @@ export function DonationForm({ open, onOpenChange, onSuccess, initialData, userD
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
             setIsLoading(true);
+            // Same logic as before: we send the value from the dropdown.
             if (initialData) {
                 await donationApi.updateDonation(initialData._id, values);
             } else {
@@ -113,9 +121,9 @@ export function DonationForm({ open, onOpenChange, onSuccess, initialData, userD
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="sm:max-w-[550px] max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle>{initialData ? 'පරිත්‍යාගය සංස්කරණය කරන්න' : 'නව පරිත්‍යාගයක් එක් කරන්න'}</DialogTitle>
+                    <DialogTitle>{initialData ? t('common.edit') : t('donations.form.title')}</DialogTitle>
                     <DialogDescription>
-                        ඔබේ පරිත්‍යාග තොරතුරු පහත පුරවන්න
+                        {t('donations.form.description')}
                     </DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
@@ -126,9 +134,9 @@ export function DonationForm({ open, onOpenChange, onSuccess, initialData, userD
                                 name="name"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>නම *</FormLabel>
+                                        <FormLabel>{t('donations.form.name')} *</FormLabel>
                                         <FormControl>
-                                            <Input {...field} placeholder="ඔබේ නම" />
+                                            <Input {...field} placeholder={t('donations.form.namePlaceholder')} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -139,9 +147,9 @@ export function DonationForm({ open, onOpenChange, onSuccess, initialData, userD
                                 name="phone"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>දුරකථන අංකය *</FormLabel>
+                                        <FormLabel>{t('donations.form.phone')} *</FormLabel>
                                         <FormControl>
-                                            <Input {...field} placeholder="07xxxxxxxx" />
+                                            <Input {...field} placeholder={t('donations.form.phonePlaceholder')} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -154,17 +162,17 @@ export function DonationForm({ open, onOpenChange, onSuccess, initialData, userD
                             name="district"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>දිස්ත්‍රික්කය *</FormLabel>
+                                    <FormLabel>{t('donations.form.district')} *</FormLabel>
                                     <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                                         <FormControl>
                                             <SelectTrigger>
-                                                <SelectValue placeholder="දිස්ත්‍රික්කය තෝරන්න" />
+                                                <SelectValue placeholder={t('donations.form.districtPlaceholder')} />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
                                             {DISTRICTS.map((d) => (
-                                                <SelectItem key={d.value} value={d.value}>
-                                                    {d.label}
+                                                <SelectItem key={d} value={t(`districts.${d}`)}>
+                                                    {t(`districts.${d}`)}
                                                 </SelectItem>
                                             ))}
                                         </SelectContent>
@@ -179,9 +187,9 @@ export function DonationForm({ open, onOpenChange, onSuccess, initialData, userD
                             name="address"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>සම්පූර්ණ ලිපිනය *</FormLabel>
+                                    <FormLabel>{t('donations.form.address')} *</FormLabel>
                                     <FormControl>
-                                        <Input {...field} placeholder="නිවස අංකය, වීථිය, ගම" />
+                                        <Input {...field} placeholder={t('donations.form.addressPlaceholder')} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -193,25 +201,23 @@ export function DonationForm({ open, onOpenChange, onSuccess, initialData, userD
                             name="items"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>ඔබට සපයිය හැකි ද්‍රව්‍ය *</FormLabel>
+                                    <FormLabel>{t('donations.form.items')} *</FormLabel>
                                     <FormControl>
-                                        <Input {...field} placeholder="උදා: සහල් 10kg, පාන් 5, බ්ලැන්කට් 3" />
+                                        <Input {...field} placeholder={t('donations.form.itemsPlaceholder')} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
 
-
-
                         <FormField
                             control={form.control}
                             name="description"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>අමතර විස්තර</FormLabel>
+                                    <FormLabel>{t('donations.form.description')}</FormLabel>
                                     <FormControl>
-                                        <Textarea {...field} placeholder="විශේෂ උපදෙස්, ස්ථානයට යන ආකාරය, හෝ වෙනත් වැදගත් තොරතුරු" />
+                                        <Textarea {...field} placeholder={t('donations.form.descriptionPlaceholder')} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -220,7 +226,7 @@ export function DonationForm({ open, onOpenChange, onSuccess, initialData, userD
 
                         <Button type="submit" className="w-full" disabled={isLoading}>
                             {isLoading ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
-                            {initialData ? 'යාවත්කාලීන කරන්න' : 'පරිත්‍යාගය එක් කරන්න'}
+                            {initialData ? t('common.save') : t('common.submit')}
                         </Button>
                     </form>
                 </Form>
