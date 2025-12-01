@@ -74,7 +74,7 @@ export default function EducationPage() {
             {/* Fixed Header */}
             <Header showBackButton={false} />
 
-            {/* Hero Banner */}
+            {/* Page Header */}
             <div className="bg-gradient-to-r from-blue-800 to-blue-700 text-white">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 mt-16">
                     <button

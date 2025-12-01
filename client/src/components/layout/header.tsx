@@ -1,33 +1,74 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { ChevronLeft } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { LogOut } from 'lucide-react';
+import { tokenStorage } from '@/lib/auth-api';
 import { useLanguage } from '@/lib/LanguageContext';
 
-interface HeaderProps {
-    showBackButton?: boolean;
-}
-
-export function Header({ showBackButton = false }: HeaderProps) {
+export function Header() {
     const router = useRouter();
-    const { t } = useLanguage();
+    const pathname = usePathname();
+    const [user, setUser] = useState<any>(null);
+    const [mounted, setMounted] = useState(false);
+    const { language, setLanguage } = useLanguage();
+
+    useEffect(() => {
+        setMounted(true);
+        checkUser();
+        window.addEventListener('storage', checkUser);
+        window.addEventListener('auth-change', checkUser);
+        return () => {
+            window.removeEventListener('storage', checkUser);
+            window.removeEventListener('auth-change', checkUser);
+        };
+    }, []);
+
+    const checkUser = () => {
+        const userData = tokenStorage.getUserData();
+        setUser(userData);
+    };
+
+    const handleLogout = () => {
+        tokenStorage.removeToken();
+        tokenStorage.removeUserData();
+        setUser(null);
+        router.push('/login');
+    };
+
+    if (pathname === '/login' || pathname === '/register') {
+        return null;
+    }
+
+    if (!mounted) return null;
 
     return (
-        <div className="bg-white border-b border-gray-200 py-4 fixed top-0 left-0 right-0 z-30 shadow-sm">
-            <div className="max-w-7xl mx-auto px-4">
-                <div className="flex items-center gap-4">
-                    {showBackButton && (
-                        <Button
-                            variant="ghost"
-                            onClick={() => router.push('/')}
-                            className="hover:bg-gray-100"
-                        >
-                            <ChevronLeft className="w-5 h-5 mr-1" />
-                            {t('common.back')}
-                        </Button>
-                    )}
-                    <h1 className="text-2xl font-bold text-blue-900">FloodAid</h1>
+        <div className="sticky top-0 z-50 bg-white border-b shadow-sm">
+            <div className="max-w-7xl mx-auto px-4 py-3">
+                <div className="flex items-center justify-between">
+                    <div className="cursor-pointer" onClick={() => router.push('/')}>
+                        <h1 className="text-xl font-bold text-blue-600">FloodAid</h1>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        {user && (
+                            <>
+                                {user.role === 'collector' && (
+                                    <Button variant="ghost" size="sm" onClick={() => router.push('/collector-profile')}>
+                                        👤 {language === 'si' ? 'පැතිකඩ' : 'Profile'}
+                                    </Button>
+                                )}
+                                {user.role === 'donor' && (
+                                    <Button variant="ghost" size="sm" onClick={() => router.push('/locations')}>
+                                        📍 {language === 'si' ? 'ස්ථාන' : 'Locations'}
+                                    </Button>
+                                )}
+                                <Button variant="ghost" size="sm" onClick={handleLogout}>
+                                    <LogOut className="w-4 h-4 mr-1" /> {language === 'si' ? 'පිටවීම' : 'Logout'}
+                                </Button>
+                            </>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

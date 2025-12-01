@@ -29,7 +29,7 @@ export default function Home() {
       <Header />
 
       {/* Content with top padding */}
-      <div className="max-w-6xl mx-auto px-4 py-6 sm:py-8 pt-24">
+      <div className="max-w-6xl mx-auto px-4 py-6 sm:py-8 pt-28">
         {/* Hero Section with Language Switcher */}
         <div className="mb-12">
           <div className="text-center mb-10">
