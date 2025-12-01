@@ -4,17 +4,18 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Plus, ChevronLeft, HandHeart, Phone, MapPin, ArrowUp } from 'lucide-react';
+import { Plus, HandHeart, Phone, MapPin, ArrowUp, ArrowLeft } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { volunteerApi } from '@/lib/api';
 import { Volunteer } from '@/types/volunteer';
 import { VolunteerForm } from '@/components/volunteering/volunteer-form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Header } from '@/components/layout/header';
 
 export default function VolunteeringPage() {
     const router = useRouter();
     const { t } = useLanguage();
-    const [volunteers, setVolunteers] = useState<Volunteer[]>([]);
+    const [registrations, setRegistrations] = useState<Volunteer[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [selectedDistrict, setSelectedDistrict] = useState<string>('all');
@@ -26,20 +27,8 @@ export default function VolunteeringPage() {
         'kurunegala', 'puttalam', 'anuradhapura', 'polonnaruwa', 'badulla', 'monaragala', 'ratnapura', 'kegalle'
     ];
 
-    const fetchVolunteers = async () => {
-        try {
-            setIsLoading(true);
-            const response = await volunteerApi.getVolunteers(1, 50, selectedDistrict);
-            setVolunteers(response.data);
-        } catch (error) {
-            console.error('Failed to fetch volunteers:', error);
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
     useEffect(() => {
-        fetchVolunteers();
+        loadRegistrations('all');
 
         const handleScroll = () => {
             if (window.scrollY > 300) {
@@ -51,7 +40,30 @@ export default function VolunteeringPage() {
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [selectedDistrict]);
+    }, []);
+
+    const loadRegistrations = async (district?: string) => {
+        try {
+            setIsLoading(true);
+            const districtParam = district === 'all' ? undefined : district;
+            const response = await volunteerApi.getVolunteers(1, 100, districtParam);
+            setRegistrations(response.data);
+        } catch (error) {
+            console.error('Failed to load volunteer registrations:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleSuccess = () => {
+        setIsFormOpen(false);
+        loadRegistrations(selectedDistrict);
+    };
+
+    const handleDistrictChange = (district: string) => {
+        setSelectedDistrict(district);
+        loadRegistrations(district);
+    };
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -59,25 +71,26 @@ export default function VolunteeringPage() {
 
     return (
         <main className="min-h-screen bg-gray-50 pb-12 relative">
-            {/* Header */}
-            <div className="bg-orange-900 text-white py-8 fixed top-0 left-0 right-0 z-30 shadow-md">
-                <div className="max-w-6xl mx-auto px-4">
-                    <Button
-                        variant="ghost"
-                        className="text-white hover:bg-white hover:text-orange-900 mb-4 pl-2 pr-4 transition-colors"
+            {/* Fixed Header */}
+            <Header showBackButton={false} />
+
+            {/* Hero Banner */}
+            <div className="bg-gradient-to-r from-orange-800 to-orange-700 text-white">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 mt-16">
+                    <button
                         onClick={() => router.push('/')}
+                        className="flex items-center gap-2 text-orange-100 hover:text-white transition-colors mb-4"
                     >
-                        <ChevronLeft className="w-5 h-5 mr-1" />
-                        {t('common.back')}
-                    </Button>
-                    <div>
-                        <h1 className="text-3xl font-bold mb-2">{t('volunteer.title')}</h1>
-                        <p className="text-orange-200">{t('volunteer.subtitle')}</p>
-                    </div>
+                        <ArrowLeft className="w-5 h-5" />
+                        <span className="text-sm sm:text-base">{t('common.back')}</span>
+                    </button>
+                    <h1 className="text-3xl sm:text-4xl font-bold mb-2">{t('volunteer.title')}</h1>
+                    <p className="text-orange-100 text-base sm:text-lg">{t('volunteer.subtitle')}</p>
                 </div>
             </div>
 
-            <div className="max-w-6xl mx-auto px-4 py-8 pt-48">
+            {/* Content with top padding */}
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {/* Filters */}
                 <div className="mb-8">
                     <div className="max-w-xs">
@@ -106,7 +119,7 @@ export default function VolunteeringPage() {
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-900 mx-auto mb-4"></div>
                         <p className="text-gray-500">{t('common.loading')}</p>
                     </div>
-                ) : volunteers.length === 0 ? (
+                ) : registrations.length === 0 ? (
                     <div className="text-center py-12 bg-white rounded-lg shadow-sm border border-gray-200">
                         <HandHeart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                         <h3 className="text-xl font-medium text-gray-900 mb-2">{t('volunteer.noVolunteers')}</h3>
@@ -117,7 +130,7 @@ export default function VolunteeringPage() {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {volunteers.map((volunteer) => (
+                        {registrations.map((volunteer) => (
                             <Card key={volunteer._id} className="hover:shadow-md transition-shadow">
                                 <CardContent className="p-6">
                                     <div className="flex justify-between items-start mb-4">
@@ -179,7 +192,7 @@ export default function VolunteeringPage() {
             <VolunteerForm
                 open={isFormOpen}
                 onOpenChange={setIsFormOpen}
-                onSuccess={fetchVolunteers}
+                onSuccess={handleSuccess}
             />
         </main>
     );

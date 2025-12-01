@@ -8,7 +8,7 @@ import { HelpRequestForm } from '@/components/help-requests/help-request-form';
 import { HelpRequestCard } from '@/components/help-requests/help-request-card';
 import { helpRequestApi } from '@/lib/help-request-api';
 import { HelpRequest } from '@/types/help-request';
-import { Plus, MapPin, ChevronLeft, ChevronRight, HeartHandshake, ArrowUp } from 'lucide-react';
+import { Plus, MapPin, ChevronLeft, ChevronRight, HeartHandshake, ArrowUp, ArrowLeft } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { Header } from '@/components/layout/header';
 
@@ -79,16 +79,25 @@ export default function HelpRequestsPage() {
     return (
         <div className="min-h-screen bg-gray-50 relative pb-12">
             {/* Fixed Header */}
-            <Header showBackButton={true} />
+            <Header showBackButton={false} />
+
+            {/* Hero Banner */}
+            <div className="bg-gradient-to-r from-rose-800 to-rose-700 text-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 mt-16">
+                    <button
+                        onClick={() => router.push('/')}
+                        className="flex items-center gap-2 text-rose-100 hover:text-white transition-colors mb-4"
+                    >
+                        <ArrowLeft className="w-5 h-5" />
+                        <span className="text-sm sm:text-base">{t('common.back')}</span>
+                    </button>
+                    <h1 className="text-3xl sm:text-4xl font-bold mb-2">{t('helpRequests.title')}</h1>
+                    <p className="text-rose-100 text-base sm:text-lg">{t('helpRequests.subtitle')}</p>
+                </div>
+            </div>
 
             {/* Content with top padding */}
-            <div className="max-w-7xl mx-auto px-4 py-8 pt-24">
-                {/* Page Title */}
-                <div className="mb-6">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-2">{t('helpRequests.title')}</h2>
-                    <p className="text-gray-600">{t('helpRequests.subtitle')}</p>
-                </div>
-
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {/* Filter by District */}
                 <div className="mb-6 flex items-center gap-4">
                     <MapPin className="text-gray-500" />

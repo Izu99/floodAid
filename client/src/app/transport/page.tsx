@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Plus, ChevronLeft, Truck, Phone, MapPin, Users, ArrowUp } from 'lucide-react';
+import { Plus, Truck, Phone, MapPin, Users, ArrowUp, ArrowLeft } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { transportApi } from '@/lib/api';
 import { Transport } from '@/types/transport';
 import { TransportForm } from '@/components/transport/transport-form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Header } from '@/components/layout/header';
 
 export default function TransportPage() {
     const router = useRouter();
@@ -26,20 +27,8 @@ export default function TransportPage() {
         'kurunegala', 'puttalam', 'anuradhapura', 'polonnaruwa', 'badulla', 'monaragala', 'ratnapura', 'kegalle'
     ];
 
-    const fetchOffers = async () => {
-        try {
-            setIsLoading(true);
-            const response = await transportApi.getTransportOffers(1, 50, selectedDistrict);
-            setOffers(response.data);
-        } catch (error) {
-            console.error('Failed to fetch transport offers:', error);
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
     useEffect(() => {
-        fetchOffers();
+        loadOffers('all');
 
         const handleScroll = () => {
             if (window.scrollY > 300) {
@@ -51,7 +40,30 @@ export default function TransportPage() {
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [selectedDistrict]);
+    }, []);
+
+    const loadOffers = async (district?: string) => {
+        try {
+            setIsLoading(true);
+            const districtParam = district === 'all' ? undefined : district;
+            const response = await transportApi.getTransportOffers(1, 100, districtParam);
+            setOffers(response.data);
+        } catch (error) {
+            console.error('Failed to load transport offers:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleSuccess = () => {
+        setIsFormOpen(false);
+        loadOffers(selectedDistrict);
+    };
+
+    const handleDistrictChange = (district: string) => {
+        setSelectedDistrict(district);
+        loadOffers(district);
+    };
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -59,25 +71,26 @@ export default function TransportPage() {
 
     return (
         <main className="min-h-screen bg-gray-50 pb-12 relative">
-            {/* Header */}
-            <div className="bg-emerald-900 text-white py-8 fixed top-0 left-0 right-0 z-30 shadow-md">
-                <div className="max-w-6xl mx-auto px-4">
-                    <Button
-                        variant="ghost"
-                        className="text-white hover:bg-white hover:text-emerald-900 mb-4 pl-2 pr-4 transition-colors"
+            {/* Fixed Header */}
+            <Header showBackButton={false} />
+
+            {/* Hero Banner */}
+            <div className="bg-gradient-to-r from-amber-800 to-amber-700 text-white">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 mt-16">
+                    <button
                         onClick={() => router.push('/')}
+                        className="flex items-center gap-2 text-amber-100 hover:text-white transition-colors mb-4"
                     >
-                        <ChevronLeft className="w-5 h-5 mr-1" />
-                        {t('common.back')}
-                    </Button>
-                    <div>
-                        <h1 className="text-3xl font-bold mb-2">{t('transport.title')}</h1>
-                        <p className="text-emerald-200">{t('transport.subtitle')}</p>
-                    </div>
+                        <ArrowLeft className="w-5 h-5" />
+                        <span className="text-sm sm:text-base">{t('common.back')}</span>
+                    </button>
+                    <h1 className="text-3xl sm:text-4xl font-bold mb-2">{t('transport.title')}</h1>
+                    <p className="text-amber-100 text-base sm:text-lg">{t('transport.subtitle')}</p>
                 </div>
             </div>
 
-            <div className="max-w-6xl mx-auto px-4 py-8 pt-48">
+            {/* Content with top padding */}
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {/* Filters */}
                 <div className="mb-8">
                     <div className="max-w-xs">
@@ -179,7 +192,7 @@ export default function TransportPage() {
             <TransportForm
                 open={isFormOpen}
                 onOpenChange={setIsFormOpen}
-                onSuccess={fetchOffers}
+                onSuccess={handleSuccess}
             />
         </main>
     );

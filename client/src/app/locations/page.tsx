@@ -1,21 +1,22 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { LocationForm } from '@/components/donations/location-form';
 import { LocationCard } from '@/components/donations/location-card';
 import { locationApi } from '@/lib/location-api';
 import { Location } from '@/types/location';
-import { Plus, MapPin, ChevronLeft, ChevronRight, ArrowUp } from 'lucide-react';
+import { Plus, MapPin, ChevronLeft, ChevronRight, ArrowUp, ArrowLeft } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
+import { Header } from '@/components/layout/header';
+import { useRouter } from 'next/navigation';
 
 export default function LocationsPage() {
     const router = useRouter();
     const { t } = useLanguage();
     const [locations, setLocations] = useState<Location[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [showForm, setShowForm] = useState(false);
     const [selectedDistrict, setSelectedDistrict] = useState<string>('all');
     const [page, setPage] = useState(1);
@@ -45,7 +46,7 @@ export default function LocationsPage() {
 
     const loadLocations = async (district?: string, pageNum: number = 1) => {
         try {
-            setLoading(true);
+            setIsLoading(true);
             const response = await locationApi.getLocations(district === 'all' ? undefined : district, pageNum, 15);
             setLocations(response.data);
             setTotalPages(response.totalPages);
@@ -53,7 +54,7 @@ export default function LocationsPage() {
         } catch (error) {
             console.error('Failed to load locations:', error);
         } finally {
-            setLoading(false);
+            setIsLoading(false);
         }
     };
 
@@ -78,25 +79,26 @@ export default function LocationsPage() {
 
     return (
         <div className="min-h-screen bg-gray-50 relative pb-12">
-            {/* Header */}
-            <div className="bg-sky-900 text-white py-8 fixed top-0 left-0 right-0 z-30 shadow-md">
-                <div className="max-w-7xl mx-auto px-4">
-                    <Button
-                        variant="ghost"
-                        className="text-white hover:bg-white hover:text-sky-900 mb-4 pl-2 pr-4 transition-colors"
+            {/* Fixed Header */}
+            <Header showBackButton={false} />
+
+            {/* Hero Banner */}
+            <div className="bg-gradient-to-r from-sky-800 to-sky-700 text-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 mt-16">
+                    <button
                         onClick={() => router.push('/')}
+                        className="flex items-center gap-2 text-sky-100 hover:text-white transition-colors mb-4"
                     >
-                        <ChevronLeft className="w-5 h-5 mr-1" />
-                        {t('common.back')}
-                    </Button>
-                    <div>
-                        <h1 className="text-3xl font-bold mb-2">{t('locations.title')}</h1>
-                        <p className="text-sky-200">{t('locations.subtitle')}</p>
-                    </div>
+                        <ArrowLeft className="w-5 h-5" />
+                        <span className="text-sm sm:text-base">{t('common.back')}</span>
+                    </button>
+                    <h1 className="text-3xl sm:text-4xl font-bold mb-2">{t('locations.title')}</h1>
+                    <p className="text-sky-100 text-base sm:text-lg">{t('locations.subtitle')}</p>
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 py-8 pt-48">
+            {/* Content with top padding */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {/* Filter by District */}
                 <div className="mb-6 flex items-center gap-4">
                     <MapPin className="text-gray-500" />
@@ -116,7 +118,7 @@ export default function LocationsPage() {
                 </div>
 
                 {/* Locations Grid */}
-                {loading ? (
+                {isLoading ? (
                     <div className="text-center py-12">
                         <p className="text-gray-500">{t('locations.loading')}</p>
                     </div>
