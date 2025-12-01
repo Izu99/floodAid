@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FloodAid - Sri Lanka Relief Registry",
+  title: "HelpLK.org - Sri Lanka Relief Registry",
   description: "Platform for flood relief coordination in Sri Lanka",
 };
 
