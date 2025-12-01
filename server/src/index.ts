@@ -43,7 +43,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use(cors({
     origin: [
         'http://localhost:3000',
-        'https://flood-aid-one.vercel.app'
+        'https://flood-aid-one.vercel.app',
+        'https://flood-aid-git-development-izu99s-projects.vercel.app'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
