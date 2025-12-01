@@ -38,13 +38,8 @@ export function Header() {
         tokenStorage.removeToken();
         tokenStorage.removeUserData();
         setUser(null);
-        router.push('/login');
+        router.push('/');
     };
-
-    // Don't show header on login or register pages
-    if (pathname === '/login' || pathname === '/register') {
-        return null;
-    }
 
     // Prevent hydration mismatch by not rendering until mounted
     if (!mounted) return null;

@@ -37,7 +37,7 @@ export default function CollectorProfile() {
         const loadProfile = async () => {
             const token = tokenStorage.getToken();
             if (!token) {
-                router.push('/login');
+                router.push('/');
                 return;
             }
 

@@ -1,4 +1,4 @@
-'use client'; 
+'use client';
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -28,12 +28,7 @@ export default function LocationsPage() {
     ];
 
     useEffect(() => {
-        // const userData = tokenStorage.getUserData();
-        // if (!userData) {
-        //     router.push('/login');
-        //     return;
-        // }
-        // setUser(userData);
+
         loadLocations('සියල්ල', 1);
     }, []);
 
