@@ -47,7 +47,8 @@
             "helpDescription": "Help Needed",
             "helpDescriptionPlaceholder": "E.g.: Food, drinking water, medicine",
             "additionalDetails": "Additional Details (Optional)",
-            "additionalDetailsPlaceholder": "Additional information"
+            "additionalDetailsPlaceholder": "Additional information",
+            "note": "Note: Your contact information will be visible to potential donors."
         }
     },
     "donations": {
@@ -63,6 +64,7 @@
         "card": {
             "label": "Available Donation",
             "badge": "Donation",
+            "collected": "Collected",
             "address": "Address",
             "description": "Description",
             "donor": "Donor",
@@ -143,7 +145,18 @@
         "error": "An error occurred",
         "success": "Success",
         "close": "Close",
-        "select": "Select"
+        "select": "Select",
+        "note": "Note",
+        "dateLocale": "en-US",
+        "validation": {
+            "required": "This field is required",
+            "nameRequired": "Name is required",
+            "phoneRequired": "Phone number is required",
+            "districtRequired": "District is required",
+            "addressRequired": "Address is required",
+            "helpDescriptionRequired": "To get help, add details correctly",
+            "itemsRequired": "Items are required"
+        }
     },
     "districts": {
         "all": "All",

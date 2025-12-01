@@ -6,12 +6,15 @@ import { BASE_URL as API_URL } from '@/lib/config';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MapPin, Phone, Calendar, X, ChevronLeft, ChevronRight, ImageIcon, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/lib/LanguageContext';
+import { getDistrictKey } from '@/lib/district-mapping';
 
 interface LocationCardProps {
     location: Location;
 }
 
 export function LocationCard({ location }: LocationCardProps) {
+    const { t } = useLanguage();
     const [showImages, setShowImages] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -34,7 +37,10 @@ export function LocationCard({ location }: LocationCardProps) {
     const contactImage = location.contactImage || location.collector?.faceImage;
 
     // Format date/time display
-    const formattedDateTime = `${location.startDate} ${location.startTime} සිට ${location.endDate} ${location.endTime} දක්වා`;
+    const formattedDateTime = `${location.startDate} ${location.startTime} - ${location.endDate} ${location.endTime}`;
+
+    const districtKey = getDistrictKey(location.district || '');
+    const districtLabel = districtKey ? t(`districts.${districtKey}`) : location.district;
 
     return (
         <>
@@ -43,25 +49,25 @@ export function LocationCard({ location }: LocationCardProps) {
                     <CardTitle className="text-lg leading-tight">{location.name}</CardTitle>
                     <div className="flex items-center gap-2 text-sm text-gray-600 mt-1">
                         <MapPin size={16} className="shrink-0" />
-                        <span>{location.district}</span>
+                        <span>{districtLabel}</span>
                     </div>
                 </CardHeader>
 
                 <CardContent className="space-y-4 flex-1 flex flex-col">
                     <div className="space-y-3 flex-1">
                         <div>
-                            <p className="text-xs font-semibold text-gray-500 uppercase mb-1">ලිපිනය</p>
+                            <p className="text-xs font-semibold text-gray-500 uppercase mb-1">{t('locations.card.address')}</p>
                             <p className="text-sm text-gray-900">{location.address}</p>
                         </div>
 
                         <div>
-                            <p className="text-xs font-semibold text-gray-500 uppercase mb-1">කාලය</p>
+                            <p className="text-xs font-semibold text-gray-500 uppercase mb-1">{t('locations.card.time')}</p>
                             <p className="text-sm text-gray-900">{formattedDateTime}</p>
                         </div>
 
                         {location.description && (
                             <div>
-                                <p className="text-xs font-semibold text-gray-500 uppercase mb-1">විස්තරය</p>
+                                <p className="text-xs font-semibold text-gray-500 uppercase mb-1">{t('locations.card.description')}</p>
                                 <p className="text-sm text-gray-900 whitespace-pre-wrap">{location.description}</p>
                             </div>
                         )}
@@ -75,13 +81,13 @@ export function LocationCard({ location }: LocationCardProps) {
                                 className="w-full flex items-center justify-center gap-2"
                             >
                                 <ImageIcon size={16} />
-                                එකතු කිරීමේ ස්ථානයේ ඡායාරූප බලන්න ({location.images.length})
+                                {t('locations.card.viewPhotos')} ({location.images.length})
                             </Button>
                         )}
                     </div>
 
                     <div className="bg-sky-50 -mx-6 -mb-6 p-4 border-t border-sky-100 mt-auto">
-                        <p className="text-[10px] font-bold text-sky-600 mb-3 uppercase tracking-wider">එකතු කරන්නාගේ තොරතුරු (ආරක්ෂිතව සම්බන්ධ වන්න)</p>
+                        <p className="text-[10px] font-bold text-sky-600 mb-3 uppercase tracking-wider">{t('locations.card.collectorInfo')}</p>
                         <div className="flex items-start gap-3">
                             {contactImage ? (
                                 <img
@@ -112,7 +118,7 @@ export function LocationCard({ location }: LocationCardProps) {
                         </div>
                         <div className="mt-3 pt-2 border-t border-sky-100 flex items-center gap-1.5 text-[10px] text-sky-400">
                             <Calendar size={10} />
-                            <span>ස්ථානය එකතු කළේ {new Date(location.createdAt).toLocaleDateString('si-LK')}</span>
+                            <span>{t('locations.card.addedOn')} {new Date(location.createdAt).toLocaleDateString(t('common.dateLocale') || 'en-US')}</span>
                         </div>
                     </div>
                 </CardContent>

@@ -1,18 +1,18 @@
 {
     "main": {
-        "title": "ශ්‍රී ලංකා ආධාර ලැයිස්තුව",
+        "title": "ශ්‍රී ලංකා ආධාර ලේඛනය",
         "subtitle": "ගංවතුරින් විපතට පත් ජනතාවට සහන",
         "helpCard": {
             "title": "උදව් අවශ්‍යද?",
-            "description": "ඔබට හෝ ඔබ දන්නා අයෙකුට ආධාර අවශ්‍ය නම් මෙතැනින් ඉල්ලීම් කරන්න"
+            "description": "ඔබට හෝ ඔබ දන්නා අයෙකුට උදව් අවශ්‍ය නම් මෙතැනින් ඉල්ලීම් කරන්න"
         },
         "donationsCard": {
-            "title": "ආධාර ලබාදෙන්න",
-            "description": "ඔබට හැකි අයුරින් විපතට පත් ජනතාවට ආධාර ලබාදෙන්න"
+            "title": "උදව් කරන්න",
+            "description": "විපතට පත් වූවන්ට ආධාර ලබා දෙන්න"
         },
         "locationsCard": {
-            "title": "එකතු කරන ස්ථාන",
-            "description": "ආධාර භාර දිය හැකි ළඟම ඇති මධ්‍යස්ථාන සොයාගන්න"
+            "title": "එකතු කිරීමේ ස්ථාන",
+            "description": "ආධාර භාර දිය හැකි ළඟම ඇති මධ්‍යස්ථාන සොයා ගන්න"
         }
     },
     "helpRequests": {
@@ -29,25 +29,26 @@
             "address": "ලිපිනය",
             "helpNeeded": "අවශ්‍ය උදව්",
             "additionalDetails": "අමතර විස්තර",
-            "contactInfo": "සම්බන්ධ කරගන්න",
+            "contactInfo": "සම්බන්ධතා",
             "requestedOn": "ඉල්ලීම කළේ"
         },
         "form": {
             "title": "උදව් ඉල්ලීමක් එක් කරන්න",
-            "description": "ඔබට හෝ ඔබ දන්නා කෙනෙකුට අවශ්‍ය උදව් පිළිබඳ තොරතුරු ලබා දෙන්න",
+            "description": "ඔබට අවශ්‍ය උදව් පිළිබඳ තොරතුරු පහත පුරවන්න",
             "name": "නම",
-            "namePlaceholder": "ඔබේ නම",
+            "namePlaceholder": "ඔබේ සම්පූර්ණ නම",
             "district": "දිස්ත්‍රික්කය",
             "districtPlaceholder": "තෝරන්න",
             "address": "ලිපිනය",
-            "addressPlaceholder": "සම්පූර්ණ ලිපිනය",
+            "addressPlaceholder": "නිවස අංකය, වීථිය, ගම",
             "phone": "දුරකථන අංකය",
             "phonePlaceholder": "07x xxxxxxx",
             "additionalPhone": "අමතර දුරකථන (විකල්ප)",
             "helpDescription": "අවශ්‍ය උදව්",
             "helpDescriptionPlaceholder": "උදා: ආහාර, පානීය ජලය, ඖෂධ",
             "additionalDetails": "අමතර විස්තර (විකල්ප)",
-            "additionalDetailsPlaceholder": "අතිරේක තොරතුරු"
+            "additionalDetailsPlaceholder": "වෙනත් වැදගත් තොරතුරු",
+            "note": "සටහන: ඔබේ සම්බන්ධතා තොරතුරු පරිත්‍යාගශීලීන්ට දර්ශනය වේ."
         }
     },
     "donations": {
@@ -57,12 +58,13 @@
         "noDonations": "දැනට පරිත්‍යාග කිසිවක් නොමැත",
         "loading": "තොරතුරු ලබා ගනිමින්...",
         "status": {
-            "available": "ලබා ගත හැක",
-            "collected": "එකතු කළා"
+            "available": "ලබාගත හැක",
+            "collected": "එකතු කරන ලදී"
         },
         "card": {
             "label": "ලබාගත හැකි පරිත්‍යාගය",
             "badge": "පරිත්‍යාගය",
+            "collected": "එකතු කළා",
             "address": "ලිපිනය",
             "description": "විස්තරය",
             "donor": "පරිත්‍යාගශීලියා",
@@ -71,7 +73,7 @@
         },
         "form": {
             "title": "පරිත්‍යාගයක් එක් කරන්න",
-            "description": "ඔබට පරිත්‍යාග කළ හැකි ද්‍රව්‍ය පිළිබඳ තොරතුරු ලබා දෙන්න",
+            "description": "ඔබට ලබා දිය හැකි ද්‍රව්‍ය පිළිබඳ තොරතුරු",
             "name": "නම",
             "namePlaceholder": "ඔබේ නම",
             "district": "දිස්ත්‍රික්කය",
@@ -81,15 +83,15 @@
             "phone": "දුරකථන අංකය",
             "phonePlaceholder": "07x xxxxxxx",
             "items": "පරිත්‍යාග කරන ද්‍රව්‍ය",
-            "itemsPlaceholder": "උදා: සහල්, කිරිපිටි, වතුර",
+            "itemsPlaceholder": "උදා: සහල්, කිරි පිටි, ජලය",
             "description": "විස්තරය (විකල්ප)",
-            "descriptionPlaceholder": "ද්‍රව්‍ය පිළිබඳ අමතර තොරතුරු"
+            "descriptionPlaceholder": "ද්‍රව්‍ය පිළිබඳ අමතර විස්තර"
         }
     },
     "locations": {
         "title": "ආධාර එකතු කරන ස්ථාන",
         "subtitle": "ආධාර භාර දිය හැකි එකතු කිරීමේ ස්ථාන",
-        "noLocations": "දැනට ස්ථාන කිසිවක් නොමැත",
+        "noLocations": "ප්‍රදේශ කිසිවක් හමු නොවීය",
         "loading": "තොරතුරු ලබා ගනිමින්...",
         "card": {
             "address": "ලිපිනය",
@@ -119,7 +121,7 @@
             "contactPhonePlaceholder": "07x xxxxxxx",
             "additionalPhone": "අමතර දුරකථන (විකල්ප)",
             "description": "විස්තරය",
-            "descriptionPlaceholder": "ස්ථානයේ එකතු කරන්නා විශේෂිත ද්‍රව්‍ය කරන්න (උදා: ආහාර, ඇඳුම් පැළඳුම්, ඖෂධ)",
+            "descriptionPlaceholder": "ස්ථානයේ එකතු කරන ද්‍රව්‍ය (උදා: ආහාර, ඇඳුම්, ඖෂධ)",
             "contactImage": "සම්බන්ධ කරගත හැකි අයගේ ඡායාරූපය (අනිවාර්යයි)",
             "contactImageNote": "මෙම ඡායාරූපය කාඩ්පතේ දර්ශනය වේ",
             "locationImages": "එකතු කිරීමේ ස්ථානයේ ඡායාරූප (අවම 1ක් - උපරිම 5ක්)"
@@ -127,23 +129,34 @@
     },
     "common": {
         "back": "ආපසු",
-        "submit": "යොමු කරන්න",
+        "submit": "ඉදිරිපත් කරන්න",
         "cancel": "අවලංගු කරන්න",
         "add": "එක් කරන්න",
-        "edit": "සංස්කරණය කරන්න",
+        "edit": "සංස්කරණය",
         "delete": "මකන්න",
         "save": "සුරකින්න",
         "search": "සොයන්න",
-        "filter": "පෙරීම",
+        "filter": "පෙරහන",
         "all": "සියල්ල",
         "page": "පිටුව",
         "previous": "පෙර",
         "next": "ඊළඟ",
-        "loading": "පූරණය වෙමින්...",
-        "error": "දෝෂයක් ඇතිවිය",
+        "loading": "රැඳී සිටින්න...",
+        "error": "දෝෂයක් සිදු විය",
         "success": "සාර්ථකයි",
         "close": "වසන්න",
-        "select": "තෝරන්න"
+        "select": "තෝරන්න",
+        "note": "සටහන",
+        "dateLocale": "si-LK",
+        "validation": {
+            "required": "මෙම ක්ෂේත්‍රය අනිවාර්ය වේ",
+            "nameRequired": "නම ඇතුළත් කිරීම අනිවාර්යයි",
+            "phoneRequired": "දුරකථන අංකය අනිවාර්යයි",
+            "districtRequired": "දිස්ත්‍රික්කය තෝරා ගැනීම අනිවාර්යයි",
+            "addressRequired": "ලිපිනය අනිවාර්යයි",
+            "helpDescriptionRequired": "උදව් ලබා ගැනීමට, විස්තර නිවැරදිව එක් කරන්න",
+            "itemsRequired": "ද්‍රව්‍ය ඇතුළත් කිරීම අනිවාර්යයි"
+        }
     },
     "districts": {
         "all": "සියල්ල",
