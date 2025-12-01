@@ -13,6 +13,18 @@
         "locationsCard": {
             "title": "Collection Points",
             "description": "Find nearest centers where you can drop off donations"
+        },
+        "educationCard": {
+            "title": "Education",
+            "description": "Request educational supplies and support"
+        },
+        "transportCard": {
+            "title": "Transport",
+            "description": "Find or offer transport facilities"
+        },
+        "volunteerCard": {
+            "title": "Volunteering",
+            "description": "Register as a volunteer or find volunteers"
         }
     },
     "helpRequests": {
@@ -127,6 +139,132 @@
             "locationImages": "Collection Point Photos (Minimum 1 - Maximum 5)"
         }
     },
+    "education": {
+        "title": "Education Support",
+        "subtitle": "Request educational supplies and support for affected students",
+        "addRequest": "Add Request",
+        "noRequests": "No education requests available",
+        "noRequestsDesc": "Be the first to add an education request",
+        "addFirstRequest": "Add First Request",
+        "card": {
+            "badge": "Education",
+            "needs": "Needs"
+        },
+        "form": {
+            "title": "Add Education Request",
+            "description": "Request educational supplies for students",
+            "name": "Student/Parent Name",
+            "namePlaceholder": "Name",
+            "contactPerson": "Contact Person",
+            "contactPersonPlaceholder": "Name of contact person",
+            "phone": "Phone Number",
+            "phonePlaceholder": "07x xxxxxxx",
+            "district": "District",
+            "districtPlaceholder": "Select",
+            "address": "Address",
+            "addressPlaceholder": "Full address",
+            "school": "School (Optional)",
+            "schoolPlaceholder": "Name of the school",
+            "grade": "Grade (Optional)",
+            "gradePlaceholder": "E.g.: Grade 5",
+            "needs": "Needs",
+            "needsPlaceholder": "E.g.: Books, uniforms, shoes",
+            "additionalDetails": "Additional Details (Optional)",
+            "additionalDetailsPlaceholder": "Any other information",
+            "validation": {
+                "nameRequired": "Name is required",
+                "contactPersonRequired": "Contact person is required",
+                "phoneRequired": "Phone number is required",
+                "districtRequired": "District is required",
+                "addressRequired": "Address is required",
+                "needsRequired": "Needs are required"
+            }
+        }
+    },
+    "transport": {
+        "title": "Transport Facilities",
+        "subtitle": "Find or offer transport facilities for relief efforts",
+        "addOffer": "Add Transport",
+        "noOffers": "No transport offers available",
+        "noOffersDesc": "Be the first to add a transport offer",
+        "addFirstOffer": "Add First Offer",
+        "status": {
+            "available": "Available",
+            "busy": "Busy"
+        },
+        "card": {
+            "capacity": "Capacity",
+            "availability": "Availability"
+        },
+        "form": {
+            "title": "Add Transport Offer",
+            "description": "Offer transport facilities for relief distribution",
+            "name": "Contact Name",
+            "namePlaceholder": "Your name",
+            "phone": "Phone Number",
+            "phonePlaceholder": "07x xxxxxxx",
+            "district": "District",
+            "districtPlaceholder": "Select",
+            "location": "Current Location",
+            "locationPlaceholder": "City/Area",
+            "vehicleType": "Vehicle Type",
+            "vehicleTypePlaceholder": "E.g.: Lorry, Van, Three-wheeler",
+            "capacity": "Capacity",
+            "capacityPlaceholder": "E.g.: 1000kg or 5 people",
+            "availability": "Availability",
+            "availabilityPlaceholder": "E.g.: Available 24/7 or specific times",
+            "additionalDetails": "Additional Details (Optional)",
+            "additionalDetailsPlaceholder": "Any other information",
+            "validation": {
+                "nameRequired": "Name is required",
+                "phoneRequired": "Phone number is required",
+                "districtRequired": "District is required",
+                "locationRequired": "Location is required",
+                "vehicleTypeRequired": "Vehicle type is required",
+                "capacityRequired": "Capacity is required",
+                "availabilityRequired": "Availability is required"
+            }
+        }
+    },
+    "volunteer": {
+        "title": "Volunteering Services",
+        "subtitle": "Register as a volunteer to help affected communities",
+        "addVolunteer": "Register as Volunteer",
+        "noVolunteers": "No volunteers available",
+        "noVolunteersDesc": "Be the first to register as a volunteer",
+        "addFirstVolunteer": "Register Now",
+        "status": {
+            "available": "Available",
+            "busy": "Busy"
+        },
+        "card": {
+            "skills": "Skills",
+            "availability": "Availability"
+        },
+        "form": {
+            "title": "Volunteer Registration",
+            "description": "Register to help with relief efforts",
+            "name": "Name",
+            "namePlaceholder": "Your name",
+            "phone": "Phone Number",
+            "phonePlaceholder": "07x xxxxxxx",
+            "district": "District",
+            "districtPlaceholder": "Select",
+            "skills": "Skills / Capabilities",
+            "skillsPlaceholder": "E.g.: First aid, cooking, driving, labor",
+            "availability": "Availability",
+            "availabilityPlaceholder": "E.g.: Weekends, Full time",
+            "additionalDetails": "Additional Details (Optional)",
+            "additionalDetailsPlaceholder": "Any other information",
+            "validation": {
+                "nameRequired": "Name is required",
+                "phoneRequired": "Phone number is required",
+                "districtRequired": "District is required",
+                "skillsRequired": "Skills are required",
+                "availabilityRequired": "Availability is required"
+            }
+        }
+    },
     "common": {
         "back": "Back",
         "submit": "Submit",
@@ -148,6 +286,8 @@
         "select": "Select",
         "note": "Note",
         "dateLocale": "en-US",
+        "filterByDistrict": "Filter by District",
+        "selectDistrict": "Select District",
         "validation": {
             "required": "This field is required",
             "nameRequired": "Name is required",

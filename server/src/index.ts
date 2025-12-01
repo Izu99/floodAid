@@ -8,6 +8,9 @@ import authRoutes from './routes/auth';
 import helpRequestRoutes from './routes/help-requests';
 import locationRoutes from './routes/locations';
 import imageRoutes from './routes/images';
+import educationRoutes from './routes/education';
+import transportRoutes from './routes/transport';
+import volunteerRoutes from './routes/volunteering';
 
 dotenv.config();
 
@@ -71,6 +74,15 @@ app.use('/api/help-requests', helpRequestRoutes);
 
 // Location routes
 app.use('/api/locations', locationRoutes);
+
+// Education routes
+app.use('/api/education', educationRoutes);
+
+// Transport routes
+app.use('/api/transport', transportRoutes);
+
+// Volunteer routes
+app.use('/api/volunteering', volunteerRoutes);
 
 // Image routes
 app.use('/api/images', imageRoutes);

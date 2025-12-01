@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Package, Heart, MapPin, Languages } from 'lucide-react';
+import { Package, Heart, MapPin, Languages, GraduationCap, Truck, HandHeart } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { tokenStorage } from '@/lib/auth-api';
 import { useLanguage } from '@/lib/LanguageContext';
 import { Button } from '@/components/ui/button';
+import { Header } from '@/components/layout/header';
 
 export default function Home() {
   const router = useRouter();
@@ -24,16 +25,19 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <div className="max-w-6xl mx-auto px-4 py-6 sm:py-8">
+      {/* Fixed Header */}
+      <Header />
 
+      {/* Content with top padding */}
+      <div className="max-w-6xl mx-auto px-4 py-6 sm:py-8 pt-24">
         {/* Hero Section with Language Switcher */}
         <div className="mb-12">
           <div className="text-center mb-10">
-            <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">{t('main.title')}</h1>
-            <p className="text-xl text-gray-600">{t('main.subtitle')}</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">{t('main.title')}</h2>
+            <p className="text-xl text-gray-600 mb-6">{t('main.subtitle')}</p>
 
             {/* Language Switcher */}
-            <div className="mt-6 flex justify-center items-center gap-2">
+            <div className="flex justify-center items-center gap-2">
               <Languages className="w-5 h-5 text-gray-500" />
               <div className="flex gap-1 bg-white rounded-lg shadow-sm p-1 border border-gray-200">
                 <Button
@@ -106,9 +110,50 @@ export default function Home() {
                 <p className="text-sky-700">{t('main.locationsCard.description')}</p>
               </CardContent>
             </Card>
+
+            {/* Card 4: Education */}
+            <Card
+              className="bg-blue-50 border-blue-100 shadow-sm hover:shadow-md transition-all cursor-pointer group"
+              onClick={() => router.push('/education')}
+            >
+              <CardContent className="flex flex-col items-center justify-center p-8 text-center h-full">
+                <div className="p-4 bg-blue-100 rounded-full text-blue-600 mb-4 group-hover:scale-110 transition-transform">
+                  <GraduationCap className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-bold text-blue-900 mb-2">{t('main.educationCard.title')}</h3>
+                <p className="text-blue-700">{t('main.educationCard.description')}</p>
+              </CardContent>
+            </Card>
+
+            {/* Card 5: Transport */}
+            <Card
+              className="bg-amber-50 border-amber-100 shadow-sm hover:shadow-md transition-all cursor-pointer group"
+              onClick={() => router.push('/transport')}
+            >
+              <CardContent className="flex flex-col items-center justify-center p-8 text-center h-full">
+                <div className="p-4 bg-amber-100 rounded-full text-amber-600 mb-4 group-hover:scale-110 transition-transform">
+                  <Truck className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-bold text-amber-900 mb-2">{t('main.transportCard.title')}</h3>
+                <p className="text-amber-700">{t('main.transportCard.description')}</p>
+              </CardContent>
+            </Card>
+
+            {/* Card 6: Volunteering */}
+            <Card
+              className="bg-orange-50 border-orange-100 shadow-sm hover:shadow-md transition-all cursor-pointer group"
+              onClick={() => router.push('/volunteering')}
+            >
+              <CardContent className="flex flex-col items-center justify-center p-8 text-center h-full">
+                <div className="p-4 bg-orange-100 rounded-full text-orange-600 mb-4 group-hover:scale-110 transition-transform">
+                  <HandHeart className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-bold text-orange-900 mb-2">{t('main.volunteerCard.title')}</h3>
+                <p className="text-orange-700">{t('main.volunteerCard.description')}</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
-
       </div>
     </main>
   );

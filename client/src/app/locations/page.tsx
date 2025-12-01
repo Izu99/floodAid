@@ -7,21 +7,20 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { LocationForm } from '@/components/donations/location-form';
 import { LocationCard } from '@/components/donations/location-card';
 import { locationApi } from '@/lib/location-api';
-import { tokenStorage } from '@/lib/auth-api';
 import { Location } from '@/types/location';
-import { Plus, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Plus, MapPin, ChevronLeft, ChevronRight, ArrowUp } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
 
 export default function LocationsPage() {
     const router = useRouter();
     const { t } = useLanguage();
-    const [user, setUser] = useState<any>(null);
     const [locations, setLocations] = useState<Location[]>([]);
     const [loading, setLoading] = useState(true);
     const [showForm, setShowForm] = useState(false);
     const [selectedDistrict, setSelectedDistrict] = useState<string>('all');
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [showBackToTop, setShowBackToTop] = useState(false);
 
     const DISTRICTS = [
         'colombo', 'gampaha', 'kalutara', 'kandy', 'matale', 'nuwara_eliya', 'galle', 'matara', 'hambantota',
@@ -31,6 +30,17 @@ export default function LocationsPage() {
 
     useEffect(() => {
         loadLocations('all', 1);
+
+        const handleScroll = () => {
+            if (window.scrollY > 300) {
+                setShowBackToTop(true);
+            } else {
+                setShowBackToTop(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     const loadLocations = async (district?: string, pageNum: number = 1) => {
@@ -62,26 +72,31 @@ export default function LocationsPage() {
         loadLocations(district, 1);
     };
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
-        <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white">
-            <div className="max-w-7xl mx-auto px-4 py-8 pb-24">
-                <div className="flex justify-between items-center mb-6">
-                    <div>
-                        <h1 className="text-3xl font-bold text-sky-900">{t('locations.title')}</h1>
-                        <p className="text-sky-700 mt-1">
-                            {t('locations.subtitle')}
-                        </p>
-                    </div>
+        <div className="min-h-screen bg-gray-50 relative pb-12">
+            {/* Header */}
+            <div className="bg-sky-900 text-white py-8 fixed top-0 left-0 right-0 z-30 shadow-md">
+                <div className="max-w-7xl mx-auto px-4">
                     <Button
-                        variant="outline"
+                        variant="ghost"
+                        className="text-white hover:bg-white hover:text-sky-900 mb-4 pl-2 pr-4 transition-colors"
                         onClick={() => router.push('/')}
-                        className="border-sky-300 text-sky-700 hover:bg-sky-50"
                     >
-                        <ChevronLeft className="w-4 h-4 mr-2" />
+                        <ChevronLeft className="w-5 h-5 mr-1" />
                         {t('common.back')}
                     </Button>
+                    <div>
+                        <h1 className="text-3xl font-bold mb-2">{t('locations.title')}</h1>
+                        <p className="text-sky-200">{t('locations.subtitle')}</p>
+                    </div>
                 </div>
+            </div>
 
+            <div className="max-w-7xl mx-auto px-4 py-8 pt-48">
                 {/* Filter by District */}
                 <div className="mb-6 flex items-center gap-4">
                     <MapPin className="text-gray-500" />
@@ -109,7 +124,7 @@ export default function LocationsPage() {
                     <div className="text-center py-12 bg-white rounded-lg">
                         <MapPin className="w-12 h-12 text-gray-300 mx-auto mb-3" />
                         <p className="text-gray-500">{t('locations.noLocations')}</p>
-                        <Button onClick={() => setShowForm(true)} className="mt-4">
+                        <Button onClick={() => setShowForm(true)} className="mt-4 bg-sky-600 hover:bg-sky-700 text-white">
                             {t('common.add')}
                         </Button>
                     </div>
@@ -148,10 +163,18 @@ export default function LocationsPage() {
             </div>
 
             {/* Floating Action Button */}
-            <div className="fixed bottom-8 right-8 z-40">
+            <div className="fixed bottom-8 right-8 z-40 flex flex-col gap-4">
+                {showBackToTop && (
+                    <Button
+                        onClick={scrollToTop}
+                        className="w-10 h-10 rounded-full shadow-lg bg-gray-600 hover:bg-gray-700 text-white p-0 flex items-center justify-center transition-all opacity-80 hover:opacity-100"
+                    >
+                        <ArrowUp className="w-6 h-6" />
+                    </Button>
+                )}
                 <Button
                     onClick={() => setShowForm(true)}
-                    className="w-14 h-14 rounded-full shadow-lg bg-blue-600 hover:bg-blue-700 text-white p-0 flex items-center justify-center transition-transform hover:scale-105"
+                    className="w-14 h-14 rounded-full shadow-lg bg-sky-600 hover:bg-sky-700 text-white p-0 flex items-center justify-center transition-transform hover:scale-105"
                 >
                     <Plus className="w-8 h-8" />
                 </Button>
