@@ -39,7 +39,8 @@ export function DonationCard({ donation, userRole, onCollect }: DonationCardProp
         (donation.description && donation.description.length > 150);
 
     return (
-        <Card className="overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow">
+        <Card className="overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow pt-0">
+
             {/* Donation Card Label */}
             <div className="bg-emerald-100 text-emerald-800 text-xs font-bold px-4 py-1 border-b border-emerald-200 tracking-wider uppercase flex items-center gap-2">
                 <Package size={14} className="mr-1" />
@@ -48,9 +49,11 @@ export function DonationCard({ donation, userRole, onCollect }: DonationCardProp
             <CardHeader className="pb-2">
                 <div className="flex justify-between items-start gap-2">
                     <CardTitle className="text-lg leading-tight line-clamp-1">{donation.items}</CardTitle>
-                    <Badge variant={donation.status === 'collected' ? 'secondary' : 'default'} className={donation.status === 'collected' ? 'bg-green-100 text-green-800 hover:bg-green-100' : 'bg-emerald-500 text-white hover:bg-emerald-600'}>
-                        {donation.status === 'collected' ? t('donations.card.collected') : t('donations.card.badge')}
-                    </Badge>
+                    {donation.status === 'collected' && (
+                        <Badge variant="secondary" className="bg-green-100 text-green-800 hover:bg-green-100">
+                            {t('donations.card.collected')}
+                        </Badge>
+                    )}
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-600 mt-1">
                     <MapPin size={16} className="shrink-0" />
