@@ -255,7 +255,7 @@ export default function EducationPage() {
                                                     </div>
                                                 </div>
 
-                                                {(request.needs.length > 150) && (
+                                                {(request.name.length > 50 || request.address.length > 50 || (request.school && request.school.length > 50) || request.needs.length > 150) && (
                                                     <Dialog>
                                                         <DialogTrigger asChild>
                                                             <Button variant="link" className="p-0 h-auto text-xs mt-2 text-blue-600 hover:text-blue-800 self-start">

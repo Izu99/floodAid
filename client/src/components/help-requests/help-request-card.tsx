@@ -53,6 +53,7 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
     };
 
     const isFulfilled = localStatus === 'fulfilled';
+    const hasLongText = (request.name.length > 50 || request.helpDescription.length > 100 || (request.additionalDetails && request.additionalDetails.length > 50));
 
     return (
         <Card className={`overflow-hidden flex flex-col h-full transition-all ${
@@ -108,7 +109,7 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
                         </div>
                     )}
 
-                    {(request.helpDescription.length > 100 || (request.additionalDetails && request.additionalDetails.length > 50)) && (
+                    {hasLongText && (
                         <Dialog>
                             <DialogTrigger asChild>
                                 <Button variant="link" className="p-0 h-auto text-xs mt-1 text-blue-600 hover:text-blue-800">{t('common.readMore')}</Button>

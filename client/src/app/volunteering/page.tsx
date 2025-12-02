@@ -175,7 +175,7 @@ export default function VolunteeringPage() {
                                         </div>
                                     </div>
 
-                                    {(volunteer.skills.length > 100 || volunteer.availability.length > 100) && (
+                                    {(volunteer.name.length > 50 || t(`districts.${volunteer.district}`).length > 50 || volunteer.phone.length > 50 || volunteer.skills.length > 100 || volunteer.availability.length > 100) && (
                                          <Dialog>
                                             <DialogTrigger asChild>
                                                 <Button variant="link" className="p-0 h-auto text-xs mt-2 text-blue-600 hover:text-blue-800 self-start">

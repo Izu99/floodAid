@@ -52,7 +52,7 @@ export function LocationCard({ location }: LocationCardProps) {
     const districtKey = getDistrictKey(location.district || '');
     const districtLabel = districtKey ? t(`districts.${districtKey}`) : location.district;
     
-    const hasLongText = (location.name.length > 50) || (location.address.length > 50) || (location.description && location.description.length > 100);
+    const hasLongText = (location.name.length > 50) || (location.address.length > 50) || (formattedDateTime.length > 50) || (location.description && location.description.length > 100);
 
     return (
         <>

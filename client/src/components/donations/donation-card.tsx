@@ -34,7 +34,7 @@ export function DonationCard({ donation, userRole, onCollect }: DonationCardProp
     const districtLabel = districtKey ? t(`districts.${districtKey}`) : donation.district;
 
     const hasLongText =
-        (donation.items && donation.items.length > 100) ||
+        (donation.items && donation.items.length > 50) ||
         (donation.address && donation.address.length > 100) ||
         (donation.description && donation.description.length > 150);
 
@@ -47,7 +47,7 @@ export function DonationCard({ donation, userRole, onCollect }: DonationCardProp
             </div>
             <CardHeader className="pb-2">
                 <div className="flex justify-between items-start gap-2">
-                    <CardTitle className="text-lg leading-tight line-clamp-2">{donation.items}</CardTitle>
+                    <CardTitle className="text-lg leading-tight line-clamp-1">{donation.items}</CardTitle>
                     <Badge variant={donation.status === 'collected' ? 'secondary' : 'default'} className={donation.status === 'collected' ? 'bg-green-100 text-green-800 hover:bg-green-100' : 'bg-emerald-500 text-white hover:bg-emerald-600'}>
                         {donation.status === 'collected' ? t('donations.card.collected') : t('donations.card.badge')}
                     </Badge>

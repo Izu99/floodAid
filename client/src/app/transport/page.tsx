@@ -175,7 +175,7 @@ export default function TransportPage() {
                                         </div>
                                     </div>
 
-                                    {offer.availability.length > 100 && (
+                                    {(offer.vehicleType.length > 50 || offer.location.length > 50 || offer.capacity.length > 50 || offer.availability.length > 100) && (
                                          <Dialog>
                                             <DialogTrigger asChild>
                                                 <Button variant="link" className="p-0 h-auto text-xs mt-2 text-blue-600 hover:text-blue-800 self-start">
