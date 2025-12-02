@@ -6,6 +6,16 @@ import { Badge } from '@/components/ui/badge';
 import { getDistrictKey } from '@/lib/district-mapping';
 import { Donation } from '@/types/donation';
 import { Button } from '@/components/ui/button';
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+    DialogFooter,
+    DialogClose,
+    DialogDescription,
+} from '@/components/ui/dialog';
 import { useLanguage } from '@/lib/LanguageContext';
 
 interface DonationCardProps {
@@ -23,6 +33,11 @@ export function DonationCard({ donation, userRole, onCollect }: DonationCardProp
     const districtKey = getDistrictKey(donation.district || '');
     const districtLabel = districtKey ? t(`districts.${districtKey}`) : donation.district;
 
+    const hasLongText =
+        (donation.items && donation.items.length > 100) ||
+        (donation.address && donation.address.length > 100) ||
+        (donation.description && donation.description.length > 150);
+
     return (
         <Card className="overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow">
             {/* Donation Card Label */}
@@ -32,7 +47,7 @@ export function DonationCard({ donation, userRole, onCollect }: DonationCardProp
             </div>
             <CardHeader className="pb-2">
                 <div className="flex justify-between items-start gap-2">
-                    <CardTitle className="text-lg leading-tight">{donation.items}</CardTitle>
+                    <CardTitle className="text-lg leading-tight line-clamp-2">{donation.items}</CardTitle>
                     <Badge variant={donation.status === 'collected' ? 'secondary' : 'default'} className={donation.status === 'collected' ? 'bg-green-100 text-green-800 hover:bg-green-100' : 'bg-emerald-500 text-white hover:bg-emerald-600'}>
                         {donation.status === 'collected' ? t('donations.card.collected') : t('donations.card.badge')}
                     </Badge>
@@ -47,14 +62,53 @@ export function DonationCard({ donation, userRole, onCollect }: DonationCardProp
                 <div className="space-y-3 flex-1">
                     <div>
                         <p className="text-xs font-semibold text-gray-500 uppercase mb-1">{t('donations.card.address')}</p>
-                        <p className="text-sm text-gray-900">{donation.address}</p>
+                        <p className="text-sm text-gray-900 line-clamp-1">{donation.address}</p>
                     </div>
 
                     {donation.description && (
                         <div>
                             <p className="text-xs font-semibold text-gray-500 uppercase mb-1">{t('donations.card.description')}</p>
-                            <p className="text-sm text-gray-900 whitespace-pre-wrap">{donation.description}</p>
+                            <p className="text-sm text-gray-900 line-clamp-2">{donation.description}</p>
                         </div>
+                    )}
+
+                    {hasLongText && (
+                        <Dialog>
+                            <DialogTrigger asChild>
+                                <Button variant="link" className="p-0 h-auto text-xs mt-1 text-blue-600 hover:text-blue-800">
+                                    {t('common.readMore')}
+                                </Button>
+                            </DialogTrigger>
+                            <DialogContent>
+                                <DialogHeader>
+                                    <DialogTitle>Donation Details</DialogTitle>
+                                    <DialogDescription>
+                                        {districtLabel}
+                                    </DialogDescription>
+                                </DialogHeader>
+                                <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto">
+                                    <div>
+                                        <h4 className="text-sm font-semibold mb-1">Items to Donate</h4>
+                                        <p className="text-sm whitespace-pre-wrap">{donation.items}</p>
+                                    </div>
+                                    <div>
+                                        <h4 className="text-sm font-semibold mb-1">Address</h4>
+                                        <p className="text-sm whitespace-pre-wrap">{donation.address}</p>
+                                    </div>
+                                    {donation.description && (
+                                         <div>
+                                            <h4 className="text-sm font-semibold mb-1">Description</h4>
+                                            <p className="text-sm whitespace-pre-wrap">{donation.description}</p>
+                                        </div>
+                                    )}
+                                </div>
+                                <DialogFooter>
+                                    <DialogClose asChild>
+                                        <Button type="button">Close</Button>
+                                    </DialogClose>
+                                </DialogFooter>
+                            </DialogContent>
+                        </Dialog>
                     )}
                 </div>
 

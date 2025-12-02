@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -12,8 +12,17 @@ import {
     DialogHeader,
     DialogTitle,
 } from '@/components/ui/dialog';
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Loader2 } from 'lucide-react';
 import { helpRequestApi } from '@/lib/help-request-api';
 import { CreateHelpRequestDto } from '@/types/help-request';
@@ -35,43 +44,44 @@ export function HelpRequestForm({ open, onOpenChange, onSuccess }: HelpRequestFo
         'kurunegala', 'puttalam', 'anuradhapura', 'polonnaruwa', 'badulla', 'monaragala', 'ratnapura', 'kegalle'
     ];
 
+    const CATEGORIES = ['food', 'education', 'shelter', 'transport', 'other'];
+
     const formSchema = z.object({
-        name: z.string().min(1, t('helpRequests.form.name') + ' ' + t('common.error')), // Fallback or simple required message
-        phone: z.string().min(10, t('helpRequests.form.phone') + ' ' + t('common.error')),
+        name: z.string().min(1, t('common.validation.nameRequired')),
+        phone: z.string().min(10, t('common.validation.phoneRequired')),
         additionalPhone: z.string().optional(),
-        district: z.string().min(1, t('helpRequests.form.district') + ' ' + t('common.error')),
-        address: z.string().min(1, t('helpRequests.form.address') + ' ' + t('common.error')),
-        helpDescription: z.string().min(3, t('helpRequests.form.helpDescription') + ' ' + t('common.error')),
+        category: z.string().min(1, t('common.validation.required')),
+        district: z.string().min(1, t('common.validation.districtRequired')),
+        address: z.string().min(1, t('common.validation.addressRequired')),
+        helpDescription: z.string().min(3, t('common.validation.helpDescriptionRequired')),
         additionalDetails: z.string().optional(),
     });
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        reset,
-    } = useForm<z.infer<typeof formSchema>>({
+    const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
+        defaultValues: {
+            name: '',
+            phone: '',
+            additionalPhone: '',
+            category: '',
+            district: '',
+            address: '',
+            helpDescription: '',
+            additionalDetails: '',
+        },
     });
+
+    useEffect(() => {
+        if (open) {
+            form.reset();
+        }
+    }, [open, form]);
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
             setIsSubmitting(true);
-            // We might need to map the district key to the value expected by backend if backend expects Sinhala.
-            // But for now, let's send the localized value of the selected district to be safe, 
-            // OR just send the value from the dropdown. 
-            // The dropdown values are now `t('districts.' + d)`.
-            // So it sends "Colombo" or "කොළඹ" depending on language.
-            // This is inconsistent for the backend but matches the previous behavior where it sent "කොළඹ" (hardcoded).
-            // If the user is in English, it sends "Colombo".
-            // If the backend expects "කොළඹ", this is a problem.
-            // However, the user said "only this text change... not already add card".
-            // I will assume for creation, we should ideally send a consistent value, but without backend changes or a mapping file, 
-            // I have to send what's in the value.
-            // I'll stick to sending the translated value for now as it's the path of least resistance for "changing the form to the language".
-
             await helpRequestApi.createHelpRequest(values as CreateHelpRequestDto);
-            reset();
+            form.reset();
             onSuccess();
             onOpenChange(false);
         } catch (error) {
@@ -92,130 +102,171 @@ export function HelpRequestForm({ open, onOpenChange, onSuccess }: HelpRequestFo
                     </DialogDescription>
                 </DialogHeader>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-4">
-                    {/* Name */}
-                    <div>
-                        <Label htmlFor="name" className="text-sm sm:text-base">{t('helpRequests.form.name')} *</Label>
-                        <Input
-                            id="name"
-                            placeholder={t('helpRequests.form.namePlaceholder')}
-                            {...register('name')}
-                            className="mt-1"
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-4">
+                        {/* Name */}
+                        <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('helpRequests.form.name')} *</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder={t('helpRequests.form.namePlaceholder')} {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
                         />
-                        {errors.name && (
-                            <p className="text-xs text-red-600 mt-1">{errors.name.message}</p>
-                        )}
-                    </div>
 
-                    {/* Phone */}
-                    <div>
-                        <Label htmlFor="phone" className="text-sm sm:text-base">{t('helpRequests.form.phone')} *</Label>
-                        <Input
-                            id="phone"
-                            type="tel"
-                            placeholder={t('helpRequests.form.phonePlaceholder')}
-                            {...register('phone')}
-                            className="mt-1"
+                        {/* Phone */}
+                        <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('helpRequests.form.phone')} *</FormLabel>
+                                    <FormControl>
+                                        <Input type="tel" placeholder={t('helpRequests.form.phonePlaceholder')} {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
                         />
-                        {errors.phone && (
-                            <p className="text-xs text-red-600 mt-1">{errors.phone.message}</p>
-                        )}
-                    </div>
 
-                    {/* Additional Phone (Optional) */}
-                    <div>
-                        <Label htmlFor="additionalPhone" className="text-sm sm:text-base">{t('helpRequests.form.additionalPhone')}</Label>
-                        <Input
-                            id="additionalPhone"
-                            type="tel"
-                            placeholder={t('helpRequests.form.phonePlaceholder')}
-                            {...register('additionalPhone')}
-                            className="mt-1"
+                        {/* Additional Phone */}
+                        <FormField
+                            control={form.control}
+                            name="additionalPhone"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('helpRequests.form.additionalPhone')}</FormLabel>
+                                    <FormControl>
+                                        <Input type="tel" placeholder={t('helpRequests.form.phonePlaceholder')} {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
                         />
-                    </div>
 
-                    {/* District */}
-                    <div>
-                        <Label htmlFor="district" className="text-sm sm:text-base">{t('helpRequests.form.district')} *</Label>
-                        <select
-                            id="district"
-                            {...register('district')}
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm mt-1"
+                        {/* District */}
+                        <FormField
+                            control={form.control}
+                            name="district"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('helpRequests.form.district')} *</FormLabel>
+                                    <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder={t('helpRequests.form.districtPlaceholder')} />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            {DISTRICTS.map((d) => (
+                                                <SelectItem key={d} value={t(`districts.${d}`)}>
+                                                    {t(`districts.${d}`)}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        {/* Address */}
+                        <FormField
+                            control={form.control}
+                            name="address"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('helpRequests.form.address')} *</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder={t('helpRequests.form.addressPlaceholder')} {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        {/* Category */}
+                        <FormField
+                            control={form.control}
+                            name="category"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('helpRequests.form.category')} *</FormLabel>
+                                    <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder={t('helpRequests.form.categoryPlaceholder')} />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            {CATEGORIES.map((cat) => (
+                                                <SelectItem key={cat} value={cat}>
+                                                    {t(`helpRequests.categories.${cat}`)}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        {/* Help Description */}
+                        <FormField
+                            control={form.control}
+                            name="helpDescription"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('helpRequests.form.helpDescription')} *</FormLabel>
+                                    <FormControl>
+                                        <Textarea placeholder={t('helpRequests.form.helpDescriptionPlaceholder')} rows={3} {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        {/* Additional Details */}
+                        <FormField
+                            control={form.control}
+                            name="additionalDetails"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t('helpRequests.form.additionalDetails')}</FormLabel>
+                                    <FormControl>
+                                        <Textarea placeholder={t('helpRequests.form.additionalDetailsPlaceholder')} rows={2} {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <div className="bg-amber-50 border border-amber-200 rounded-md p-3 text-xs sm:text-sm text-amber-900">
+                            <p className="font-semibold mb-1">📝 {t('common.note') || 'Note'}:</p>
+                            <p>{t('helpRequests.form.note') || 'Your information will be visible to those looking to help.'}</p>
+                        </div>
+
+                        <Button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="w-full h-11 sm:h-12 text-base sm:text-lg font-semibold"
                         >
-                            <option value="">{t('helpRequests.form.districtPlaceholder')}...</option>
-                            {DISTRICTS.map((d) => (
-                                <option key={d} value={t(`districts.${d}`)}>
-                                    {t(`districts.${d}`)}
-                                </option>
-                            ))}
-                        </select>
-                        {errors.district && (
-                            <p className="text-xs text-red-600 mt-1">{errors.district.message}</p>
-                        )}
-                    </div>
-
-                    {/* Address */}
-                    <div>
-                        <Label htmlFor="address" className="text-sm sm:text-base">{t('helpRequests.form.address')} *</Label>
-                        <textarea
-                            id="address"
-                            {...register('address')}
-                            placeholder={t('helpRequests.form.addressPlaceholder')}
-                            rows={2}
-                            className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm mt-1"
-                        />
-                        {errors.address && (
-                            <p className="text-xs text-red-600 mt-1">{errors.address.message}</p>
-                        )}
-                    </div>
-
-                    {/* Help Description */}
-                    <div>
-                        <Label htmlFor="helpDescription" className="text-sm sm:text-base">{t('helpRequests.form.helpDescription')} *</Label>
-                        <textarea
-                            id="helpDescription"
-                            {...register('helpDescription')}
-                            placeholder={t('helpRequests.form.helpDescriptionPlaceholder')}
-                            rows={3}
-                            className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm mt-1"
-                        />
-                        {errors.helpDescription && (
-                            <p className="text-xs text-red-600 mt-1">{errors.helpDescription.message}</p>
-                        )}
-                    </div>
-
-                    {/* Additional Details (Optional) */}
-                    <div>
-                        <Label htmlFor="additionalDetails" className="text-sm sm:text-base">{t('helpRequests.form.additionalDetails')}</Label>
-                        <textarea
-                            id="additionalDetails"
-                            {...register('additionalDetails')}
-                            placeholder={t('helpRequests.form.additionalDetailsPlaceholder')}
-                            rows={2}
-                            className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm mt-1"
-                        />
-                    </div>
-
-                    <div className="bg-amber-50 border border-amber-200 rounded-md p-3 text-xs sm:text-sm text-amber-900">
-                        <p className="font-semibold mb-1">📝 {t('common.note') || 'Note'}:</p>
-                        <p>{t('helpRequests.form.note') || 'Your information will be visible to those looking to help.'}</p>
-                    </div>
-
-                    <Button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full h-11 sm:h-12 text-base sm:text-lg font-semibold"
-                    >
-                        {isSubmitting ? (
-                            <>
-                                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                                {t('common.loading')}
-                            </>
-                        ) : (
-                            t('common.submit')
-                        )}
-                    </Button>
-                </form>
+                            {isSubmitting ? (
+                                <>
+                                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                                    {t('common.loading')}
+                                </>
+                            ) : (
+                                t('common.submit')
+                            )}
+                        </Button>
+                    </form>
+                </Form>
             </DialogContent>
         </Dialog>
     );

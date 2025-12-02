@@ -1,20 +1,18 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { HelpRequestForm } from '@/components/help-requests/help-request-form';
 import { HelpRequestCard } from '@/components/help-requests/help-request-card';
 import { helpRequestApi } from '@/lib/help-request-api';
 import { HelpRequest } from '@/types/help-request';
-import { Plus, MapPin, ChevronLeft, ChevronRight, HeartHandshake, ArrowUp, ArrowLeft } from 'lucide-react';
+import { Plus, MapPin, ChevronLeft, ChevronRight, HeartHandshake, ArrowUp, X } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { Header } from '@/components/layout/header';
+import { getDistricts } from '@/lib/districts';
 
 export default function HelpRequestsPage() {
-    const router = useRouter();
-    const { t } = useLanguage();
     const [requests, setRequests] = useState<HelpRequest[]>([]);
     const [loading, setLoading] = useState(true);
     const [showForm, setShowForm] = useState(false);
@@ -22,15 +20,11 @@ export default function HelpRequestsPage() {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [showBackToTop, setShowBackToTop] = useState(false);
-
-    const DISTRICTS = [
-        'colombo', 'gampaha', 'kalutara', 'kandy', 'matale', 'nuwara_eliya', 'galle', 'matara', 'hambantota',
-        'jaffna', 'kilinochchi', 'mannar', 'vavuniya', 'mullaitivu', 'batticaloa', 'ampara', 'trincomalee',
-        'kurunegala', 'puttalam', 'anuradhapura', 'polonnaruwa', 'badulla', 'monaragala', 'ratnapura', 'kegalle'
-    ];
+    const [selectedCategory, setSelectedCategory] = useState<string>('all');
+    const { t, language } = useLanguage();
 
     useEffect(() => {
-        loadRequests('all', 1);
+        loadRequests(selectedDistrict, selectedCategory, 1);
 
         const handleScroll = () => {
             if (window.scrollY > 300) {
@@ -44,16 +38,26 @@ export default function HelpRequestsPage() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const loadRequests = async (district?: string, pageNum: number = 1) => {
+    const loadRequests = async (district: string, category: string, pageNum: number = 1) => {
         try {
             setLoading(true);
-            const districtParam = district === 'all' ? undefined : district;
             const response = await helpRequestApi.getHelpRequests(
                 pageNum,
                 15,
-                districtParam
+                district === 'all' ? undefined : district,
+                undefined, // status
+                category === 'all' ? undefined : category
             );
-            setRequests(response.data);
+            
+            // Sort: pending requests first, fulfilled requests last
+            const sortedRequests = response.data.sort((a, b) => {
+                if (a.status === 'fulfilled' && b.status !== 'fulfilled') return 1;
+                if (a.status !== 'fulfilled' && b.status === 'fulfilled') return -1;
+                // If both same status, sort by date (newest first)
+                return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+            });
+            
+            setRequests(sortedRequests);
             setTotalPages(response.totalPages);
             setPage(pageNum);
         } catch (error) {
@@ -64,59 +68,94 @@ export default function HelpRequestsPage() {
     };
 
     const handleCreateSuccess = () => {
-        loadRequests(selectedDistrict, 1);
+        loadRequests(selectedDistrict, selectedCategory, 1);
     };
 
     const handleDistrictChange = (district: string) => {
         setSelectedDistrict(district);
-        loadRequests(district, 1);
+        loadRequests(district, selectedCategory, 1);
+    };
+
+    const handleCategoryChange = (category: string) => {
+        setSelectedCategory(category);
+        loadRequests(selectedDistrict, category, 1);
+    };
+
+    const handleClearFilters = () => {
+        setSelectedDistrict('all');
+        setSelectedCategory('all');
+        loadRequests('all', 'all', 1);
     };
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    return (
-        <div className="min-h-screen bg-gray-50 relative pb-12">
-            {/* Fixed Header */}
-            <Header />
+    const districts = getDistricts(language);
 
-            {/* Page Header */}
-            <div className="bg-gradient-to-r from-rose-800 to-rose-700 text-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 mt-16">
-                    <button
-                        onClick={() => router.push('/')}
-                        className="flex items-center gap-2 text-rose-100 hover:text-white transition-colors mb-4"
+    return (
+        <div className="min-h-screen bg-gray-50 relative">
+            <Header />
+            {/* Header Section */}
+            <div className="bg-gradient-to-r from-red-800 to-red-700 text-white">
+                <div className="max-w-7xl mx-auto px-4 py-8">
+                    <button 
+                        onClick={() => window.history.back()} 
+                        className="flex items-center gap-2 text-white/90 hover:text-white mb-4 transition-colors"
                     >
-                        <ArrowLeft className="w-5 h-5" />
-                        <span className="text-sm sm:text-base">{t('common.back')}</span>
+                        <ChevronLeft size={20} />
+                        <span>{language === 'si' ? 'ආපසු' : 'Back'}</span>
                     </button>
-                    <h1 className="text-3xl sm:text-4xl font-bold mb-2">{t('helpRequests.title')}</h1>
-                    <p className="text-rose-100 text-base sm:text-lg">{t('helpRequests.subtitle')}</p>
+                    <h1 className="text-3xl font-bold mb-2">{t('helpRequests.title')}</h1>
+                    <p className="text-white/90">{t('helpRequests.subtitle')}</p>
                 </div>
             </div>
 
-            {/* Content with top padding */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                {/* Filter by District */}
-                <div className="mb-6 flex items-center gap-4">
-                    <MapPin className="text-gray-500" />
-                    <Select value={selectedDistrict} onValueChange={handleDistrictChange}>
-                        <SelectTrigger className="w-64 bg-white">
-                            <SelectValue placeholder={t('districts.all')} />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="all">{t('districts.all')}</SelectItem>
-                            {DISTRICTS.map((districtKey) => (
-                                <SelectItem key={districtKey} value={t(`districts.${districtKey}`)}>
-                                    {t(`districts.${districtKey}`)}
-                                </SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
+            <div className="max-w-7xl mx-auto px-4 py-8 pb-24">
+                {/* Filters */}
+                <div className="mb-6 flex flex-col md:flex-row items-center gap-4">
+                    {/* District Filter */}
+                    <div className="w-full md:w-64">
+                         <Select value={selectedDistrict} onValueChange={handleDistrictChange}>
+                            <SelectTrigger className="w-full bg-white">
+                                <SelectValue placeholder={t('common.selectDistrict')} />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="all">{t('districts.all')}</SelectItem>
+                                {districts.map((district) => (
+                                    <SelectItem key={district.value} value={district.value}>
+                                        {district.label}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    {/* Category Filter */}
+                    <div className="w-full md:w-64">
+                        <Select value={selectedCategory} onValueChange={handleCategoryChange}>
+                            <SelectTrigger className="w-full bg-white">
+                                <SelectValue placeholder={t('common.filterByCategory')} />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="all">{t('helpRequests.categories.all')}</SelectItem>
+                                {['food', 'education', 'shelter', 'transport', 'other'].map((category) => (
+                                    <SelectItem key={category} value={category}>
+                                        {t(`helpRequests.categories.${category}`)}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    {/* Clear Button */}
+                    {(selectedDistrict !== 'all' || selectedCategory !== 'all') && (
+                        <Button variant="ghost" onClick={handleClearFilters} className="text-sm">
+                            <X size={16} className="mr-1" />
+                            {t('common.clearFilters')}
+                        </Button>
+                    )}
                 </div>
 
-                {/* Help Requests Card Grid */}
+                {/* Requests Grid */}
                 {loading ? (
                     <div className="text-center py-12">
                         <p className="text-gray-500">{t('helpRequests.loading')}</p>
@@ -125,7 +164,7 @@ export default function HelpRequestsPage() {
                     <div className="text-center py-12 bg-white rounded-lg shadow-sm">
                         <HeartHandshake className="w-12 h-12 text-gray-300 mx-auto mb-3" />
                         <p className="text-gray-500">{t('helpRequests.noRequests')}</p>
-                        <Button onClick={() => setShowForm(true)} className="mt-4 bg-rose-600 hover:bg-rose-700 text-white">
+                        <Button onClick={() => setShowForm(true)} className="mt-4 bg-red-600 hover:bg-red-700 text-white">
                             {t('helpRequests.firstRequest')}
                         </Button>
                     </div>
@@ -133,7 +172,11 @@ export default function HelpRequestsPage() {
                     <>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {requests.map((request) => (
-                                <HelpRequestCard key={request._id} request={request} />
+                                <HelpRequestCard 
+                                    key={request._id} 
+                                    request={request}
+                                    onStatusUpdate={() => loadRequests(selectedDistrict, page)}
+                                />
                             ))}
                         </div>
 
@@ -163,7 +206,7 @@ export default function HelpRequestsPage() {
                 )}
             </div>
 
-            {/* Floating Action Button */}
+            {/* Floating Action Buttons */}
             <div className="fixed bottom-8 right-8 z-40 flex flex-col gap-4">
                 {showBackToTop && (
                     <Button
@@ -175,7 +218,7 @@ export default function HelpRequestsPage() {
                 )}
                 <Button
                     onClick={() => setShowForm(true)}
-                    className="w-14 h-14 rounded-full shadow-lg bg-rose-600 hover:bg-rose-700 text-white p-0 flex items-center justify-center transition-transform hover:scale-105"
+                    className="w-14 h-14 rounded-full shadow-lg bg-red-600 hover:bg-red-700 text-white p-0 flex items-center justify-center transition-transform hover:scale-105"
                 >
                     <Plus className="w-8 h-8" />
                 </Button>

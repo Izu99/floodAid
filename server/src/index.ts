@@ -15,7 +15,7 @@ import volunteerRoutes from './routes/volunteering';
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT || 5002;
+const port = process.env.PORT || 5001;
 
 // Connect to MongoDB
 connectDB();
@@ -43,12 +43,14 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use(cors({
     origin: [
         'http://localhost:3000',
+        'http://localhost:3001',
         'https://flood-aid-one.vercel.app',
         'https://flood-aid-git-development-izu99s-projects.vercel.app',
         'https://helplk.org',
         'https://www.helplk.org'
     ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
 app.use(express.json({ limit: '50mb' }));

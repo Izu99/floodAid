@@ -11,6 +11,16 @@ import { Transport } from '@/types/transport';
 import { TransportForm } from '@/components/transport/transport-form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Header } from '@/components/layout/header';
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+    DialogFooter,
+    DialogClose,
+    DialogDescription,
+} from '@/components/ui/dialog';
 
 export default function TransportPage() {
     const router = useRouter();
@@ -76,7 +86,7 @@ export default function TransportPage() {
 
             {/* Page Header */}
             <div className="bg-gradient-to-r from-amber-800 to-amber-700 text-white">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 mt-16">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
                     <button
                         onClick={() => router.push('/')}
                         className="flex items-center gap-2 text-amber-100 hover:text-white transition-colors mb-4"
@@ -131,8 +141,8 @@ export default function TransportPage() {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {offers.map((offer) => (
-                            <Card key={offer._id} className="hover:shadow-md transition-shadow">
-                                <CardContent className="p-6">
+                            <Card key={offer._id} className="hover:shadow-md transition-shadow flex flex-col">
+                                <CardContent className="p-6 flex-1 flex flex-col">
                                     <div className="flex justify-between items-start mb-4">
                                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${offer.status === 'available' ? 'bg-emerald-100 text-emerald-800' : 'bg-gray-100 text-gray-800'
                                             }`}>
@@ -143,27 +153,60 @@ export default function TransportPage() {
                                         </span>
                                     </div>
 
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">{offer.vehicleType}</h3>
+                                    <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-1">{offer.vehicleType}</h3>
 
-                                    <div className="space-y-3 text-sm text-gray-600">
+                                    <div className="space-y-3 text-sm text-gray-600 flex-1">
                                         <div className="flex items-start gap-2">
                                             <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                                            <span>{offer.location}, {t(`districts.${offer.district}`)}</span>
+                                            <span className="line-clamp-1">{offer.location}, {t(`districts.${offer.district}`)}</span>
                                         </div>
                                         <div className="flex items-start gap-2">
                                             <Users className="w-4 h-4 mt-0.5 shrink-0" />
-                                            <span>{t('transport.card.capacity')}: {offer.capacity}</span>
+                                            <span className="line-clamp-1">{t('transport.card.capacity')}: {offer.capacity}</span>
                                         </div>
                                         <div className="flex items-start gap-2">
                                             <Phone className="w-4 h-4 mt-0.5 shrink-0" />
                                             <span>{offer.name}: {offer.phone}</span>
                                         </div>
+                                    
+                                        <div className="mt-4 pt-4 border-t border-gray-100">
+                                            <p className="font-medium text-gray-900 mb-1">{t('transport.card.availability')}:</p>
+                                            <p className="text-gray-600 text-sm line-clamp-2">{offer.availability}</p>
+                                        </div>
                                     </div>
 
-                                    <div className="mt-4 pt-4 border-t border-gray-100">
-                                        <p className="font-medium text-gray-900 mb-1">{t('transport.card.availability')}:</p>
-                                        <p className="text-gray-600 text-sm">{offer.availability}</p>
-                                    </div>
+                                    {offer.availability.length > 100 && (
+                                         <Dialog>
+                                            <DialogTrigger asChild>
+                                                <Button variant="link" className="p-0 h-auto text-xs mt-2 text-blue-600 hover:text-blue-800 self-start">
+                                                    {t('common.readMore')}
+                                                </Button>
+                                            </DialogTrigger>
+                                            <DialogContent>
+                                                <DialogHeader>
+                                                    <DialogTitle>{offer.vehicleType}</DialogTitle>
+                                                    <DialogDescription>
+                                                        {offer.location}, {t(`districts.${offer.district}`)}
+                                                    </DialogDescription>
+                                                </DialogHeader>
+                                                <div className="py-4 max-h-[60vh] overflow-y-auto space-y-4">
+                                                    <div>
+                                                        <h4 className="text-sm font-semibold mb-1">Capacity</h4>
+                                                        <p className="text-sm whitespace-pre-wrap">{offer.capacity}</p>
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="text-sm font-semibold mb-1">Availability</h4>
+                                                        <p className="text-sm whitespace-pre-wrap">{offer.availability}</p>
+                                                    </div>
+                                                </div>
+                                                <DialogFooter>
+                                                    <DialogClose asChild>
+                                                        <Button type="button">Close</Button>
+                                                    </DialogClose>
+                                                </DialogFooter>
+                                            </DialogContent>
+                                        </Dialog>
+                                    )}
                                 </CardContent>
                             </Card>
                         ))}

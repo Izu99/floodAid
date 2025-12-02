@@ -6,6 +6,16 @@ import { BASE_URL as API_URL } from '@/lib/config';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MapPin, Phone, Calendar, X, ChevronLeft, ChevronRight, ImageIcon, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+    DialogFooter,
+    DialogClose,
+    DialogDescription,
+} from '@/components/ui/dialog';
 import { useLanguage } from '@/lib/LanguageContext';
 import { getDistrictKey } from '@/lib/district-mapping';
 
@@ -41,12 +51,14 @@ export function LocationCard({ location }: LocationCardProps) {
 
     const districtKey = getDistrictKey(location.district || '');
     const districtLabel = districtKey ? t(`districts.${districtKey}`) : location.district;
+    
+    const hasLongText = (location.name.length > 50) || (location.address.length > 50) || (location.description && location.description.length > 100);
 
     return (
         <>
             <Card className="overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow">
                 <CardHeader className="pb-2">
-                    <CardTitle className="text-lg leading-tight">{location.name}</CardTitle>
+                    <CardTitle className="text-lg leading-tight line-clamp-1">{location.name}</CardTitle>
                     <div className="flex items-center gap-2 text-sm text-gray-600 mt-1">
                         <MapPin size={16} className="shrink-0" />
                         <span>{districtLabel}</span>
@@ -57,28 +69,64 @@ export function LocationCard({ location }: LocationCardProps) {
                     <div className="space-y-3 flex-1">
                         <div>
                             <p className="text-xs font-semibold text-gray-500 uppercase mb-1">{t('locations.card.address')}</p>
-                            <p className="text-sm text-gray-900">{location.address}</p>
+                            <p className="text-sm text-gray-900 line-clamp-1">{location.address}</p>
                         </div>
 
                         <div>
                             <p className="text-xs font-semibold text-gray-500 uppercase mb-1">{t('locations.card.time')}</p>
-                            <p className="text-sm text-gray-900">{formattedDateTime}</p>
+                            <p className="text-sm text-gray-900 line-clamp-1">{formattedDateTime}</p>
                         </div>
 
                         {location.description && (
                             <div>
                                 <p className="text-xs font-semibold text-gray-500 uppercase mb-1">{t('locations.card.description')}</p>
-                                <p className="text-sm text-gray-900 whitespace-pre-wrap">{location.description}</p>
+                                <p className="text-sm text-gray-900 line-clamp-2">{location.description}</p>
                             </div>
                         )}
 
-                        {/* View Location Button */}
+                        {hasLongText && (
+                             <Dialog>
+                                <DialogTrigger asChild>
+                                    <Button variant="link" className="p-0 h-auto text-xs mt-1 text-blue-600 hover:text-blue-800">
+                                        {t('common.readMore')}
+                                    </Button>
+                                </DialogTrigger>
+                                <DialogContent>
+                                    <DialogHeader>
+                                        <DialogTitle>{location.name}</DialogTitle>
+                                        <DialogDescription>{districtLabel}</DialogDescription>
+                                    </DialogHeader>
+                                    <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto">
+                                        {location.description && (
+                                            <div>
+                                                <h4 className="text-sm font-semibold mb-1">Description</h4>
+                                                <p className="text-sm whitespace-pre-wrap">{location.description}</p>
+                                            </div>
+                                        )}
+                                         <div>
+                                            <h4 className="text-sm font-semibold mb-1">Address</h4>
+                                            <p className="text-sm whitespace-pre-wrap">{location.address}</p>
+                                        </div>
+                                        <div>
+                                            <h4 className="text-sm font-semibold mb-1">Time</h4>
+                                            <p className="text-sm whitespace-pre-wrap">{formattedDateTime}</p>
+                                        </div>
+                                    </div>
+                                    <DialogFooter>
+                                        <DialogClose asChild>
+                                            <Button type="button">Close</Button>
+                                        </DialogClose>
+                                    </DialogFooter>
+                                </DialogContent>
+                            </Dialog>
+                        )}
+
                         {location.images.length > 0 && (
                             <Button
                                 variant="outline"
                                 size="sm"
                                 onClick={() => openGallery(0)}
-                                className="w-full flex items-center justify-center gap-2"
+                                className="w-full flex items-center justify-center gap-2 mt-2"
                             >
                                 <ImageIcon size={16} />
                                 {t('locations.card.viewPhotos')} ({location.images.length})
@@ -124,7 +172,6 @@ export function LocationCard({ location }: LocationCardProps) {
                 </CardContent>
             </Card>
 
-            {/* Image Gallery Modal */}
             {showImages && (
                 <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
                     <button

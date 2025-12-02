@@ -25,24 +25,28 @@
         "volunteerCard": {
             "title": "Volunteering",
             "description": "Register as a volunteer or find volunteers"
-        }
+        },
+        "disclaimer": "⚠️ Safety Reminder: All information submitted here is publicly visible. Please do not send money to any phone number or individual; this platform does not handle financial transactions and such requests may be fraudulent."
     },
     "helpRequests": {
         "title": "Help Requests",
-        "subtitle": "Request assistance if you or someone you know needs help",
+        "subtitle": "Request assistance if you or someone you know needs help. After receiving help, please mark your request as 'Help Received' to help others.",
         "noRequests": "No help requests available",
         "firstRequest": "Add the first request",
         "loading": "Loading information...",
         "status": {
             "pending": "Help Needed",
-            "fulfilled": "Resolved"
+            "fulfilled": "Help Received"
         },
         "card": {
             "address": "Address",
             "helpNeeded": "Help Needed",
             "additionalDetails": "Additional Details",
             "contactInfo": "Contact",
-            "requestedOn": "Requested on"
+            "requestedOn": "Requested on",
+            "statusInstruction": "Please update the status of this request after you receive help. This helps avoid wasting others' time.",
+            "markAsReceived": "Mark as Help Received",
+            "confirmStatusUpdate": "Have you received help? If yes, this request will be marked as \"Help Received\" and will no longer be shown to others."
         },
         "form": {
             "title": "Add Help Request",
@@ -60,7 +64,17 @@
             "helpDescriptionPlaceholder": "E.g.: Food, drinking water, medicine",
             "additionalDetails": "Additional Details (Optional)",
             "additionalDetailsPlaceholder": "Additional information",
-            "note": "Note: Your contact information will be visible to potential donors."
+            "note": "Note: Your contact information will be visible to potential donors.",
+            "category": "What kind of help do you need?",
+            "categoryPlaceholder": "Select"
+        },
+        "categories": {
+            "all": "Filter by all categories",
+            "food": "Food",
+            "education": "Education",
+            "shelter": "Shelter",
+            "transport": "Transport",
+            "other": "Other"
         }
     },
     "donations": {
@@ -85,7 +99,7 @@
         },
         "form": {
             "title": "Add Donation",
-            "description": "Provide information about items you can donate",
+            "description": "Description (Optional)",
             "name": "Name",
             "namePlaceholder": "Your name",
             "district": "District",
@@ -96,7 +110,6 @@
             "phonePlaceholder": "07x xxxxxxx",
             "items": "Items to Donate",
             "itemsPlaceholder": "E.g.: Rice, milk powder, water",
-            "description": "Description (Optional)",
             "descriptionPlaceholder": "Additional information about items"
         }
     },
@@ -115,7 +128,7 @@
         },
         "form": {
             "title": "Add Collection Point",
-            "description": "Add details about a collection point where donations can be dropped off",
+            "description": "Description",
             "name": "Location Name",
             "namePlaceholder": "E.g.: Colombo Relief Center",
             "district": "District",
@@ -132,7 +145,6 @@
             "contactPhone": "Phone Number",
             "contactPhonePlaceholder": "07x xxxxxxx",
             "additionalPhone": "Additional Phone (Optional)",
-            "description": "Description",
             "descriptionPlaceholder": "Specify items collected at this location (e.g.: food, clothing, medicine)",
             "contactImage": "Contact Person Photo (Required)",
             "contactImageNote": "This photo will be displayed on the card",
@@ -141,11 +153,18 @@
     },
     "education": {
         "title": "Education Support",
-        "subtitle": "Request educational supplies and support for affected students",
+        "subtitle": "Offer educational supplies and support for affected students",
+        "requestsTabTitle": "Education Requests",
+        "offersTabTitle": "Education Offers",
         "addRequest": "Add Request",
         "noRequests": "No education requests available",
         "noRequestsDesc": "Be the first to add an education request",
         "addFirstRequest": "Add First Request",
+        "offers": {
+            "noOffers": "No education offers available",
+            "noOffersDesc": "Be the first to add an education offer",
+            "addFirstOffer": "Add First Offer"
+        },
         "card": {
             "badge": "Education",
             "needs": "Needs"
@@ -179,6 +198,10 @@
                 "addressRequired": "Address is required",
                 "needsRequired": "Needs are required"
             }
+        },
+        "tabs": {
+            "requests": "Request educational supplies and support",
+            "offers": "Offer educational supplies and support"
         }
     },
     "transport": {
@@ -286,7 +309,9 @@
         "select": "Select",
         "note": "Note",
         "dateLocale": "en-US",
-        "filterByDistrict": "Filter by District",
+        "filterByDistrict": "Select by District",
+        "filterByCategory": "Select by Help Type",
+        "clearFilters": "Clear",
         "selectDistrict": "Select District",
         "validation": {
             "required": "This field is required",
@@ -296,10 +321,12 @@
             "addressRequired": "Address is required",
             "helpDescriptionRequired": "To get help, add details correctly",
             "itemsRequired": "Items are required"
-        }
+        },
+        "updating": "Updating...",
+        "readMore": "Read More"
     },
     "districts": {
-        "all": "All",
+        "all": "Search from all districts",
         "colombo": "Colombo",
         "gampaha": "Gampaha",
         "kalutara": "Kalutara",

@@ -1,5 +1,6 @@
 import { AuthResponse, RegisterDto, LoginDto } from '@/types/auth';
 import { API_URL } from './config';
+import { safeStorage } from './safe-storage';
 
 export const authApi = {
     async register(data: RegisterDto, faceImage?: File): Promise<AuthResponse> {
@@ -125,39 +126,33 @@ export const authApi = {
 
 export const tokenStorage = {
     setToken(token: string) {
+        safeStorage.setItem('token', token);
         if (typeof window !== 'undefined') {
-            localStorage.setItem('token', token);
             window.dispatchEvent(new Event('auth-change'));
         }
     },
     getToken() {
-        if (typeof window !== 'undefined') {
-            return localStorage.getItem('token');
-        }
-        return null;
+        return safeStorage.getItem('token');
     },
     removeToken() {
+        safeStorage.removeItem('token');
         if (typeof window !== 'undefined') {
-            localStorage.removeItem('token');
             window.dispatchEvent(new Event('auth-change'));
         }
     },
     setUserData(user: any) {
+        safeStorage.setItem('user', JSON.stringify(user));
         if (typeof window !== 'undefined') {
-            localStorage.setItem('user', JSON.stringify(user));
             window.dispatchEvent(new Event('auth-change'));
         }
     },
     getUserData() {
-        if (typeof window !== 'undefined') {
-            const user = localStorage.getItem('user');
-            return user ? JSON.parse(user) : null;
-        }
-        return null;
+        const user = safeStorage.getItem('user');
+        return user ? JSON.parse(user) : null;
     },
     removeUserData() {
+        safeStorage.removeItem('user');
         if (typeof window !== 'undefined') {
-            localStorage.removeItem('user');
             window.dispatchEvent(new Event('auth-change'));
         }
     },

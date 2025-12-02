@@ -7,6 +7,7 @@ export interface IHelpRequest extends Document {
     district: string;
     address: string;
     helpDescription: string;
+    category: 'food' | 'education' | 'shelter' | 'transport' | 'other';
     additionalDetails?: string;
     status: 'pending' | 'in-progress' | 'fulfilled';
     createdAt: Date;
@@ -46,6 +47,12 @@ const HelpRequestSchema: Schema = new Schema({
     additionalDetails: {
         type: String,
         trim: true
+    },
+    category: {
+        type: String,
+        enum: ['food', 'education', 'shelter', 'transport', 'other'],
+        required: true,
+        default: 'other'
     },
     status: {
         type: String,

@@ -13,13 +13,14 @@ router.post('/', async (req: Request, res: Response) => {
             district,
             address,
             helpDescription,
-            additionalDetails
+            additionalDetails,
+            category
         } = req.body;
 
         // Validate required fields
-        if (!name || !phone || !district || !address || !helpDescription) {
+        if (!name || !phone || !district || !address || !helpDescription || !category) {
             return res.status(400).json({
-                message: 'Name, phone, district, address, and help description are required'
+                message: 'Name, phone, district, address, help description, and category are required'
             });
         }
 
@@ -30,7 +31,8 @@ router.post('/', async (req: Request, res: Response) => {
             district: district.toLowerCase(),
             address,
             helpDescription,
-            additionalDetails
+            additionalDetails,
+            category
         });
 
         await helpRequest.save();
@@ -52,7 +54,7 @@ router.get('/', async (req: Request, res: Response) => {
             page = 1,
             limit = 15,
             district,
-            status = 'pending'
+            status
         } = req.query;
 
         const query: any = {};
@@ -63,6 +65,10 @@ router.get('/', async (req: Request, res: Response) => {
 
         if (status && status !== 'all') {
             query.status = status;
+        }
+
+        if (req.query.category) {
+            query.category = req.query.category;
         }
 
         const skip = (Number(page) - 1) * Number(limit);
@@ -82,6 +88,40 @@ router.get('/', async (req: Request, res: Response) => {
         });
     } catch (error) {
         console.error('Error fetching help requests:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Update help request status (public - no auth required)
+// This endpoint allows users to mark their help request as fulfilled once they receive help
+router.patch('/:id/status', async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const { status } = req.body;
+
+        // Validate status
+        if (!status || !['pending', 'in-progress', 'fulfilled'].includes(status)) {
+            return res.status(400).json({
+                message: 'Invalid status. Must be one of: pending, in-progress, fulfilled'
+            });
+        }
+
+        const helpRequest = await HelpRequest.findByIdAndUpdate(
+            id,
+            { status },
+            { new: true }
+        );
+
+        if (!helpRequest) {
+            return res.status(404).json({ message: 'Help request not found' });
+        }
+
+        res.json({
+            message: 'Status updated successfully',
+            data: helpRequest
+        });
+    } catch (error) {
+        console.error('Error updating help request status:', error);
         res.status(500).json({ message: 'Server error' });
     }
 });

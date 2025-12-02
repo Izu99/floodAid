@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { safeStorage } from './safe-storage';
 import si from './translations/si.json';
 import en from './translations/en.json';
 import ta from './translations/ta.json';
@@ -22,7 +23,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
     useEffect(() => {
         // Load language from localStorage
-        const saved = localStorage.getItem('floodaid-language') as Language;
+        const saved = safeStorage.getItem('floodaid-language') as Language;
         if (saved && ['si', 'en', 'ta'].includes(saved)) {
             setLanguageState(saved);
         }
@@ -30,7 +31,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
     const setLanguage = (lang: Language) => {
         setLanguageState(lang);
-        localStorage.setItem('floodaid-language', lang);
+        safeStorage.setItem('floodaid-language', lang);
     };
 
     const t = (key: string): string => {

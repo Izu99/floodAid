@@ -11,6 +11,16 @@ import { Volunteer } from '@/types/volunteer';
 import { VolunteerForm } from '@/components/volunteering/volunteer-form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Header } from '@/components/layout/header';
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+    DialogFooter,
+    DialogClose,
+    DialogDescription,
+} from '@/components/ui/dialog';
 
 export default function VolunteeringPage() {
     const router = useRouter();
@@ -76,7 +86,7 @@ export default function VolunteeringPage() {
 
             {/* Page Header */}
             <div className="bg-gradient-to-r from-orange-800 to-orange-700 text-white">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 mt-16">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
                     <button
                         onClick={() => router.push('/')}
                         className="flex items-center gap-2 text-orange-100 hover:text-white transition-colors mb-4"
@@ -131,8 +141,8 @@ export default function VolunteeringPage() {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {registrations.map((volunteer) => (
-                            <Card key={volunteer._id} className="hover:shadow-md transition-shadow">
-                                <CardContent className="p-6">
+                            <Card key={volunteer._id} className="hover:shadow-md transition-shadow flex flex-col">
+                                <CardContent className="p-6 flex-1 flex flex-col">
                                     <div className="flex justify-between items-start mb-4">
                                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${volunteer.status === 'available' ? 'bg-orange-100 text-orange-800' : 'bg-gray-100 text-gray-800'
                                             }`}>
@@ -143,9 +153,9 @@ export default function VolunteeringPage() {
                                         </span>
                                     </div>
 
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">{volunteer.name}</h3>
+                                    <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-1">{volunteer.name}</h3>
 
-                                    <div className="space-y-3 text-sm text-gray-600">
+                                    <div className="space-y-3 text-sm text-gray-600 flex-1">
                                         <div className="flex items-start gap-2">
                                             <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
                                             <span>{t(`districts.${volunteer.district}`)}</span>
@@ -154,16 +164,55 @@ export default function VolunteeringPage() {
                                             <Phone className="w-4 h-4 mt-0.5 shrink-0" />
                                             <span>{volunteer.phone}</span>
                                         </div>
+                                    
+                                        <div className="mt-4 pt-4 border-t border-gray-100">
+                                            <p className="font-medium text-gray-900 mb-1">{t('volunteer.card.skills')}:</p>
+                                            <p className="text-gray-600 text-sm line-clamp-2">{volunteer.skills}</p>
+                                        </div>
+                                        <div className="mt-2">
+                                            <p className="font-medium text-gray-900 mb-1">{t('volunteer.card.availability')}:</p>
+                                            <p className="text-gray-600 text-sm line-clamp-2">{volunteer.availability}</p>
+                                        </div>
                                     </div>
 
-                                    <div className="mt-4 pt-4 border-t border-gray-100">
-                                        <p className="font-medium text-gray-900 mb-1">{t('volunteer.card.skills')}:</p>
-                                        <p className="text-gray-600 text-sm line-clamp-3">{volunteer.skills}</p>
-                                    </div>
-                                    <div className="mt-2">
-                                        <p className="font-medium text-gray-900 mb-1">{t('volunteer.card.availability')}:</p>
-                                        <p className="text-gray-600 text-sm">{volunteer.availability}</p>
-                                    </div>
+                                    {(volunteer.skills.length > 100 || volunteer.availability.length > 100) && (
+                                         <Dialog>
+                                            <DialogTrigger asChild>
+                                                <Button variant="link" className="p-0 h-auto text-xs mt-2 text-blue-600 hover:text-blue-800 self-start">
+                                                    {t('common.readMore')}
+                                                </Button>
+                                            </DialogTrigger>
+                                            <DialogContent>
+                                                <DialogHeader>
+                                                    <DialogTitle>{volunteer.name}</DialogTitle>
+                                                    <DialogDescription>
+                                                        {t(`districts.${volunteer.district}`)}
+                                                    </DialogDescription>
+                                                </DialogHeader>
+                                                <div className="py-4 max-h-[60vh] overflow-y-auto space-y-4">
+                                                    <div>
+                                                        <h4 className="text-sm font-semibold mb-1">Skills</h4>
+                                                        <p className="text-sm whitespace-pre-wrap">{volunteer.skills}</p>
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="text-sm font-semibold mb-1">Availability</h4>
+                                                        <p className="text-sm whitespace-pre-wrap">{volunteer.availability}</p>
+                                                    </div>
+                                                    {volunteer.additionalDetails && (
+                                                         <div>
+                                                            <h4 className="text-sm font-semibold mb-1">Additional Details</h4>
+                                                            <p className="text-sm whitespace-pre-wrap">{volunteer.additionalDetails}</p>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <DialogFooter>
+                                                    <DialogClose asChild>
+                                                        <Button type="button">Close</Button>
+                                                    </DialogClose>
+                                                </DialogFooter>
+                                            </DialogContent>
+                                        </Dialog>
+                                    )}
                                 </CardContent>
                             </Card>
                         ))}

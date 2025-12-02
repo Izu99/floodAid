@@ -26,7 +26,8 @@ export const helpRequestApi = {
         page: number = 1,
         limit: number = 15,
         district?: string,
-        status: string = 'pending'
+        status?: string,
+        category?: string
     ): Promise<{
         data: HelpRequest[];
         currentPage: number;
@@ -36,8 +37,15 @@ export const helpRequestApi = {
         const params = new URLSearchParams({
             page: page.toString(),
             limit: limit.toString(),
-            status,
         });
+
+        if (status) {
+            params.append('status', status);
+        }
+
+        if (category) {
+            params.append('category', category);
+        }
 
         if (district) {
             params.append('district', district);
@@ -50,5 +58,23 @@ export const helpRequestApi = {
         }
 
         return response.json();
+    },
+
+    // Update help request status
+    async updateHelpRequestStatus(id: string, status: 'pending' | 'in-progress' | 'fulfilled'): Promise<HelpRequest> {
+        const response = await fetch(`${API_URL}/api/help-requests/${id}/status`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ status }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to update help request status');
+        }
+
+        const result = await response.json();
+        return result.data;
     },
 };

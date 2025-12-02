@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Package, Heart, MapPin, Languages, GraduationCap, Truck, HandHeart } from 'lucide-react';
+import { Package, Heart, MapPin, GraduationCap, Truck, HandHeart } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { tokenStorage } from '@/lib/auth-api';
 import { useLanguage } from '@/lib/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Header } from '@/components/layout/header';
+import { LanguageSwitcher } from '@/components/common/language-switcher';
 
 export default function Home() {
   const router = useRouter();
@@ -37,35 +38,12 @@ export default function Home() {
             <p className="text-xl text-gray-600 mb-6">{t('main.subtitle')}</p>
 
             {/* Language Switcher */}
-            <div className="flex justify-center items-center gap-2">
-              <Languages className="w-5 h-5 text-gray-500" />
-              <div className="flex gap-1 bg-white rounded-lg shadow-sm p-1 border border-gray-200">
-                <Button
-                  variant={language === 'si' ? 'default' : 'ghost'}
-                  size="sm"
-                  onClick={() => setLanguage('si')}
-                  className={language === 'si' ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'hover:bg-gray-100'}
-                >
-                  සිං
-                </Button>
-                <Button
-                  variant={language === 'en' ? 'default' : 'ghost'}
-                  size="sm"
-                  onClick={() => setLanguage('en')}
-                  className={language === 'en' ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'hover:bg-gray-100'}
-                >
-                  EN
-                </Button>
-                <Button
-                  variant={language === 'ta' ? 'default' : 'ghost'}
-                  size="sm"
-                  onClick={() => setLanguage('ta')}
-                  className={language === 'ta' ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'hover:bg-gray-100'}
-                >
-                  த
-                </Button>
-              </div>
-            </div>
+            <LanguageSwitcher />
+          </div>
+
+          {/* Disclaimer Section */}
+          <div className="max-w-4xl mx-auto mb-10 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
+              <p className="text-sm text-yellow-800">{t('main.disclaimer')}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">

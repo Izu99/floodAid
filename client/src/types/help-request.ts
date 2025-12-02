@@ -5,6 +5,7 @@ export interface HelpRequest {
     additionalPhone?: string;
     district: string;
     address: string;
+    category: 'food' | 'education' | 'shelter' | 'transport' | 'other';
     helpDescription: string;
     additionalDetails?: string;
     status: 'pending' | 'in-progress' | 'fulfilled';
@@ -18,6 +19,7 @@ export interface CreateHelpRequestDto {
     additionalPhone?: string;
     district: string;
     address: string;
+    category: 'food' | 'education' | 'shelter' | 'transport' | 'other';
     helpDescription: string;
     additionalDetails?: string;
 }

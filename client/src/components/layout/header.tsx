@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { LogOut } from 'lucide-react';
 import { tokenStorage } from '@/lib/auth-api';
 import { useLanguage } from '@/lib/LanguageContext';
+import { LanguageSwitcher } from '@/components/common/language-switcher';
 
 export function Header() {
     const router = useRouter();
@@ -47,10 +48,11 @@ export function Header() {
         <div className="sticky top-0 z-50 bg-white border-b shadow-sm">
             <div className="max-w-7xl mx-auto px-4 py-3">
                 <div className="flex items-center justify-between">
-                    <div className="cursor-pointer" onClick={() => router.push('/')}>
-                        <h1 className="text-xl font-bold text-blue-600">HelpLK.org</h1>
+                    <div className="cursor-pointer flex items-center" onClick={() => router.push('/')}>
+                        <img src="/logo.png" alt="HelpLK" className="h-12 w-auto" />
                     </div>
                     <div className="flex items-center gap-3">
+                        <LanguageSwitcher />
                         {user && (
                             <>
                                 {user.role === 'collector' && (
