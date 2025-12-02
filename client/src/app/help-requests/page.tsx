@@ -175,7 +175,7 @@ export default function HelpRequestsPage() {
                                 <HelpRequestCard 
                                     key={request._id} 
                                     request={request}
-                                    onStatusUpdate={() => loadRequests(selectedDistrict, page)}
+                                    onStatusUpdate={() => loadRequests(selectedDistrict, selectedCategory, page)}
                                 />
                             ))}
                         </div>
@@ -185,7 +185,7 @@ export default function HelpRequestsPage() {
                             <div className="flex justify-center items-center gap-4 mt-8">
                                 <Button
                                     variant="outline"
-                                    onClick={() => loadRequests(selectedDistrict, page - 1)}
+                                    onClick={() => loadRequests(selectedDistrict, selectedCategory, page - 1)}
                                     disabled={page === 1}
                                 >
                                     <ChevronLeft className="w-4 h-4 mr-1" /> {t('common.previous')}
@@ -195,7 +195,7 @@ export default function HelpRequestsPage() {
                                 </span>
                                 <Button
                                     variant="outline"
-                                    onClick={() => loadRequests(selectedDistrict, page + 1)}
+                                    onClick={() => loadRequests(selectedDistrict, selectedCategory, page + 1)}
                                     disabled={page === totalPages}
                                 >
                                     {t('common.next')} <ChevronRight className="w-4 h-4 ml-1" />
