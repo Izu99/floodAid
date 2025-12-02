@@ -119,8 +119,14 @@ export default function EducationPage() {
                         <ArrowLeft className="w-5 h-5" />
                         <span className="text-sm sm:text-base">{t('common.back')}</span>
                     </button>
-                    <h1 className="text-3xl sm:text-4xl font-bold mb-2">
+                    <h1 className="text-3xl sm:text-4xl font-bold mb-2 flex items-center gap-2">
                         {activeTab === 'requests' ? t('education.requestsTabTitle') : t('education.offersTabTitle')}
+                        {!isLoading && activeTab === 'requests' && helpRequests.length > 0 && (
+                            <span className="text-xl font-semibold px-3 py-1 bg-blue-600 rounded-full">{helpRequests.length}</span>
+                        )}
+                        {!isLoading && activeTab === 'offers' && educationRequests.length > 0 && (
+                            <span className="text-xl font-semibold px-3 py-1 bg-blue-600 rounded-full">{educationRequests.length}</span>
+                        )}
                     </h1>
                     <p className="text-blue-100 text-base sm:text-lg">
                         {activeTab === 'requests' ? t('education.tabs.requests') : t('education.tabs.offers')}

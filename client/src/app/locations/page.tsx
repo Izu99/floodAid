@@ -92,7 +92,12 @@ export default function LocationsPage() {
                         <ArrowLeft className="w-5 h-5" />
                         <span className="text-sm sm:text-base">{t('common.back')}</span>
                     </button>
-                    <h1 className="text-3xl sm:text-4xl font-bold mb-2">{t('locations.title')}</h1>
+                    <h1 className="text-3xl sm:text-4xl font-bold mb-2 flex items-center gap-2">
+                        {t('locations.title')}
+                        {!isLoading && locations.length > 0 && (
+                            <span className="text-xl font-semibold px-3 py-1 bg-sky-600 rounded-full">{locations.length}</span>
+                        )}
+                    </h1>
                     <p className="text-sky-100 text-base sm:text-lg">{t('locations.subtitle')}</p>
                 </div>
             </div>

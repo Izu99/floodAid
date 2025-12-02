@@ -94,7 +94,12 @@ export default function VolunteeringPage() {
                         <ArrowLeft className="w-5 h-5" />
                         <span className="text-sm sm:text-base">{t('common.back')}</span>
                     </button>
-                    <h1 className="text-3xl sm:text-4xl font-bold mb-2">{t('volunteer.title')}</h1>
+                    <h1 className="text-3xl sm:text-4xl font-bold mb-2 flex items-center gap-2">
+                        {t('volunteer.title')}
+                        {!isLoading && registrations.length > 0 && (
+                            <span className="text-xl font-semibold px-3 py-1 bg-orange-600 rounded-full">{registrations.length}</span>
+                        )}
+                    </h1>
                     <p className="text-orange-100 text-base sm:text-lg">{t('volunteer.subtitle')}</p>
                 </div>
             </div>

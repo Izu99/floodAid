@@ -323,7 +323,22 @@
             "itemsRequired": "Items are required"
         },
         "updating": "Updating...",
-        "readMore": "Read More"
+        "readMore": "Read More",
+        "noAdditionalDetails": "No additional details provided"
+    },
+    "feedback": {
+        "button": "Feedback",
+        "title": "Share Your Feedback",
+        "description": "Help us improve this website. Your suggestions are valuable.",
+        "nameLabel": "Your Name (Optional)",
+        "namePlaceholder": "Enter your name",
+        "thoughtsLabel": "What do you think about this site?",
+        "thoughtsPlaceholder": "Share your thoughts...",
+        "improvementsLabel": "What should we improve?",
+        "improvementsPlaceholder": "Your suggestions...",
+        "submitButton": "Submit Feedback",
+        "successMessage": "Thank you for your feedback!",
+        "errorMessage": "Failed to submit. Please try again."
     },
     "districts": {
         "all": "Search from all districts",

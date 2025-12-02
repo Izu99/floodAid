@@ -31,7 +31,7 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
     const [localStatus, setLocalStatus] = useState(request.status);
 
     const handleMarkAsFulfilled = async () => {
-        if (!confirm('උදව් ලැබුණු බව සලකුණු කරන්නද?')) {
+        if (!confirm(t('helpRequests.card.confirmStatusUpdate'))) {
             return;
         }
 
@@ -46,7 +46,7 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
             }
         } catch (error) {
             console.error('Error updating status:', error);
-            alert('දෝෂයක් ඇතිවිය. නැවත උත්සාහ කරන්න.');
+            alert(t('common.error'));
         } finally {
             setIsUpdating(false);
         }
@@ -55,25 +55,25 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
     const isFulfilled = localStatus === 'fulfilled';
     const hasLongText = (request.name.length > 50 || request.helpDescription.length > 100 || (request.additionalDetails && request.additionalDetails.length > 50));
 
+    const helpDescriptionLineClamp = request.additionalDetails ? 'line-clamp-2' : 'line-clamp-3';
+
     return (
-        <Card className={`overflow-hidden flex flex-col h-full transition-all ${
-            isFulfilled 
-                ? 'opacity-70 bg-gray-50 border-gray-200' 
+        <Card className={`overflow-hidden flex flex-col h-full transition-all ${isFulfilled
+                ? 'opacity-70 bg-gray-50 border-gray-200'
                 : 'hover:shadow-md'
-        }`}>
+            }`}>
             <CardHeader className="pb-2">
                 <div className="flex justify-between items-start gap-2">
                     <CardTitle className={`text-lg leading-tight ${isFulfilled ? 'text-gray-500' : ''}`}>
                         {request.name}
                     </CardTitle>
-                    <Badge 
-                        variant={isFulfilled ? 'secondary' : 'default'} 
-                        className={isFulfilled 
-                            ? 'bg-green-500 text-white hover:bg-green-500 font-bold shadow-sm' 
+                    <Badge
+                        className={isFulfilled
+                            ? 'bg-green-500 text-white hover:bg-green-500 font-bold shadow-sm'
                             : 'bg-red-500 text-white hover:bg-red-500 font-bold'
                         }
                     >
-                        {isFulfilled ? '✓ උදව් ලබුණා' : 'උදව් අවශ්‍යයි'}
+                        {isFulfilled ? t('helpRequests.status.fulfilled') : t('helpRequests.status.pending')}
                     </Badge>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-600 mt-1">
@@ -99,7 +99,7 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
 
                     <div>
                         <p className="text-xs font-semibold text-gray-500 uppercase mb-1">{t('helpRequests.card.helpNeeded')}</p>
-                        <p className="text-sm text-gray-900 line-clamp-2">{request.helpDescription}</p>
+                        <p className={`text-sm text-gray-900 ${helpDescriptionLineClamp}`}>{request.helpDescription}</p>
                     </div>
 
                     {request.additionalDetails && (
@@ -127,7 +127,7 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
                                         <p className="text-sm whitespace-pre-wrap">{request.helpDescription}</p>
                                     </div>
                                     {request.additionalDetails && (
-                                         <div>
+                                        <div>
                                             <h4 className="text-sm font-semibold mb-1">Additional Details</h4>
                                             <p className="text-sm whitespace-pre-wrap">{request.additionalDetails}</p>
                                         </div>
@@ -158,47 +158,42 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
                     </div>
                 )}
 
-                <div className={`-mx-6 -mb-6 p-4 border-t mt-auto ${
-                    isFulfilled 
-                        ? 'bg-gray-100 border-gray-200' 
+                <div className={`-mx-6 -mb-6 p-4 border-t mt-auto ${isFulfilled
+                        ? 'bg-gray-100 border-gray-200'
                         : 'bg-red-50 border-red-100'
-                }`}>
-                    <p className={`text-[10px] font-bold mb-3 uppercase tracking-wider ${
-                        isFulfilled ? 'text-gray-500' : 'text-red-600'
                     }`}>
-                        සම්බන්ධතා
+                    <p className={`text-[10px] font-bold mb-3 uppercase tracking-wider ${isFulfilled ? 'text-gray-500' : 'text-red-600'
+                        }`}>
+                        {t('helpRequests.card.contactInfo')}
                     </p>
                     <div className="flex items-start gap-3">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold border-2 border-white shadow-sm shrink-0 ${
-                            isFulfilled 
-                                ? 'bg-gray-300 text-gray-600' 
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold border-2 border-white shadow-sm shrink-0 ${isFulfilled
+                                ? 'bg-gray-300 text-gray-600'
                                 : 'bg-red-200 text-red-700'
-                        }`}>
+                            }`}>
                             <User size={20} />
                         </div>
                         <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-2 mb-0.5">
                                 <span className="font-semibold text-gray-900 text-sm truncate">{request.name}</span>
                             </div>
-                            <a 
-                                href={`tel:${request.phone}`} 
-                                className={`flex items-center gap-1.5 text-sm transition-colors w-fit ${
-                                    isFulfilled 
-                                        ? 'text-gray-500 hover:text-gray-700' 
+                            <a
+                                href={`tel:${request.phone}`}
+                                className={`flex items-center gap-1.5 text-sm transition-colors w-fit ${isFulfilled
+                                        ? 'text-gray-500 hover:text-gray-700'
                                         : 'text-gray-600 hover:text-red-600'
-                                }`}
+                                    }`}
                             >
                                 <Phone size={12} />
                                 <span className="font-mono">{request.phone}</span>
                             </a>
                             {request.additionalPhone && (
-                                <a 
-                                    href={`tel:${request.additionalPhone}`} 
-                                    className={`flex items-center gap-1.5 text-sm transition-colors w-fit mt-1 ${
-                                        isFulfilled 
-                                            ? 'text-gray-500 hover:text-gray-700' 
+                                <a
+                                    href={`tel:${request.additionalPhone}`}
+                                    className={`flex items-center gap-1.5 text-sm transition-colors w-fit mt-1 ${isFulfilled
+                                            ? 'text-gray-500 hover:text-gray-700'
                                             : 'text-gray-600 hover:text-red-600'
-                                    }`}
+                                        }`}
                                 >
                                     <Phone size={12} />
                                     <span className="font-mono">{request.additionalPhone}</span>
@@ -206,13 +201,12 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
                             )}
                         </div>
                     </div>
-                    <div className={`mt-3 pt-2 border-t flex items-center gap-1.5 text-[10px] ${
-                        isFulfilled 
-                            ? 'border-gray-200 text-gray-400' 
+                    <div className={`mt-3 pt-2 border-t flex items-center gap-1.5 text-[10px] ${isFulfilled
+                            ? 'border-gray-200 text-gray-400'
                             : 'border-red-100 text-red-400'
-                    }`}>
+                        }`}>
                         <Calendar size={10} />
-                        <span>ඉල්ලීම් කළ දිනය {new Date(request.createdAt).toLocaleDateString('si-LK')}</span>
+                        <span>{t('helpRequests.card.requestedOn')} {new Date(request.createdAt).toLocaleDateString(t('common.dateLocale'))}</span>
                     </div>
                 </div>
             </CardContent>

@@ -48,7 +48,7 @@ export function DonationCard({ donation, userRole, onCollect }: DonationCardProp
             </div>
             <CardHeader className="pb-2">
                 <div className="flex justify-between items-start gap-2">
-                    <CardTitle className="text-lg leading-tight line-clamp-1">{donation.items}</CardTitle>
+                    <CardTitle className="text-base leading-tight line-clamp-1">{donation.items}</CardTitle>
                     {donation.status === 'collected' && (
                         <Badge variant="secondary" className="bg-green-100 text-green-800 hover:bg-green-100">
                             {t('donations.card.collected')}

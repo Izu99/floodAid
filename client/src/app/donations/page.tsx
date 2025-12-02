@@ -107,7 +107,12 @@ export default function DonationsPage() {
                         <ArrowLeft className="w-5 h-5" />
                         <span className="text-sm sm:text-base">{t('common.back')}</span>
                     </button>
-                    <h1 className="text-3xl sm:text-4xl font-bold mb-2">{t('donations.title')}</h1>
+                    <h1 className="text-3xl sm:text-4xl font-bold mb-2 flex items-center gap-2">
+                        {t('donations.title')}
+                        {!isLoading && donations.length > 0 && (
+                            <span className="text-xl font-semibold px-3 py-1 bg-emerald-600 rounded-full">{donations.length}</span>
+                        )}
+                    </h1>
                     <p className="text-emerald-100 text-base sm:text-lg">{t('donations.subtitle')}</p>
                 </div>
             </div>

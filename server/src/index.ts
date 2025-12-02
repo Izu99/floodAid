@@ -11,6 +11,7 @@ import imageRoutes from './routes/images';
 import educationRoutes from './routes/education';
 import transportRoutes from './routes/transport';
 import volunteerRoutes from './routes/volunteering';
+import feedbackRoutes from './routes/feedback';
 
 dotenv.config();
 
@@ -91,6 +92,9 @@ app.use('/api/volunteering', volunteerRoutes);
 
 // Image routes
 app.use('/api/images', imageRoutes);
+
+// Feedback routes
+app.use('/api/feedback', feedbackRoutes);
 
 // Error handling middleware
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {

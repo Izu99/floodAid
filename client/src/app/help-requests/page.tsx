@@ -106,7 +106,12 @@ export default function HelpRequestsPage() {
                         <ChevronLeft size={20} />
                         <span>{language === 'si' ? 'ආපසු' : 'Back'}</span>
                     </button>
-                    <h1 className="text-3xl font-bold mb-2">{t('helpRequests.title')}</h1>
+                    <h1 className="text-3xl font-bold mb-2 flex items-center gap-2">
+                        {t('helpRequests.title')}
+                        {!loading && requests.length > 0 && (
+                            <span className="text-xl font-semibold px-3 py-1 bg-red-600 rounded-full">{requests.length}</span>
+                        )}
+                    </h1>
                     <p className="text-white/90">{t('helpRequests.subtitle')}</p>
                 </div>
             </div>

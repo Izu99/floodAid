@@ -94,7 +94,12 @@ export default function TransportPage() {
                         <ArrowLeft className="w-5 h-5" />
                         <span className="text-sm sm:text-base">{t('common.back')}</span>
                     </button>
-                    <h1 className="text-3xl sm:text-4xl font-bold mb-2">{t('transport.title')}</h1>
+                    <h1 className="text-3xl sm:text-4xl font-bold mb-2 flex items-center gap-2">
+                        {t('transport.title')}
+                        {!isLoading && offers.length > 0 && (
+                            <span className="text-xl font-semibold px-3 py-1 bg-amber-600 rounded-full">{offers.length}</span>
+                        )}
+                    </h1>
                     <p className="text-amber-100 text-base sm:text-lg">{t('transport.subtitle')}</p>
                 </div>
             </div>
