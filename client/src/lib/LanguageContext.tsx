@@ -11,7 +11,7 @@ type Language = 'si' | 'en' | 'ta';
 interface LanguageContextType {
     language: Language;
     setLanguage: (lang: Language) => void;
-    t: (key: string) => string;
+    t: (key: string, params?: Record<string, string>) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -34,7 +34,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         safeStorage.setItem('floodaid-language', lang);
     };
 
-    const t = (key: string): string => {
+    const t = (key: string, params?: Record<string, string>): string => {
         const keys = key.split('.');
         let value: any = translations[language];
 
@@ -42,7 +42,15 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
             value = value?.[k];
         }
 
-        return value || key;
+        let result = value || key;
+
+        if (params && typeof result === 'string') {
+            Object.entries(params).forEach(([paramKey, paramValue]) => {
+                result = result.replace(`{{${paramKey}}}`, paramValue);
+            });
+        }
+
+        return result;
     };
 
     return (

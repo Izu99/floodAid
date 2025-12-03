@@ -39,19 +39,6 @@
             "fulfilled": "Help Received"
         },
         "card": {
-            "address": "Address",
-            "helpNeeded": "Help Needed",
-            "additionalDetails": "Additional Details",
-            "contactInfo": "Contact",
-            "requestedOn": "Requested on",
-            "statusInstruction": "Please update the status of this request after you receive help. This helps avoid wasting others' time.",
-            "markAsReceived": "Mark as Help Received",
-            "confirmStatusUpdate": "Have you received help? If yes, this request will be marked as \"Help Received\" and will no longer be shown to others."
-        },
-        "form": {
-            "title": "Add Help Request",
-            "description": "Provide information about help needed for you or someone you know",
-            "name": "Name",
             "namePlaceholder": "Your name",
             "district": "District",
             "districtPlaceholder": "Select",
@@ -95,7 +82,13 @@
             "description": "Description",
             "donor": "Donor",
             "donatedOn": "Donated on",
-            "collectButton": "Collect"
+            "collectButton": "Collect",
+            "dialog": {
+                "title": "Donation Details",
+                "itemsToDonate": "Items to Donate",
+                "address": "Address",
+                "description": "Description"
+            }
         },
         "form": {
             "title": "Add Donation",

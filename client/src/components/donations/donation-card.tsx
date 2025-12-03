@@ -42,13 +42,13 @@ export function DonationCard({ donation, userRole, onCollect }: DonationCardProp
         <Card className="overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow pt-0">
 
             {/* Donation Card Label */}
-            <div className="bg-emerald-100 text-emerald-800 text-xs font-bold px-4 py-1 border-b border-emerald-200 tracking-wider uppercase flex items-center gap-2">
+            <div className="bg-emerald-100 text-emerald-800 text-xs font-bold px-4 py-2 border-b border-emerald-200 tracking-wider uppercase flex items-center gap-2">
                 <Package size={14} className="mr-1" />
                 {t('donations.card.label')}
             </div>
             <CardHeader className="pb-2">
                 <div className="flex justify-between items-start gap-2">
-                    <CardTitle className="text-base leading-tight line-clamp-1">{donation.items}</CardTitle>
+                    <CardTitle className="text-base leading-tight line-clamp-2">{donation.items}</CardTitle>
                     {donation.status === 'collected' && (
                         <Badge variant="secondary" className="bg-green-100 text-green-800 hover:bg-green-100">
                             {t('donations.card.collected')}
@@ -84,30 +84,30 @@ export function DonationCard({ donation, userRole, onCollect }: DonationCardProp
                             </DialogTrigger>
                             <DialogContent>
                                 <DialogHeader>
-                                    <DialogTitle>Donation Details</DialogTitle>
+                                    <DialogTitle>{t('donations.card.dialog.title')}</DialogTitle>
                                     <DialogDescription>
                                         {districtLabel}
                                     </DialogDescription>
                                 </DialogHeader>
                                 <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto">
                                     <div>
-                                        <h4 className="text-sm font-semibold mb-1">Items to Donate</h4>
+                                        <h4 className="text-sm font-semibold mb-1">{t('donations.card.dialog.itemsToDonate')}</h4>
                                         <p className="text-sm whitespace-pre-wrap">{donation.items}</p>
                                     </div>
                                     <div>
-                                        <h4 className="text-sm font-semibold mb-1">Address</h4>
+                                        <h4 className="text-sm font-semibold mb-1">{t('donations.card.dialog.address')}</h4>
                                         <p className="text-sm whitespace-pre-wrap">{donation.address}</p>
                                     </div>
                                     {donation.description && (
                                          <div>
-                                            <h4 className="text-sm font-semibold mb-1">Description</h4>
+                                            <h4 className="text-sm font-semibold mb-1">{t('donations.card.dialog.description')}</h4>
                                             <p className="text-sm whitespace-pre-wrap">{donation.description}</p>
                                         </div>
                                     )}
                                 </div>
                                 <DialogFooter>
                                     <DialogClose asChild>
-                                        <Button type="button">Close</Button>
+                                        <Button type="button">{t('common.close')}</Button>
                                     </DialogClose>
                                 </DialogFooter>
                             </DialogContent>

@@ -59,8 +59,8 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
 
     return (
         <Card className={`overflow-hidden flex flex-col h-full transition-all ${isFulfilled
-                ? 'opacity-70 bg-gray-50 border-gray-200'
-                : 'hover:shadow-md'
+            ? 'opacity-70 bg-gray-50 border-gray-200'
+            : 'hover:shadow-md'
             }`}>
             <CardHeader className="pb-2">
                 <div className="flex justify-between items-start gap-2">
@@ -116,26 +116,26 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
                             </DialogTrigger>
                             <DialogContent>
                                 <DialogHeader>
-                                    <DialogTitle>{request.name}'s Request</DialogTitle>
+                                    <DialogTitle>{t('helpRequests.card.dialogTitle', { name: request.name })}</DialogTitle>
                                     <DialogDescription>
                                         {getDistrictLabel(request.district)}
                                     </DialogDescription>
                                 </DialogHeader>
                                 <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto">
                                     <div>
-                                        <h4 className="text-sm font-semibold mb-1">Help Needed</h4>
+                                        <h4 className="text-sm font-semibold mb-1">{t('helpRequests.card.helpNeeded')}</h4>
                                         <p className="text-sm whitespace-pre-wrap">{request.helpDescription}</p>
                                     </div>
                                     {request.additionalDetails && (
                                         <div>
-                                            <h4 className="text-sm font-semibold mb-1">Additional Details</h4>
+                                            <h4 className="text-sm font-semibold mb-1">{t('helpRequests.card.additionalDetails')}</h4>
                                             <p className="text-sm whitespace-pre-wrap">{request.additionalDetails}</p>
                                         </div>
                                     )}
                                 </div>
                                 <DialogFooter>
                                     <DialogClose asChild>
-                                        <Button type="button">Close</Button>
+                                        <Button type="button">{t('common.close')}</Button>
                                     </DialogClose>
                                 </DialogFooter>
                             </DialogContent>
@@ -159,8 +159,8 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
                 )}
 
                 <div className={`-mx-6 -mb-6 p-4 border-t mt-auto ${isFulfilled
-                        ? 'bg-gray-100 border-gray-200'
-                        : 'bg-red-50 border-red-100'
+                    ? 'bg-gray-100 border-gray-200'
+                    : 'bg-red-50 border-red-100'
                     }`}>
                     <p className={`text-[10px] font-bold mb-3 uppercase tracking-wider ${isFulfilled ? 'text-gray-500' : 'text-red-600'
                         }`}>
@@ -168,8 +168,8 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
                     </p>
                     <div className="flex items-start gap-3">
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold border-2 border-white shadow-sm shrink-0 ${isFulfilled
-                                ? 'bg-gray-300 text-gray-600'
-                                : 'bg-red-200 text-red-700'
+                            ? 'bg-gray-300 text-gray-600'
+                            : 'bg-red-200 text-red-700'
                             }`}>
                             <User size={20} />
                         </div>
@@ -180,8 +180,8 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
                             <a
                                 href={`tel:${request.phone}`}
                                 className={`flex items-center gap-1.5 text-sm transition-colors w-fit ${isFulfilled
-                                        ? 'text-gray-500 hover:text-gray-700'
-                                        : 'text-gray-600 hover:text-red-600'
+                                    ? 'text-gray-500 hover:text-gray-700'
+                                    : 'text-gray-600 hover:text-red-600'
                                     }`}
                             >
                                 <Phone size={12} />
@@ -191,8 +191,8 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
                                 <a
                                     href={`tel:${request.additionalPhone}`}
                                     className={`flex items-center gap-1.5 text-sm transition-colors w-fit mt-1 ${isFulfilled
-                                            ? 'text-gray-500 hover:text-gray-700'
-                                            : 'text-gray-600 hover:text-red-600'
+                                        ? 'text-gray-500 hover:text-gray-700'
+                                        : 'text-gray-600 hover:text-red-600'
                                         }`}
                                 >
                                     <Phone size={12} />
@@ -202,8 +202,8 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
                         </div>
                     </div>
                     <div className={`mt-3 pt-2 border-t flex items-center gap-1.5 text-[10px] ${isFulfilled
-                            ? 'border-gray-200 text-gray-400'
-                            : 'border-red-100 text-red-400'
+                        ? 'border-gray-200 text-gray-400'
+                        : 'border-red-100 text-red-400'
                         }`}>
                         <Calendar size={10} />
                         <span>{t('helpRequests.card.requestedOn')} {new Date(request.createdAt).toLocaleDateString(t('common.dateLocale'))}</span>
