@@ -1,364 +1,374 @@
 {
-    "main": {
-        "title": "Sri Lanka Aid Registry",
-        "subtitle": "Relief for flood-affected communities",
-        "helpCard": {
-            "title": "Need Help?",
-            "description": "Request assistance if you or someone you know needs help"
-        },
-        "donationsCard": {
-            "title": "Give Help",
-            "description": "Provide assistance to those affected by the disaster"
-        },
-        "locationsCard": {
-            "title": "Collection Points",
-            "description": "Find nearest centers where you can drop off donations"
-        },
-        "educationCard": {
-            "title": "Education",
-            "description": "Request educational supplies and support"
-        },
-        "transportCard": {
-            "title": "Transport",
-            "description": "Find or offer transport facilities"
-        },
-        "volunteerCard": {
-            "title": "Volunteering",
-            "description": "Register as a volunteer or find volunteers"
-        },
-        "disclaimer": "⚠️ Safety Reminder: All information submitted here is publicly visible. Please do not send money to any phone number or individual; this platform does not handle financial transactions and such requests may be fraudulent."
-    },
-    "helpRequests": {
-        "title": "Help Requests",
-        "subtitle": "Request assistance if you or someone you know needs help. After receiving help, please mark your request as 'Help Received' to help others.",
-        "noRequests": "No help requests available",
-        "firstRequest": "Add the first request",
-        "loading": "Loading information...",
-        "status": {
-            "pending": "Help Needed",
-            "fulfilled": "Help Received"
-        },
-        "card": {
-            "namePlaceholder": "Your name",
-            "district": "District",
-            "districtPlaceholder": "Select",
-            "address": "Address",
-            "addressPlaceholder": "Full address",
-            "phone": "Phone Number",
-            "phonePlaceholder": "07x xxxxxxx",
-            "additionalPhone": "Additional Phone (Optional)",
-            "helpDescription": "Help Needed",
-            "helpDescriptionPlaceholder": "E.g.: Food, drinking water, medicine",
-            "additionalDetails": "Additional Details (Optional)",
-            "additionalDetailsPlaceholder": "Additional information",
-            "note": "Note: Your contact information will be visible to potential donors.",
-            "category": "What kind of help do you need?",
-            "categoryPlaceholder": "Select"
-        },
-        "categories": {
-            "all": "Filter by all categories",
-            "food": "Food",
-            "education": "Education",
-            "shelter": "Shelter",
-            "transport": "Transport",
-            "other": "Other"
-        }
-    },
-    "donations": {
-        "title": "Donations",
-        "subtitle": "Relief for flood-affected communities",
-        "instructions": "If you need these items, please call the donor's phone number",
-        "noDonations": "No donations available",
-        "loading": "Loading information...",
-        "status": {
-            "available": "Available",
-            "collected": "Collected"
-        },
-        "card": {
-            "label": "Available Donation",
-            "badge": "Donation",
-            "collected": "Collected",
-            "address": "Address",
-            "description": "Description",
-            "donor": "Donor",
-            "donatedOn": "Donated on",
-            "collectButton": "Collect",
-            "dialog": {
-                "title": "Donation Details",
-                "itemsToDonate": "Items to Donate",
-                "address": "Address",
-                "description": "Description"
-            }
-        },
-        "form": {
-            "title": "Add Donation",
-            "description": "Description (Optional)",
-            "name": "Name",
-            "namePlaceholder": "Your name",
-            "district": "District",
-            "districtPlaceholder": "Select",
-            "address": "Address",
-            "addressPlaceholder": "Location where donations can be collected",
-            "phone": "Phone Number",
-            "phonePlaceholder": "07x xxxxxxx",
-            "items": "Items to Donate",
-            "itemsPlaceholder": "E.g.: Rice, milk powder, water",
-            "descriptionPlaceholder": "Additional information about items"
-        }
-    },
-    "locations": {
-        "title": "Aid Collection Points",
-        "subtitle": "Collection centers where you can drop off donations",
-        "noLocations": "No locations available",
-        "loading": "Loading information...",
-        "card": {
-            "address": "Address",
-            "time": "Time",
-            "description": "Description",
-            "viewPhotos": "View collection point photos",
-            "collectorInfo": "Collector Information (Connect Safely)",
-            "addedOn": "Location added on"
-        },
-        "form": {
-            "title": "Add Collection Point",
-            "description": "Description",
-            "name": "Location Name",
-            "namePlaceholder": "E.g.: Colombo Relief Center",
-            "district": "District",
-            "districtPlaceholder": "Select",
-            "address": "Address",
-            "addressPlaceholder": "Full address",
-            "startDate": "Start Date",
-            "endDate": "End Date",
-            "startTime": "Start Time",
-            "endTime": "End Time",
-            "contactSection": "Contact Details",
-            "contactName": "Contact Person Name",
-            "contactNamePlaceholder": "Name",
-            "contactPhone": "Phone Number",
-            "contactPhonePlaceholder": "07x xxxxxxx",
-            "additionalPhone": "Additional Phone (Optional)",
-            "descriptionPlaceholder": "Specify items collected at this location (e.g.: food, clothing, medicine)",
-            "contactImage": "Contact Person Photo (Required)",
-            "contactImageNote": "This photo will be displayed on the card",
-            "locationImages": "Collection Point Photos (Minimum 1 - Maximum 5)"
-        }
-    },
-    "education": {
-        "title": "Education Support",
-        "subtitle": "Offer educational supplies and support for affected students",
-        "requestsTabTitle": "Education Requests",
-        "offersTabTitle": "Education Offers",
-        "addRequest": "Add Request",
-        "noRequests": "No education requests available",
-        "noRequestsDesc": "Be the first to add an education request",
-        "addFirstRequest": "Add First Request",
-        "offers": {
-            "noOffers": "No education offers available",
-            "noOffersDesc": "Be the first to add an education offer",
-            "addFirstOffer": "Add First Offer"
-        },
-        "card": {
-            "badge": "Education",
-            "needs": "Needs"
-        },
-        "form": {
-            "title": "Add Education Request",
-            "description": "Request educational supplies for students",
-            "name": "Student/Parent Name",
-            "namePlaceholder": "Name",
-            "contactPerson": "Contact Person",
-            "contactPersonPlaceholder": "Name of contact person",
-            "phone": "Phone Number",
-            "phonePlaceholder": "07x xxxxxxx",
-            "district": "District",
-            "districtPlaceholder": "Select",
-            "address": "Address",
-            "addressPlaceholder": "Full address",
-            "school": "School (Optional)",
-            "schoolPlaceholder": "Name of the school",
-            "grade": "Grade (Optional)",
-            "gradePlaceholder": "E.g.: Grade 5",
-            "needs": "Needs",
-            "needsPlaceholder": "E.g.: Books, uniforms, shoes",
-            "additionalDetails": "Additional Details (Optional)",
-            "additionalDetailsPlaceholder": "Any other information",
-            "validation": {
-                "nameRequired": "Name is required",
-                "contactPersonRequired": "Contact person is required",
-                "phoneRequired": "Phone number is required",
-                "districtRequired": "District is required",
-                "addressRequired": "Address is required",
-                "needsRequired": "Needs are required"
-            }
-        },
-        "tabs": {
-            "requests": "Request educational supplies and support",
-            "offers": "Offer educational supplies and support"
-        }
-    },
-    "transport": {
-        "title": "Transport Facilities",
-        "subtitle": "Find or offer transport facilities for relief efforts",
-        "addOffer": "Add Transport",
-        "noOffers": "No transport offers available",
-        "noOffersDesc": "Be the first to add a transport offer",
-        "addFirstOffer": "Add First Offer",
-        "status": {
-            "available": "Available",
-            "busy": "Busy"
-        },
-        "card": {
-            "capacity": "Capacity",
-            "availability": "Availability"
-        },
-        "form": {
-            "title": "Add Transport Offer",
-            "description": "Offer transport facilities for relief distribution",
-            "name": "Contact Name",
-            "namePlaceholder": "Your name",
-            "phone": "Phone Number",
-            "phonePlaceholder": "07x xxxxxxx",
-            "district": "District",
-            "districtPlaceholder": "Select",
-            "location": "Current Location",
-            "locationPlaceholder": "City/Area",
-            "vehicleType": "Vehicle Type",
-            "vehicleTypePlaceholder": "E.g.: Lorry, Van, Three-wheeler",
-            "capacity": "Capacity",
-            "capacityPlaceholder": "E.g.: 1000kg or 5 people",
-            "availability": "Availability",
-            "availabilityPlaceholder": "E.g.: Available 24/7 or specific times",
-            "additionalDetails": "Additional Details (Optional)",
-            "additionalDetailsPlaceholder": "Any other information",
-            "validation": {
-                "nameRequired": "Name is required",
-                "phoneRequired": "Phone number is required",
-                "districtRequired": "District is required",
-                "locationRequired": "Location is required",
-                "vehicleTypeRequired": "Vehicle type is required",
-                "capacityRequired": "Capacity is required",
-                "availabilityRequired": "Availability is required"
-            }
-        }
-    },
-    "volunteer": {
-        "title": "Volunteering Services",
-        "subtitle": "Register as a volunteer to help affected communities",
-        "addVolunteer": "Register as Volunteer",
-        "noVolunteers": "No volunteers available",
-        "noVolunteersDesc": "Be the first to register as a volunteer",
-        "addFirstVolunteer": "Register Now",
-        "status": {
-            "available": "Available",
-            "busy": "Busy"
-        },
-        "card": {
-            "skills": "Skills",
-            "availability": "Availability"
-        },
-        "form": {
-            "title": "Volunteer Registration",
-            "description": "Register to help with relief efforts",
-            "name": "Name",
-            "namePlaceholder": "Your name",
-            "phone": "Phone Number",
-            "phonePlaceholder": "07x xxxxxxx",
-            "district": "District",
-            "districtPlaceholder": "Select",
-            "skills": "Skills / Capabilities",
-            "skillsPlaceholder": "E.g.: First aid, cooking, driving, labor",
-            "availability": "Availability",
-            "availabilityPlaceholder": "E.g.: Weekends, Full time",
-            "additionalDetails": "Additional Details (Optional)",
-            "additionalDetailsPlaceholder": "Any other information",
-            "validation": {
-                "nameRequired": "Name is required",
-                "phoneRequired": "Phone number is required",
-                "districtRequired": "District is required",
-                "skillsRequired": "Skills are required",
-                "availabilityRequired": "Availability is required"
-            }
-        }
-    },
-    "common": {
-        "back": "Back",
-        "submit": "Submit",
-        "cancel": "Cancel",
-        "add": "Add",
-        "edit": "Edit",
-        "delete": "Delete",
-        "save": "Save",
-        "search": "Search",
-        "filter": "Filter",
-        "all": "All",
-        "page": "Page",
-        "previous": "Previous",
-        "next": "Next",
-        "loading": "Loading...",
-        "error": "An error occurred",
-        "success": "Success",
-        "close": "Close",
-        "select": "Select",
-        "note": "Note",
-        "dateLocale": "en-US",
-        "filterByDistrict": "Select by District",
-        "filterByCategory": "Select by Help Type",
-        "clearFilters": "Clear",
-        "selectDistrict": "Select District",
-        "validation": {
-            "required": "This field is required",
-            "nameRequired": "Name is required",
-            "phoneRequired": "Phone number is required",
-            "districtRequired": "District is required",
-            "addressRequired": "Address is required",
-            "helpDescriptionRequired": "To get help, add details correctly",
-            "itemsRequired": "Items are required"
-        },
-        "updating": "Updating...",
-        "readMore": "Read More",
-        "noAdditionalDetails": "No additional details provided"
-    },
-    "feedback": {
-        "button": "Feedback",
-        "title": "Share Your Feedback",
-        "description": "Help us improve this website. Your suggestions are valuable.",
-        "nameLabel": "Your Name (Optional)",
-        "namePlaceholder": "Enter your name",
-        "thoughtsLabel": "What do you think about this site?",
-        "thoughtsPlaceholder": "Share your thoughts...",
-        "improvementsLabel": "What should we improve?",
-        "improvementsPlaceholder": "Your suggestions...",
-        "submitButton": "Submit Feedback",
-        "successMessage": "Thank you for your feedback!",
-        "errorMessage": "Failed to submit. Please try again."
-    },
-    "districts": {
-        "all": "Search from all districts",
-        "colombo": "Colombo",
-        "gampaha": "Gampaha",
-        "kalutara": "Kalutara",
-        "kandy": "Kandy",
-        "matale": "Matale",
-        "nuwara_eliya": "Nuwara Eliya",
-        "galle": "Galle",
-        "matara": "Matara",
-        "hambantota": "Hambantota",
-        "jaffna": "Jaffna",
-        "kilinochchi": "Kilinochchi",
-        "mannar": "Mannar",
-        "vavuniya": "Vavuniya",
-        "mullaitivu": "Mullaitivu",
-        "batticaloa": "Batticaloa",
-        "ampara": "Ampara",
-        "trincomalee": "Trincomalee",
-        "kurunegala": "Kurunegala",
-        "puttalam": "Puttalam",
-        "anuradhapura": "Anuradhapura",
-        "polonnaruwa": "Polonnaruwa",
-        "badulla": "Badulla",
-        "monaragala": "Monaragala",
-        "ratnapura": "Ratnapura",
-        "kegalle": "Kegalle"
-    }
+    "main":  {
+                 "title":  "Sri Lanka Aid Registry",
+                 "subtitle":  "Relief for flood-affected communities",
+                 "helpCard":  {
+                                  "title":  "Need Help?",
+                                  "description":  "Request assistance if you or someone you know needs help"
+                              },
+                 "donationsCard":  {
+                                       "title":  "Give Help",
+                                       "description":  "Provide assistance to those affected by the disaster"
+                                   },
+                 "locationsCard":  {
+                                       "title":  "Collection Points",
+                                       "description":  "Find nearest centers where you can drop off donations"
+                                   },
+                 "educationCard":  {
+                                       "title":  "Education",
+                                       "description":  "Request educational supplies and support"
+                                   },
+                 "transportCard":  {
+                                       "title":  "Transport",
+                                       "description":  "Find or offer transport facilities"
+                                   },
+                 "volunteerCard":  {
+                                       "title":  "Volunteering",
+                                       "description":  "Register as a volunteer or find volunteers"
+                                   },
+                 "disclaimer":  "⚠️ Safety Reminder: All information submitted here is publicly visible. Please do not send money to any phone number or individual; this platform does not handle financial transactions and such requests may be fraudulent."
+             },
+    "helpRequests":  {
+                         "title":  "Help Requests",
+                         "subtitle":  "Request assistance if you or someone you know needs help. After receiving help, please mark your request as \u0027Help Received\u0027 to help others.",
+                         "noRequests":  "No help requests available",
+                         "firstRequest":  "Add the first request",
+                         "loading":  "Loading information...",
+                         "status":  {
+                                        "pending":  "Help Needed",
+                                        "fulfilled":  "Help Received"
+                                    },
+                         "card":  {
+                                      "namePlaceholder":  "Your name",
+                                      "district":  "District",
+                                      "districtPlaceholder":  "Select",
+                                      "address":  "Address",
+                                      "addressPlaceholder":  "Full address",
+                                      "phone":  "Phone Number",
+                                      "phonePlaceholder":  "07x xxxxxxx",
+                                      "additionalPhone":  "Additional Phone (Optional)",
+                                      "helpDescription":  "Help Needed",
+                                      "helpDescriptionPlaceholder":  "E.g.: Food, drinking water, medicine",
+                                      "additionalDetails":  "Additional Details (Optional)",
+                                      "additionalDetailsPlaceholder":  "Additional information",
+                                      "note":  "Note: Your contact information will be visible to potential donors.",
+                                      "category":  "What kind of help do you need?",
+                                      "categoryPlaceholder":  "Select",
+                                      "dialogTitle":  "{{name}}\u0027s Request"
+                                  },
+                         "categories":  {
+                                            "all":  "Filter by all categories",
+                                            "food":  "Food",
+                                            "education":  "Education",
+                                            "shelter":  "Shelter",
+                                            "transport":  "Transport",
+                                            "other":  "Other"
+                                        }
+                     },
+    "donations":  {
+                      "title":  "Donations",
+                      "subtitle":  "Relief for flood-affected communities",
+                      "instructions":  "If you need these items, please call the donor\u0027s phone number",
+                      "noDonations":  "No donations available",
+                      "loading":  "Loading information...",
+                      "status":  {
+                                     "available":  "Available",
+                                     "collected":  "Collected"
+                                 },
+                      "card":  {
+                                   "label":  "Available Donation",
+                                   "badge":  "Donation",
+                                   "collected":  "Collected",
+                                   "address":  "Address",
+                                   "description":  "Description",
+                                   "donor":  "Donor",
+                                   "donatedOn":  "Donated on",
+                                   "collectButton":  "Collect",
+                                   "dialog":  {
+                                                  "title":  "Donation Details",
+                                                  "itemsToDonate":  "Items to Donate",
+                                                  "address":  "Address",
+                                                  "description":  "Description"
+                                              }
+                               },
+                      "form":  {
+                                   "title":  "Add Donation",
+                                   "description":  "Description (Optional)",
+                                   "name":  "Name",
+                                   "namePlaceholder":  "Your name",
+                                   "district":  "District",
+                                   "districtPlaceholder":  "Select",
+                                   "address":  "Address",
+                                   "addressPlaceholder":  "Location where donations can be collected",
+                                   "phone":  "Phone Number",
+                                   "phonePlaceholder":  "07x xxxxxxx",
+                                   "items":  "Items to Donate",
+                                   "itemsPlaceholder":  "E.g.: Rice, milk powder, water",
+                                   "descriptionPlaceholder":  "Additional information about items"
+                               }
+                  },
+    "locations":  {
+                      "title":  "Aid Collection Points",
+                      "subtitle":  "Collection centers where you can drop off donations",
+                      "noLocations":  "No locations available",
+                      "loading":  "Loading information...",
+                      "card":  {
+                                   "address":  "Address",
+                                   "time":  "Time",
+                                   "description":  "Description",
+                                   "viewPhotos":  "View collection point photos",
+                                   "collectorInfo":  "Collector Information (Connect Safely)",
+                                   "addedOn":  "Location added on"
+                               },
+                      "form":  {
+                                   "title":  "Add Collection Point",
+                                   "description":  "Description",
+                                   "name":  "Location Name",
+                                   "namePlaceholder":  "E.g.: Colombo Relief Center",
+                                   "district":  "District",
+                                   "districtPlaceholder":  "Select",
+                                   "address":  "Address",
+                                   "addressPlaceholder":  "Full address",
+                                   "startDate":  "Start Date",
+                                   "endDate":  "End Date",
+                                   "startTime":  "Start Time",
+                                   "endTime":  "End Time",
+                                   "contactSection":  "Contact Details",
+                                   "contactName":  "Contact Person Name",
+                                   "contactNamePlaceholder":  "Name",
+                                   "contactPhone":  "Phone Number",
+                                   "contactPhonePlaceholder":  "07x xxxxxxx",
+                                   "additionalPhone":  "Additional Phone (Optional)",
+                                   "descriptionPlaceholder":  "Specify items collected at this location (e.g.: food, clothing, medicine)",
+                                   "contactImage":  "Contact Person Photo (Required)",
+                                   "contactImageNote":  "This photo will be displayed on the card",
+                                   "locationImages":  "Collection Point Photos (Minimum 1 - Maximum 5)"
+                               }
+                  },
+    "education":  {
+                      "title":  "Education Support",
+                      "subtitle":  "Offer educational supplies and support for affected students",
+                      "requestsTabTitle":  "Education Requests",
+                      "offersTabTitle":  "Education Offers",
+                      "addRequest":  "Add Request",
+                      "noRequests":  "No education requests available",
+                      "noRequestsDesc":  "Be the first to add an education request",
+                      "addFirstRequest":  "Add First Request",
+                      "offers":  {
+                                     "noOffers":  "No education offers available",
+                                     "noOffersDesc":  "Be the first to add an education offer",
+                                     "addFirstOffer":  "Add First Offer"
+                                 },
+                      "card":  {
+                                   "badge":  "Education",
+                                   "needs":  "Needs",
+                                   "dialog":  {
+                                                  "needs":  "Needs",
+                                                  "title":  "{{name}}"
+                                              }
+                               },
+                      "form":  {
+                                   "title":  "Add Education Request",
+                                   "description":  "Request educational supplies for students",
+                                   "name":  "Student/Parent Name",
+                                   "namePlaceholder":  "Name",
+                                   "contactPerson":  "Contact Person",
+                                   "contactPersonPlaceholder":  "Name of contact person",
+                                   "phone":  "Phone Number",
+                                   "phonePlaceholder":  "07x xxxxxxx",
+                                   "district":  "District",
+                                   "districtPlaceholder":  "Select",
+                                   "address":  "Address",
+                                   "addressPlaceholder":  "Full address",
+                                   "school":  "School (Optional)",
+                                   "schoolPlaceholder":  "Name of the school",
+                                   "grade":  "Grade (Optional)",
+                                   "gradePlaceholder":  "E.g.: Grade 5",
+                                   "needs":  "Needs",
+                                   "needsPlaceholder":  "E.g.: Books, uniforms, shoes",
+                                   "additionalDetails":  "Additional Details (Optional)",
+                                   "additionalDetailsPlaceholder":  "Any other information",
+                                   "validation":  {
+                                                      "nameRequired":  "Name is required",
+                                                      "contactPersonRequired":  "Contact person is required",
+                                                      "phoneRequired":  "Phone number is required",
+                                                      "districtRequired":  "District is required",
+                                                      "addressRequired":  "Address is required",
+                                                      "needsRequired":  "Needs are required"
+                                                  }
+                               },
+                      "tabs":  {
+                                   "requests":  "Request educational supplies and support",
+                                   "offers":  "Offer educational supplies and support"
+                               }
+                  },
+    "transport":  {
+                      "title":  "Transport Facilities",
+                      "subtitle":  "Find or offer transport facilities for relief efforts",
+                      "addOffer":  "Add Transport",
+                      "noOffers":  "No transport offers available",
+                      "noOffersDesc":  "Be the first to add a transport offer",
+                      "addFirstOffer":  "Add First Offer",
+                      "status":  {
+                                     "available":  "Available",
+                                     "busy":  "Busy"
+                                 },
+                      "card":  {
+                                   "capacity":  "Capacity",
+                                   "availability":  "Availability",
+                                   "dialog":  {
+                                                  "capacity":  "Capacity",
+                                                  "title":  "{{vehicleType}}",
+                                                  "availability":  "Availability"
+                                              }
+                               },
+                      "form":  {
+                                   "title":  "Add Transport Offer",
+                                   "description":  "Offer transport facilities for relief distribution",
+                                   "name":  "Contact Name",
+                                   "namePlaceholder":  "Your name",
+                                   "phone":  "Phone Number",
+                                   "phonePlaceholder":  "07x xxxxxxx",
+                                   "district":  "District",
+                                   "districtPlaceholder":  "Select",
+                                   "location":  "Current Location",
+                                   "locationPlaceholder":  "City/Area",
+                                   "vehicleType":  "Vehicle Type",
+                                   "vehicleTypePlaceholder":  "E.g.: Lorry, Van, Three-wheeler",
+                                   "capacity":  "Capacity",
+                                   "capacityPlaceholder":  "E.g.: 1000kg or 5 people",
+                                   "availability":  "Availability",
+                                   "availabilityPlaceholder":  "E.g.: Available 24/7 or specific times",
+                                   "additionalDetails":  "Additional Details (Optional)",
+                                   "additionalDetailsPlaceholder":  "Any other information",
+                                   "validation":  {
+                                                      "nameRequired":  "Name is required",
+                                                      "phoneRequired":  "Phone number is required",
+                                                      "districtRequired":  "District is required",
+                                                      "locationRequired":  "Location is required",
+                                                      "vehicleTypeRequired":  "Vehicle type is required",
+                                                      "capacityRequired":  "Capacity is required",
+                                                      "availabilityRequired":  "Availability is required"
+                                                  }
+                               }
+                  },
+    "volunteer":  {
+                      "title":  "Volunteering Services",
+                      "subtitle":  "Register as a volunteer to help affected communities",
+                      "addVolunteer":  "Register as Volunteer",
+                      "noVolunteers":  "No volunteers available",
+                      "noVolunteersDesc":  "Be the first to register as a volunteer",
+                      "addFirstVolunteer":  "Register Now",
+                      "status":  {
+                                     "available":  "Available",
+                                     "busy":  "Busy"
+                                 },
+                      "card":  {
+                                   "skills":  "Skills",
+                                   "availability":  "Availability"
+                               },
+                      "form":  {
+                                   "title":  "Volunteer Registration",
+                                   "description":  "Register to help with relief efforts",
+                                   "name":  "Name",
+                                   "namePlaceholder":  "Your name",
+                                   "phone":  "Phone Number",
+                                   "phonePlaceholder":  "07x xxxxxxx",
+                                   "district":  "District",
+                                   "districtPlaceholder":  "Select",
+                                   "skills":  "Skills / Capabilities",
+                                   "skillsPlaceholder":  "E.g.: First aid, cooking, driving, labor",
+                                   "availability":  "Availability",
+                                   "availabilityPlaceholder":  "E.g.: Weekends, Full time",
+                                   "additionalDetails":  "Additional Details (Optional)",
+                                   "additionalDetailsPlaceholder":  "Any other information",
+                                   "validation":  {
+                                                      "nameRequired":  "Name is required",
+                                                      "phoneRequired":  "Phone number is required",
+                                                      "districtRequired":  "District is required",
+                                                      "skillsRequired":  "Skills are required",
+                                                      "availabilityRequired":  "Availability is required"
+                                                  }
+                               }
+                  },
+    "common":  {
+                   "back":  "Back",
+                   "submit":  "Submit",
+                   "cancel":  "Cancel",
+                   "add":  "Add",
+                   "edit":  "Edit",
+                   "delete":  "Delete",
+                   "save":  "Save",
+                   "search":  "Search",
+                   "filter":  "Filter",
+                   "all":  "All",
+                   "page":  "Page",
+                   "previous":  "Previous",
+                   "next":  "Next",
+                   "loading":  "Loading...",
+                   "error":  "An error occurred",
+                   "success":  "Success",
+                   "close":  "Close",
+                   "select":  "Select",
+                   "note":  "Note",
+                   "dateLocale":  "en-US",
+                   "filterByDistrict":  "Select by District",
+                   "filterByCategory":  "Select by Help Type",
+                   "clearFilters":  "Clear",
+                   "selectDistrict":  "Select District",
+                   "validation":  {
+                                      "required":  "This field is required",
+                                      "nameRequired":  "Name is required",
+                                      "phoneRequired":  "Phone number is required",
+                                      "districtRequired":  "District is required",
+                                      "addressRequired":  "Address is required",
+                                      "helpDescriptionRequired":  "To get help, add details correctly",
+                                      "itemsRequired":  "Items are required"
+                                  },
+                   "updating":  "Updating...",
+                   "readMore":  "Read More",
+                   "noAdditionalDetails":  "No additional details provided"
+               },
+    "feedback":  {
+                     "button":  "Feedback",
+                     "title":  "Share Your Feedback",
+                     "description":  "Help us improve this website. Your suggestions are valuable.",
+                     "nameLabel":  "Your Name (Optional)",
+                     "namePlaceholder":  "Enter your name",
+                     "thoughtsLabel":  "What do you think about this site?",
+                     "thoughtsPlaceholder":  "Share your thoughts...",
+                     "improvementsLabel":  "What should we improve?",
+                     "improvementsPlaceholder":  "Your suggestions...",
+                     "submitButton":  "Submit Feedback",
+                     "successMessage":  "Thank you for your feedback!",
+                     "errorMessage":  "Failed to submit. Please try again."
+                 },
+    "districts":  {
+                      "all":  "Search from all districts",
+                      "colombo":  "Colombo",
+                      "gampaha":  "Gampaha",
+                      "kalutara":  "Kalutara",
+                      "kandy":  "Kandy",
+                      "matale":  "Matale",
+                      "nuwara_eliya":  "Nuwara Eliya",
+                      "galle":  "Galle",
+                      "matara":  "Matara",
+                      "hambantota":  "Hambantota",
+                      "jaffna":  "Jaffna",
+                      "kilinochchi":  "Kilinochchi",
+                      "mannar":  "Mannar",
+                      "vavuniya":  "Vavuniya",
+                      "mullaitivu":  "Mullaitivu",
+                      "batticaloa":  "Batticaloa",
+                      "ampara":  "Ampara",
+                      "trincomalee":  "Trincomalee",
+                      "kurunegala":  "Kurunegala",
+                      "puttalam":  "Puttalam",
+                      "anuradhapura":  "Anuradhapura",
+                      "polonnaruwa":  "Polonnaruwa",
+                      "badulla":  "Badulla",
+                      "monaragala":  "Monaragala",
+                      "ratnapura":  "Ratnapura",
+                      "kegalle":  "Kegalle"
+                  }
 }

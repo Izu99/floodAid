@@ -270,18 +270,18 @@ export default function EducationPage() {
                                                         </DialogTrigger>
                                                         <DialogContent>
                                                             <DialogHeader>
-                                                                <DialogTitle>{request.name}</DialogTitle>
+                                                                <DialogTitle>{t('education.card.dialog.title', { name: request.name })}</DialogTitle>
                                                                 <DialogDescription>
                                                                     {request.address}, {t(`districts.${request.district}`)}
                                                                 </DialogDescription>
                                                             </DialogHeader>
                                                             <div className="py-4 max-h-[60vh] overflow-y-auto">
-                                                                <h4 className="text-sm font-semibold mb-1">Needs</h4>
+                                                                <h4 className="text-sm font-semibold mb-1">{t('education.card.dialog.needs')}</h4>
                                                                 <p className="text-sm whitespace-pre-wrap">{request.needs}</p>
                                                             </div>
                                                             <DialogFooter>
                                                                 <DialogClose asChild>
-                                                                    <Button type="button">Close</Button>
+                                                                    <Button type="button">{t('common.close')}</Button>
                                                                 </DialogClose>
                                                             </DialogFooter>
                                                         </DialogContent>

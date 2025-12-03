@@ -1,364 +1,374 @@
 {
-    "main": {
-        "title": "இலங்கை உதவிப் பதிவு",
-        "subtitle": "வெள்ளத்தால் பாதிக்கப்பட்ட சமூகங்களுக்கான நிவாரணம்",
-        "helpCard": {
-            "title": "உதவி தேவையா?",
-            "description": "உங்களுக்கோ அல்லது உங்களுக்குத் தெரிந்தவருக்கோ உதவி தேவைப்பட்டால் கோரிக்கை விடுங்கள்"
-        },
-        "donationsCard": {
-            "title": "உதவி வழங்குதல்",
-            "description": "பாதிக்கப்பட்டவர்களுக்கு உதவி வழங்குங்கள்"
-        },
-        "locationsCard": {
-            "title": "சேகரிப்பு நிலையங்கள்",
-            "description": "நன்கொடைகளை ஒப்படைக்கக்கூடிய அருகிலுள்ள நிலையங்களைக் கண்டறியவும்"
-        },
-        "educationCard": {
-            "title": "கல்வி",
-            "description": "கல்விப் பொருட்கள் மற்றும் ஆதரவைக் கோருங்கள்"
-        },
-        "transportCard": {
-            "title": "போக்குவரத்து வசதிகள்",
-            "description": "போக்குவரத்து வசதிகளைக் கண்டறியவும் அல்லது வழங்கவும்"
-        },
-        "volunteerCard": {
-            "title": "தன்னார்வ சேவைகள்",
-            "description": "தன்னார்வலராகப் பதிவு செய்யுங்கள் அல்லது தன்னார்வலர்களைக் கண்டறியவும்"
-        },
-        "disclaimer": "⚠️ பாதுகாப்பு நினைவூட்டல்: இங்கு சமர்ப்பிக்கப்பட்ட அனைத்து தகவல்களும் பொதுவில் தெரியும். தயவுசெய்து எந்த தொலைபேசி எண்ணிற்கோ அல்லது தனிநபருக்கோ பணம் அனுப்ப வேண்டாம்; இந்த தளம் நிதி பரிவர்த்தனைகளை கையாளாது மற்றும் அத்தகைய கோரிக்கைகள் மோசடியானதாக இருக்கலாம்."
-    },
-    "helpRequests": {
-        "title": "உதவிக் கோரிக்கைகள்",
-        "subtitle": "உங்களுக்கோ அல்லது உங்களுக்குத் தெரிந்தவருக்கோ உதவி தேவைப்பட்டால் கோரிக்கை விடுங்கள். உதவி பெற்ற பிறகு, மற்றவர்களுக்கு உதவ உங்கள் கோரிக்கையை 'உதவி கிடைத்தது' எனக் குறிக்கவும்.",
-        "noRequests": "உதவிக் கோரிக்கைகள் இல்லை",
-        "firstRequest": "முதல் கோரிக்கையைச் சேர்க்கவும்",
-        "loading": "தகவல் ஏற்றப்படுகிறது...",
-        "status": {
-            "pending": "உதவி தேவை",
-            "fulfilled": "உதவி பெற்றது"
-        },
-        "card": {
-            "namePlaceholder": "உங்கள் பெயர்",
-            "district": "மாவட்டம்",
-            "districtPlaceholder": "தெரிவு செய்க",
-            "address": "முகவரி",
-            "addressPlaceholder": "முழு முகவரி",
-            "phone": "தொலைபேசி எண்",
-            "phonePlaceholder": "07x xxxxxxx",
-            "additionalPhone": "கூடுதல் தொலைபேசி (விருப்பத்தேர்வு)",
-            "helpDescription": "தேவையான உதவி",
-            "helpDescriptionPlaceholder": "உதா: உணவு, குடிநீர், மருந்து",
-            "additionalDetails": "கூடுதல் விவரங்கள் (விருப்பத்தேர்வு)",
-            "additionalDetailsPlaceholder": "கூடுதல் தகவல்",
-            "note": "குறிப்பு: உங்கள் தொடர்புத் தகவல் நன்கொடையாளர்களுக்குக் காட்டப்படும்.",
-            "category": "உங்களுக்கு என்ன வகையான உதவி தேவை?",
-            "categoryPlaceholder": "தெரிவு செய்க"
-        },
-        "categories": {
-            "all": "அனைத்து வகைகளிலிருந்தும் வடிகட்டவும்",
-            "food": "உணவு",
-            "education": "கல்வி",
-            "shelter": "தங்குமிடம்",
-            "transport": "போக்குவரத்து",
-            "other": "மற்றவை"
-        }
-    },
-    "donations": {
-        "title": "நன்கொடைகள்",
-        "subtitle": "வெள்ளத்தால் பாதிக்கப்பட்ட சமூகங்களுக்கான நிவாரணம்",
-        "instructions": "உங்களுக்கு இந்தப் பொருட்கள் தேவைப்பட்டால், நன்கொடையாளரின் தொலைபேசி எண்ணை அழைக்கவும்",
-        "noDonations": "நன்கொடைகள் இல்லை",
-        "loading": "தகவல் ஏற்றப்படுகிறது...",
-        "status": {
-            "available": "கிடைக்கக்கூடியது",
-            "collected": "சேகரிக்கப்பட்டது"
-        },
-        "card": {
-            "label": "கிடைக்கக்கூடிய நன்கொடை",
-            "badge": "நன்கொடை",
-            "collected": "சேகரிக்கப்பட்டது",
-            "address": "முகவரி",
-            "description": "விளக்கம்",
-            "donor": "நன்கொடையாளர்",
-            "donatedOn": "நன்கொடை அளிக்கப்பட்ட தேதி",
-            "collectButton": "சேகரிக்கவும்",
-            "dialog": {
-                "title": "நன்கொடை விவரங்கள்",
-                "itemsToDonate": "நன்கொடை பொருட்கள்",
-                "address": "முகவரி",
-                "description": "விளக்கம்"
-            }
-        },
-        "form": {
-            "title": "நன்கொடையைச் சேர்க்கவும்",
-            "description": "விளக்கம் (விருப்பத்தேர்வு)",
-            "name": "பெயர்",
-            "namePlaceholder": "உங்கள் பெயர்",
-            "district": "மாவட்டம்",
-            "districtPlaceholder": "தெரிவு செய்க",
-            "address": "முகவரி",
-            "addressPlaceholder": "நன்கொடைகளைச் சேகரிக்கக்கூடிய இடம்",
-            "phone": "தொலைபேசி எண்",
-            "phonePlaceholder": "07x xxxxxxx",
-            "items": "நன்கொடை பொருட்கள்",
-            "itemsPlaceholder": "உதா: அரிசி, பால் மா, தண்ணீர்",
-            "descriptionPlaceholder": "பொருட்கள் பற்றிய கூடுதல் தகவல்"
-        }
-    },
-    "locations": {
-        "title": "உதவி சேகரிப்பு நிலையங்கள்",
-        "subtitle": "நன்கொடைகளை ஒப்படைக்கக்கூடிய சேகரிப்பு நிலையங்கள்",
-        "noLocations": "நிலையங்கள் இல்லை",
-        "loading": "தகவல் ஏற்றப்படுகிறது...",
-        "card": {
-            "address": "முகவரி",
-            "time": "நேரம்",
-            "description": "விளக்கம்",
-            "viewPhotos": "நிலையத்தின் புகைப்படங்களைப் பார்க்கவும்",
-            "collectorInfo": "சேகரிப்பாளர் தகவல் (பாதுகாப்பாகத் தொடர்பு கொள்ளுங்கள்)",
-            "addedOn": "சேர்க்கப்பட்ட தேதி"
-        },
-        "form": {
-            "title": "சேகரிப்பு நிலையத்தைச் சேர்க்கவும்",
-            "description": "விளக்கம்",
-            "name": "நிலையத்தின் பெயர்",
-            "namePlaceholder": "உதா: கொழும்பு நிவாரண மையம்",
-            "district": "மாவட்டம்",
-            "districtPlaceholder": "தெரிவு செய்க",
-            "address": "முகவரி",
-            "addressPlaceholder": "முழு முகவரி",
-            "startDate": "தொடக்கத் தேதி",
-            "endDate": "முடிவுத் தேதி",
-            "startTime": "தொடக்க நேரம்",
-            "endTime": "முடிவு நேரம்",
-            "contactSection": "தொடர்பு விவரங்கள்",
-            "contactName": "தொடர்பு கொள்ள வேண்டியவரின் பெயர்",
-            "contactNamePlaceholder": "பெயர்",
-            "contactPhone": "தொலைபேசி எண்",
-            "contactPhonePlaceholder": "07x xxxxxxx",
-            "additionalPhone": "கூடுதல் தொலைபேசி (விருப்பத்தேர்வு)",
-            "descriptionPlaceholder": "இங்கு சேகரிக்கப்படும் பொருட்களைக் குறிப்பிடவும் (உதா: உணவு, உடை, மருந்து)",
-            "contactImage": "தொடர்பு கொள்ள வேண்டியவரின் புகைப்படம் (கட்டாயம்)",
-            "contactImageNote": "இந்தப் புகைப்படம் அட்டையில் காட்டப்படும்",
-            "locationImages": "நிலையத்தின் புகைப்படங்கள் (குறைந்தது 1 - அதிகபட்சம் 5)"
-        }
-    },
-    "education": {
-        "title": "கல்வி உதவி",
-        "subtitle": "பாதிக்கப்பட்ட மாணவர்களுக்கான கல்விப் பொருட்கள் மற்றும் ஆதரவை வழங்கவும்",
-        "requestsTabTitle": "கல்விக் கோரிக்கைகள்",
-        "offersTabTitle": "கல்விச் சலுகைகள்",
-        "addRequest": "கோரிக்கையைச் சேர்க்கவும்",
-        "noRequests": "கல்விக் கோரிக்கைகள் இல்லை",
-        "noRequestsDesc": "முதல் கல்விக் கோரிக்கையைச் சேர்க்கவும்",
-        "addFirstRequest": "முதல் கோரிக்கையைச் சேர்க்கவும்",
-        "offers": {
-            "noOffers": "கல்விச் சலுகைகள் இல்லை",
-            "noOffersDesc": "முதல் கல்விச் சலுகையைச் சேர்க்கவும்",
-            "addFirstOffer": "முதல் சலுகையைச் சேர்க்கவும்"
-        },
-        "card": {
-            "badge": "கல்வி",
-            "needs": "தேவைகள்"
-        },
-        "form": {
-            "title": "கல்விக் கோரிக்கையைச் சேர்க்கவும்",
-            "description": "மாணவர்களுக்கான கல்விப் பொருட்களைக் கோருங்கள்",
-            "name": "மாணவர்/பெற்றோர் பெயர்",
-            "namePlaceholder": "பெயர்",
-            "contactPerson": "தொடர்பு நபர்",
-            "contactPersonPlaceholder": "தொடர்பு கொள்ள வேண்டியவரின் பெயர்",
-            "phone": "தொலைபேசி எண்",
-            "phonePlaceholder": "07x xxxxxxx",
-            "district": "மாவட்டம்",
-            "districtPlaceholder": "தெரிவு செய்க",
-            "address": "முகவரி",
-            "addressPlaceholder": "முழு முகவரி",
-            "school": "பாடசாலை (விருப்பத்தேர்வு)",
-            "schoolPlaceholder": "பாடசாலையின் பெயர்",
-            "grade": "தரம் (விருப்பத்தேர்வு)",
-            "gradePlaceholder": "உதா: தரம் 5",
-            "needs": "தேவைகள்",
-            "needsPlaceholder": "உதா: புத்தகங்கள், சீருடைகள், காலணிகள்",
-            "additionalDetails": "கூடுதல் விவரங்கள் (விருப்பத்தேர்வு)",
-            "additionalDetailsPlaceholder": "வேறு தகவல்கள்",
-            "validation": {
-                "nameRequired": "பெயர் அவசியம்",
-                "contactPersonRequired": "தொடர்பு நபர் அவசியம்",
-                "phoneRequired": "தொலைபேசி எண் அவசியம்",
-                "districtRequired": "மாவட்டம் அவசியம்",
-                "addressRequired": "முகவரி அவசியம்",
-                "needsRequired": "தேவைகள் அவசியம்"
-            }
-        },
-        "tabs": {
-            "requests": "கல்விப் பொருட்கள் மற்றும் ஆதரவைக் கோருங்கள்",
-            "offers": "கல்விப் பொருட்கள் மற்றும் ஆதரவை வழங்கவும்"
-        }
-    },
-    "transport": {
-        "title": "போக்குவரத்து வசதிகள்",
-        "subtitle": "நிவாரணப் பணிகளுக்கான போக்குவரத்து வசதிகளைக் கண்டறியவும் அல்லது வழங்கவும்",
-        "addOffer": "போக்குவரத்தைச் சேர்க்கவும்",
-        "noOffers": "போக்குவரத்து வசதிகள் இல்லை",
-        "noOffersDesc": "முதல் போக்குவரத்து வசதியைச் சேர்க்கவும்",
-        "addFirstOffer": "முதல் வசதியைச் சேர்க்கவும்",
-        "status": {
-            "available": "கிடைக்கக்கூடியது",
-            "busy": "பிஸியாக உள்ளது"
-        },
-        "card": {
-            "capacity": "கொள்ளளவு",
-            "availability": "கிடைக்கும் நேரங்கள்"
-        },
-        "form": {
-            "title": "போக்குவரத்து வசதியைச் சேர்க்கவும்",
-            "description": "நிவாரண விநியோகத்திற்கான போக்குவரத்து வசதிகளை வழங்கவும்",
-            "name": "தொடர்பு பெயர்",
-            "namePlaceholder": "உங்கள் பெயர்",
-            "phone": "தொலைபேசி எண்",
-            "phonePlaceholder": "07x xxxxxxx",
-            "district": "மாவட்டம்",
-            "districtPlaceholder": "தெரிவு செய்க",
-            "location": "தற்போதைய இடம்",
-            "locationPlaceholder": "நகரம்/பகுதி",
-            "vehicleType": "வாகன வகை",
-            "vehicleTypePlaceholder": "உதா: லொறி, வேன், முச்சக்கர வண்டி",
-            "capacity": "கொள்ளளவு",
-            "capacityPlaceholder": "உதா: 1000kg அல்லது 5 பேர்",
-            "availability": "கிடைக்கும் நேரங்கள்",
-            "availabilityPlaceholder": "உதா: 24 மணிநேரமும் அல்லது குறிப்பிட்ட நேரங்கள்",
-            "additionalDetails": "கூடுதல் விவரங்கள் (விருப்பத்தேர்வு)",
-            "additionalDetailsPlaceholder": "வேறு தகவல்கள்",
-            "validation": {
-                "nameRequired": "பெயர் அவசியம்",
-                "phoneRequired": "தொலைபேசி எண் அவசியம்",
-                "districtRequired": "மாவட்டம் அவசியம்",
-                "locationRequired": "இடம் அவசியம்",
-                "vehicleTypeRequired": "வாகன வகை அவசியம்",
-                "capacityRequired": "கொள்ளளவு அவசியம்",
-                "availabilityRequired": "கிடைக்கும் நேரங்கள் அவசியம்"
-            }
-        }
-    },
-    "volunteer": {
-        "title": "தன்னார்வ சேவைகள்",
-        "subtitle": "பாதிக்கப்பட்ட சமூகங்களுக்கு உதவ தன்னார்வலராகப் பதிவு செய்யுங்கள்",
-        "addVolunteer": "தன்னார்வலராகப் பதிவு செய்யுங்கள்",
-        "noVolunteers": "தன்னார்வலர்கள் இல்லை",
-        "noVolunteersDesc": "முதல் தன்னார்வலராகப் பதிவு செய்யுங்கள்",
-        "addFirstVolunteer": "இப்போதே பதிவு செய்யுங்கள்",
-        "status": {
-            "available": "கிடைக்கக்கூடியது",
-            "busy": "பிஸியாக உள்ளது"
-        },
-        "card": {
-            "skills": "திறன்கள்",
-            "availability": "கிடைக்கும் நேரங்கள்"
-        },
-        "form": {
-            "title": "தன்னார்வலர் பதிவு",
-            "description": "நிவாரணப் பணிகளுக்கு உதவ பதிவு செய்யுங்கள்",
-            "name": "பெயர்",
-            "namePlaceholder": "உங்கள் பெயர்",
-            "phone": "தொலைபேசி எண்",
-            "phonePlaceholder": "07x xxxxxxx",
-            "district": "மாவட்டம்",
-            "districtPlaceholder": "தெரிவு செய்க",
-            "skills": "திறன்கள் / ஆற்றல்கள்",
-            "skillsPlaceholder": "உதா: முதலுதவி, சமையல், வாகனம் ஓட்டுதல், உடல் உழைப்பு",
-            "availability": "கிடைக்கும் நேரங்கள்",
-            "availabilityPlaceholder": "உதா: வார இறுதி நாட்கள், முழு நேரம்",
-            "additionalDetails": "கூடுதல் விவரங்கள் (விருப்பத்தேர்வு)",
-            "additionalDetailsPlaceholder": "வேறு தகவல்கள்",
-            "validation": {
-                "nameRequired": "பெயர் அவசியம்",
-                "phoneRequired": "தொலைபேசி எண் அவசியம்",
-                "districtRequired": "மாவட்டம் அவசியம்",
-                "skillsRequired": "திறன்கள் அவசியம்",
-                "availabilityRequired": "கிடைக்கும் நேரங்கள் அவசியம்"
-            }
-        }
-    },
-    "common": {
-        "back": "பின்",
-        "submit": "சமர்ப்பிக்கவும்",
-        "cancel": "ரத்துசெய்",
-        "add": "சேர்",
-        "edit": "திருத்து",
-        "delete": "அழி",
-        "save": "சேமி",
-        "search": "தேடு",
-        "filter": "வடிகட்டு",
-        "all": "அனைத்தும்",
-        "page": "பக்கம்",
-        "previous": "முந்தைய",
-        "next": "அடுத்த",
-        "loading": "ஏற்றப்படுகிறது...",
-        "error": "பிழை ஏற்பட்டது",
-        "success": "வெற்றி",
-        "close": "மூடு",
-        "select": "தெரிவு செய்க",
-        "note": "குறிப்பு",
-        "dateLocale": "ta-LK",
-        "filterByDistrict": "மாவட்ட வாரியாக தேர்ந்தெடுக்கவும்",
-        "filterByCategory": "உதவி வகை வாரியாக தேர்ந்தெடுக்கவும்",
-        "clearFilters": "அழி",
-        "selectDistrict": "மாவட்டத்தைத் தெரிவு செய்க",
-        "validation": {
-            "required": "இப்புலம் அவசியம்",
-            "nameRequired": "பெயர் அவசியம்",
-            "phoneRequired": "தொலைபேசி எண் அவசியம்",
-            "districtRequired": "மாவட்டம் அவசியம்",
-            "addressRequired": "முகவரி அவசியம்",
-            "helpDescriptionRequired": "உதவி பெற விவரங்களைச் சரியாகச் சேர்க்கவும்",
-            "itemsRequired": "பொருட்கள் அவசியம்"
-        },
-        "updating": "புதுப்பிக்கிறது...",
-        "readMore": "மேலும் வாசிக்க",
-        "noAdditionalDetails": "கூடுதல் விவரங்கள் வழங்கப்படவில்லை"
-    },
-    "feedback": {
-        "button": "கருத்து",
-        "title": "உங்கள் கருத்தைப் பகிரவும்",
-        "description": "இந்த வலைத்தளத்தை மேம்படுத்த எங்களுக்கு உதவவும். உங்கள் பரிந்துரைகள் மதிப்புமிக்கவை.",
-        "nameLabel": "உங்கள் பெயர் (விருப்பம்)",
-        "namePlaceholder": "உங்கள் பெயரை உள்ளிடவும்",
-        "thoughtsLabel": "இந்த தளத்தைப் பற்றி நீங்கள் என்ன நினைக்கிறீர்கள்?",
-        "thoughtsPlaceholder": "உங்கள் எண்ணங்களைப் பகிரவும்...",
-        "improvementsLabel": "நாம் எதை மேம்படுத்த வேண்டும்?",
-        "improvementsPlaceholder": "உங்கள் பரிந்துரைகள்...",
-        "submitButton": "கருத்தை சமர்ப்பிக்கவும்",
-        "successMessage": "உங்கள் கருத்துக்கு நன்றி!",
-        "errorMessage": "சமர்ப்பிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
-    },
-    "districts": {
-        "all": "அனைத்து மாவட்டங்களிலிருந்தும் தேடவும்",
-        "colombo": "கொழும்பு",
-        "gampaha": "கம்பஹா",
-        "kalutara": "களுத்துறை",
-        "kandy": "கண்டி",
-        "matale": "மாத்தளை",
-        "nuwara_eliya": "நுவரெலியா",
-        "galle": "காலி",
-        "matara": "மாத்தறை",
-        "hambantota": "ஹம்பாந்தோட்டை",
-        "jaffna": "யாழ்ப்பாணம்",
-        "kilinochchi": "கிளிநொச்சி",
-        "mannar": "மன்னார்",
-        "vavuniya": "வவுனியா",
-        "mullaitivu": "முல்லைத்தீவு",
-        "batticaloa": "மட்டக்களப்பு",
-        "ampara": "அம்பாறை",
-        "trincomalee": "திருகோணமலை",
-        "kurunegala": "குருநாகல்",
-        "puttalam": "புத்தளம்",
-        "anuradhapura": "அனுராதபுரம்",
-        "polonnaruwa": "பொலன்னறுவை",
-        "badulla": "பதுளை",
-        "monaragala": "மொனராகலை",
-        "ratnapura": "இரத்தினபுரி",
-        "kegalle": "கேகாலை"
-    }
+    "main":  {
+                 "title":  "இலங்கை உதவிப் பதிவு",
+                 "subtitle":  "வெள்ளத்தால் பாதிக்கப்பட்ட சமூகங்களுக்கான நிவாரணம்",
+                 "helpCard":  {
+                                  "title":  "உதவி தேவையா?",
+                                  "description":  "உங்களுக்கோ அல்லது உங்களுக்குத் தெரிந்தவருக்கோ உதவி தேவைப்பட்டால் கோரிக்கை விடுங்கள்"
+                              },
+                 "donationsCard":  {
+                                       "title":  "உதவி வழங்குதல்",
+                                       "description":  "பாதிக்கப்பட்டவர்களுக்கு உதவி வழங்குங்கள்"
+                                   },
+                 "locationsCard":  {
+                                       "title":  "சேகரிப்பு நிலையங்கள்",
+                                       "description":  "நன்கொடைகளை ஒப்படைக்கக்கூடிய அருகிலுள்ள நிலையங்களைக் கண்டறியவும்"
+                                   },
+                 "educationCard":  {
+                                       "title":  "கல்வி",
+                                       "description":  "கல்விப் பொருட்கள் மற்றும் ஆதரவைக் கோருங்கள்"
+                                   },
+                 "transportCard":  {
+                                       "title":  "போக்குவரத்து வசதிகள்",
+                                       "description":  "போக்குவரத்து வசதிகளைக் கண்டறியவும் அல்லது வழங்கவும்"
+                                   },
+                 "volunteerCard":  {
+                                       "title":  "தன்னார்வ சேவைகள்",
+                                       "description":  "தன்னார்வலராகப் பதிவு செய்யுங்கள் அல்லது தன்னார்வலர்களைக் கண்டறியவும்"
+                                   },
+                 "disclaimer":  "⚠️ பாதுகாப்பு நினைவூட்டல்: இங்கு சமர்ப்பிக்கப்பட்ட அனைத்து தகவல்களும் பொதுவில் தெரியும். தயவுசெய்து எந்த தொலைபேசி எண்ணிற்கோ அல்லது தனிநபருக்கோ பணம் அனுப்ப வேண்டாம்; இந்த தளம் நிதி பரிவர்த்தனைகளை கையாளாது மற்றும் அத்தகைய கோரிக்கைகள் மோசடியானதாக இருக்கலாம்."
+             },
+    "helpRequests":  {
+                         "title":  "உதவிக் கோரிக்கைகள்",
+                         "subtitle":  "உங்களுக்கோ அல்லது உங்களுக்குத் தெரிந்தவருக்கோ உதவி தேவைப்பட்டால் கோரிக்கை விடுங்கள். உதவி பெற்ற பிறகு, மற்றவர்களுக்கு உதவ உங்கள் கோரிக்கையை \u0027உதவி கிடைத்தது\u0027 எனக் குறிக்கவும்.",
+                         "noRequests":  "உதவிக் கோரிக்கைகள் இல்லை",
+                         "firstRequest":  "முதல் கோரிக்கையைச் சேர்க்கவும்",
+                         "loading":  "தகவல் ஏற்றப்படுகிறது...",
+                         "status":  {
+                                        "pending":  "உதவி தேவை",
+                                        "fulfilled":  "உதவி பெற்றது"
+                                    },
+                         "card":  {
+                                      "namePlaceholder":  "உங்கள் பெயர்",
+                                      "district":  "மாவட்டம்",
+                                      "districtPlaceholder":  "தெரிவு செய்க",
+                                      "address":  "முகவரி",
+                                      "addressPlaceholder":  "முழு முகவரி",
+                                      "phone":  "தொலைபேசி எண்",
+                                      "phonePlaceholder":  "07x xxxxxxx",
+                                      "additionalPhone":  "கூடுதல் தொலைபேசி (விருப்பத்தேர்வு)",
+                                      "helpDescription":  "தேவையான உதவி",
+                                      "helpDescriptionPlaceholder":  "உதா: உணவு, குடிநீர், மருந்து",
+                                      "additionalDetails":  "கூடுதல் விவரங்கள் (விருப்பத்தேர்வு)",
+                                      "additionalDetailsPlaceholder":  "கூடுதல் தகவல்",
+                                      "note":  "குறிப்பு: உங்கள் தொடர்புத் தகவல் நன்கொடையாளர்களுக்குக் காட்டப்படும்.",
+                                      "category":  "உங்களுக்கு என்ன வகையான உதவி தேவை?",
+                                      "categoryPlaceholder":  "தெரிவு செய்க",
+                                      "dialogTitle":  "{{name}} ??? ????????"
+                                  },
+                         "categories":  {
+                                            "all":  "அனைத்து வகைகளிலிருந்தும் வடிகட்டவும்",
+                                            "food":  "உணவு",
+                                            "education":  "கல்வி",
+                                            "shelter":  "தங்குமிடம்",
+                                            "transport":  "போக்குவரத்து",
+                                            "other":  "மற்றவை"
+                                        }
+                     },
+    "donations":  {
+                      "title":  "நன்கொடைகள்",
+                      "subtitle":  "வெள்ளத்தால் பாதிக்கப்பட்ட சமூகங்களுக்கான நிவாரணம்",
+                      "instructions":  "உங்களுக்கு இந்தப் பொருட்கள் தேவைப்பட்டால், நன்கொடையாளரின் தொலைபேசி எண்ணை அழைக்கவும்",
+                      "noDonations":  "நன்கொடைகள் இல்லை",
+                      "loading":  "தகவல் ஏற்றப்படுகிறது...",
+                      "status":  {
+                                     "available":  "கிடைக்கக்கூடியது",
+                                     "collected":  "சேகரிக்கப்பட்டது"
+                                 },
+                      "card":  {
+                                   "label":  "கிடைக்கக்கூடிய நன்கொடை",
+                                   "badge":  "நன்கொடை",
+                                   "collected":  "சேகரிக்கப்பட்டது",
+                                   "address":  "முகவரி",
+                                   "description":  "விளக்கம்",
+                                   "donor":  "நன்கொடையாளர்",
+                                   "donatedOn":  "நன்கொடை அளிக்கப்பட்ட தேதி",
+                                   "collectButton":  "சேகரிக்கவும்",
+                                   "dialog":  {
+                                                  "title":  "நன்கொடை விவரங்கள்",
+                                                  "itemsToDonate":  "நன்கொடை பொருட்கள்",
+                                                  "address":  "முகவரி",
+                                                  "description":  "விளக்கம்"
+                                              }
+                               },
+                      "form":  {
+                                   "title":  "நன்கொடையைச் சேர்க்கவும்",
+                                   "description":  "விளக்கம் (விருப்பத்தேர்வு)",
+                                   "name":  "பெயர்",
+                                   "namePlaceholder":  "உங்கள் பெயர்",
+                                   "district":  "மாவட்டம்",
+                                   "districtPlaceholder":  "தெரிவு செய்க",
+                                   "address":  "முகவரி",
+                                   "addressPlaceholder":  "நன்கொடைகளைச் சேகரிக்கக்கூடிய இடம்",
+                                   "phone":  "தொலைபேசி எண்",
+                                   "phonePlaceholder":  "07x xxxxxxx",
+                                   "items":  "நன்கொடை பொருட்கள்",
+                                   "itemsPlaceholder":  "உதா: அரிசி, பால் மா, தண்ணீர்",
+                                   "descriptionPlaceholder":  "பொருட்கள் பற்றிய கூடுதல் தகவல்"
+                               }
+                  },
+    "locations":  {
+                      "title":  "உதவி சேகரிப்பு நிலையங்கள்",
+                      "subtitle":  "நன்கொடைகளை ஒப்படைக்கக்கூடிய சேகரிப்பு நிலையங்கள்",
+                      "noLocations":  "நிலையங்கள் இல்லை",
+                      "loading":  "தகவல் ஏற்றப்படுகிறது...",
+                      "card":  {
+                                   "address":  "முகவரி",
+                                   "time":  "நேரம்",
+                                   "description":  "விளக்கம்",
+                                   "viewPhotos":  "நிலையத்தின் புகைப்படங்களைப் பார்க்கவும்",
+                                   "collectorInfo":  "சேகரிப்பாளர் தகவல் (பாதுகாப்பாகத் தொடர்பு கொள்ளுங்கள்)",
+                                   "addedOn":  "சேர்க்கப்பட்ட தேதி"
+                               },
+                      "form":  {
+                                   "title":  "சேகரிப்பு நிலையத்தைச் சேர்க்கவும்",
+                                   "description":  "விளக்கம்",
+                                   "name":  "நிலையத்தின் பெயர்",
+                                   "namePlaceholder":  "உதா: கொழும்பு நிவாரண மையம்",
+                                   "district":  "மாவட்டம்",
+                                   "districtPlaceholder":  "தெரிவு செய்க",
+                                   "address":  "முகவரி",
+                                   "addressPlaceholder":  "முழு முகவரி",
+                                   "startDate":  "தொடக்கத் தேதி",
+                                   "endDate":  "முடிவுத் தேதி",
+                                   "startTime":  "தொடக்க நேரம்",
+                                   "endTime":  "முடிவு நேரம்",
+                                   "contactSection":  "தொடர்பு விவரங்கள்",
+                                   "contactName":  "தொடர்பு கொள்ள வேண்டியவரின் பெயர்",
+                                   "contactNamePlaceholder":  "பெயர்",
+                                   "contactPhone":  "தொலைபேசி எண்",
+                                   "contactPhonePlaceholder":  "07x xxxxxxx",
+                                   "additionalPhone":  "கூடுதல் தொலைபேசி (விருப்பத்தேர்வு)",
+                                   "descriptionPlaceholder":  "இங்கு சேகரிக்கப்படும் பொருட்களைக் குறிப்பிடவும் (உதா: உணவு, உடை, மருந்து)",
+                                   "contactImage":  "தொடர்பு கொள்ள வேண்டியவரின் புகைப்படம் (கட்டாயம்)",
+                                   "contactImageNote":  "இந்தப் புகைப்படம் அட்டையில் காட்டப்படும்",
+                                   "locationImages":  "நிலையத்தின் புகைப்படங்கள் (குறைந்தது 1 - அதிகபட்சம் 5)"
+                               }
+                  },
+    "education":  {
+                      "title":  "கல்வி உதவி",
+                      "subtitle":  "பாதிக்கப்பட்ட மாணவர்களுக்கான கல்விப் பொருட்கள் மற்றும் ஆதரவை வழங்கவும்",
+                      "requestsTabTitle":  "கல்விக் கோரிக்கைகள்",
+                      "offersTabTitle":  "கல்விச் சலுகைகள்",
+                      "addRequest":  "கோரிக்கையைச் சேர்க்கவும்",
+                      "noRequests":  "கல்விக் கோரிக்கைகள் இல்லை",
+                      "noRequestsDesc":  "முதல் கல்விக் கோரிக்கையைச் சேர்க்கவும்",
+                      "addFirstRequest":  "முதல் கோரிக்கையைச் சேர்க்கவும்",
+                      "offers":  {
+                                     "noOffers":  "கல்விச் சலுகைகள் இல்லை",
+                                     "noOffersDesc":  "முதல் கல்விச் சலுகையைச் சேர்க்கவும்",
+                                     "addFirstOffer":  "முதல் சலுகையைச் சேர்க்கவும்"
+                                 },
+                      "card":  {
+                                   "badge":  "கல்வி",
+                                   "needs":  "தேவைகள்",
+                                   "dialog":  {
+                                                  "needs":  "???????",
+                                                  "title":  "{{name}}"
+                                              }
+                               },
+                      "form":  {
+                                   "title":  "கல்விக் கோரிக்கையைச் சேர்க்கவும்",
+                                   "description":  "மாணவர்களுக்கான கல்விப் பொருட்களைக் கோருங்கள்",
+                                   "name":  "மாணவர்/பெற்றோர் பெயர்",
+                                   "namePlaceholder":  "பெயர்",
+                                   "contactPerson":  "தொடர்பு நபர்",
+                                   "contactPersonPlaceholder":  "தொடர்பு கொள்ள வேண்டியவரின் பெயர்",
+                                   "phone":  "தொலைபேசி எண்",
+                                   "phonePlaceholder":  "07x xxxxxxx",
+                                   "district":  "மாவட்டம்",
+                                   "districtPlaceholder":  "தெரிவு செய்க",
+                                   "address":  "முகவரி",
+                                   "addressPlaceholder":  "முழு முகவரி",
+                                   "school":  "பாடசாலை (விருப்பத்தேர்வு)",
+                                   "schoolPlaceholder":  "பாடசாலையின் பெயர்",
+                                   "grade":  "தரம் (விருப்பத்தேர்வு)",
+                                   "gradePlaceholder":  "உதா: தரம் 5",
+                                   "needs":  "தேவைகள்",
+                                   "needsPlaceholder":  "உதா: புத்தகங்கள், சீருடைகள், காலணிகள்",
+                                   "additionalDetails":  "கூடுதல் விவரங்கள் (விருப்பத்தேர்வு)",
+                                   "additionalDetailsPlaceholder":  "வேறு தகவல்கள்",
+                                   "validation":  {
+                                                      "nameRequired":  "பெயர் அவசியம்",
+                                                      "contactPersonRequired":  "தொடர்பு நபர் அவசியம்",
+                                                      "phoneRequired":  "தொலைபேசி எண் அவசியம்",
+                                                      "districtRequired":  "மாவட்டம் அவசியம்",
+                                                      "addressRequired":  "முகவரி அவசியம்",
+                                                      "needsRequired":  "தேவைகள் அவசியம்"
+                                                  }
+                               },
+                      "tabs":  {
+                                   "requests":  "கல்விப் பொருட்கள் மற்றும் ஆதரவைக் கோருங்கள்",
+                                   "offers":  "கல்விப் பொருட்கள் மற்றும் ஆதரவை வழங்கவும்"
+                               }
+                  },
+    "transport":  {
+                      "title":  "போக்குவரத்து வசதிகள்",
+                      "subtitle":  "நிவாரணப் பணிகளுக்கான போக்குவரத்து வசதிகளைக் கண்டறியவும் அல்லது வழங்கவும்",
+                      "addOffer":  "போக்குவரத்தைச் சேர்க்கவும்",
+                      "noOffers":  "போக்குவரத்து வசதிகள் இல்லை",
+                      "noOffersDesc":  "முதல் போக்குவரத்து வசதியைச் சேர்க்கவும்",
+                      "addFirstOffer":  "முதல் வசதியைச் சேர்க்கவும்",
+                      "status":  {
+                                     "available":  "கிடைக்கக்கூடியது",
+                                     "busy":  "பிஸியாக உள்ளது"
+                                 },
+                      "card":  {
+                                   "capacity":  "கொள்ளளவு",
+                                   "availability":  "கிடைக்கும் நேரங்கள்",
+                                   "dialog":  {
+                                                  "capacity":  "????????",
+                                                  "title":  "{{vehicleType}}",
+                                                  "availability":  "?????????? ????????"
+                                              }
+                               },
+                      "form":  {
+                                   "title":  "போக்குவரத்து வசதியைச் சேர்க்கவும்",
+                                   "description":  "நிவாரண விநியோகத்திற்கான போக்குவரத்து வசதிகளை வழங்கவும்",
+                                   "name":  "தொடர்பு பெயர்",
+                                   "namePlaceholder":  "உங்கள் பெயர்",
+                                   "phone":  "தொலைபேசி எண்",
+                                   "phonePlaceholder":  "07x xxxxxxx",
+                                   "district":  "மாவட்டம்",
+                                   "districtPlaceholder":  "தெரிவு செய்க",
+                                   "location":  "தற்போதைய இடம்",
+                                   "locationPlaceholder":  "நகரம்/பகுதி",
+                                   "vehicleType":  "வாகன வகை",
+                                   "vehicleTypePlaceholder":  "உதா: லொறி, வேன், முச்சக்கர வண்டி",
+                                   "capacity":  "கொள்ளளவு",
+                                   "capacityPlaceholder":  "உதா: 1000kg அல்லது 5 பேர்",
+                                   "availability":  "கிடைக்கும் நேரங்கள்",
+                                   "availabilityPlaceholder":  "உதா: 24 மணிநேரமும் அல்லது குறிப்பிட்ட நேரங்கள்",
+                                   "additionalDetails":  "கூடுதல் விவரங்கள் (விருப்பத்தேர்வு)",
+                                   "additionalDetailsPlaceholder":  "வேறு தகவல்கள்",
+                                   "validation":  {
+                                                      "nameRequired":  "பெயர் அவசியம்",
+                                                      "phoneRequired":  "தொலைபேசி எண் அவசியம்",
+                                                      "districtRequired":  "மாவட்டம் அவசியம்",
+                                                      "locationRequired":  "இடம் அவசியம்",
+                                                      "vehicleTypeRequired":  "வாகன வகை அவசியம்",
+                                                      "capacityRequired":  "கொள்ளளவு அவசியம்",
+                                                      "availabilityRequired":  "கிடைக்கும் நேரங்கள் அவசியம்"
+                                                  }
+                               }
+                  },
+    "volunteer":  {
+                      "title":  "தன்னார்வ சேவைகள்",
+                      "subtitle":  "பாதிக்கப்பட்ட சமூகங்களுக்கு உதவ தன்னார்வலராகப் பதிவு செய்யுங்கள்",
+                      "addVolunteer":  "தன்னார்வலராகப் பதிவு செய்யுங்கள்",
+                      "noVolunteers":  "தன்னார்வலர்கள் இல்லை",
+                      "noVolunteersDesc":  "முதல் தன்னார்வலராகப் பதிவு செய்யுங்கள்",
+                      "addFirstVolunteer":  "இப்போதே பதிவு செய்யுங்கள்",
+                      "status":  {
+                                     "available":  "கிடைக்கக்கூடியது",
+                                     "busy":  "பிஸியாக உள்ளது"
+                                 },
+                      "card":  {
+                                   "skills":  "திறன்கள்",
+                                   "availability":  "கிடைக்கும் நேரங்கள்"
+                               },
+                      "form":  {
+                                   "title":  "தன்னார்வலர் பதிவு",
+                                   "description":  "நிவாரணப் பணிகளுக்கு உதவ பதிவு செய்யுங்கள்",
+                                   "name":  "பெயர்",
+                                   "namePlaceholder":  "உங்கள் பெயர்",
+                                   "phone":  "தொலைபேசி எண்",
+                                   "phonePlaceholder":  "07x xxxxxxx",
+                                   "district":  "மாவட்டம்",
+                                   "districtPlaceholder":  "தெரிவு செய்க",
+                                   "skills":  "திறன்கள் / ஆற்றல்கள்",
+                                   "skillsPlaceholder":  "உதா: முதலுதவி, சமையல், வாகனம் ஓட்டுதல், உடல் உழைப்பு",
+                                   "availability":  "கிடைக்கும் நேரங்கள்",
+                                   "availabilityPlaceholder":  "உதா: வார இறுதி நாட்கள், முழு நேரம்",
+                                   "additionalDetails":  "கூடுதல் விவரங்கள் (விருப்பத்தேர்வு)",
+                                   "additionalDetailsPlaceholder":  "வேறு தகவல்கள்",
+                                   "validation":  {
+                                                      "nameRequired":  "பெயர் அவசியம்",
+                                                      "phoneRequired":  "தொலைபேசி எண் அவசியம்",
+                                                      "districtRequired":  "மாவட்டம் அவசியம்",
+                                                      "skillsRequired":  "திறன்கள் அவசியம்",
+                                                      "availabilityRequired":  "கிடைக்கும் நேரங்கள் அவசியம்"
+                                                  }
+                               }
+                  },
+    "common":  {
+                   "back":  "பின்",
+                   "submit":  "சமர்ப்பிக்கவும்",
+                   "cancel":  "ரத்துசெய்",
+                   "add":  "சேர்",
+                   "edit":  "திருத்து",
+                   "delete":  "அழி",
+                   "save":  "சேமி",
+                   "search":  "தேடு",
+                   "filter":  "வடிகட்டு",
+                   "all":  "அனைத்தும்",
+                   "page":  "பக்கம்",
+                   "previous":  "முந்தைய",
+                   "next":  "அடுத்த",
+                   "loading":  "ஏற்றப்படுகிறது...",
+                   "error":  "பிழை ஏற்பட்டது",
+                   "success":  "வெற்றி",
+                   "close":  "மூடு",
+                   "select":  "தெரிவு செய்க",
+                   "note":  "குறிப்பு",
+                   "dateLocale":  "ta-LK",
+                   "filterByDistrict":  "மாவட்ட வாரியாக தேர்ந்தெடுக்கவும்",
+                   "filterByCategory":  "உதவி வகை வாரியாக தேர்ந்தெடுக்கவும்",
+                   "clearFilters":  "அழி",
+                   "selectDistrict":  "மாவட்டத்தைத் தெரிவு செய்க",
+                   "validation":  {
+                                      "required":  "இப்புலம் அவசியம்",
+                                      "nameRequired":  "பெயர் அவசியம்",
+                                      "phoneRequired":  "தொலைபேசி எண் அவசியம்",
+                                      "districtRequired":  "மாவட்டம் அவசியம்",
+                                      "addressRequired":  "முகவரி அவசியம்",
+                                      "helpDescriptionRequired":  "உதவி பெற விவரங்களைச் சரியாகச் சேர்க்கவும்",
+                                      "itemsRequired":  "பொருட்கள் அவசியம்"
+                                  },
+                   "updating":  "புதுப்பிக்கிறது...",
+                   "readMore":  "மேலும் வாசிக்க",
+                   "noAdditionalDetails":  "கூடுதல் விவரங்கள் வழங்கப்படவில்லை"
+               },
+    "feedback":  {
+                     "button":  "கருத்து",
+                     "title":  "உங்கள் கருத்தைப் பகிரவும்",
+                     "description":  "இந்த வலைத்தளத்தை மேம்படுத்த எங்களுக்கு உதவவும். உங்கள் பரிந்துரைகள் மதிப்புமிக்கவை.",
+                     "nameLabel":  "உங்கள் பெயர் (விருப்பம்)",
+                     "namePlaceholder":  "உங்கள் பெயரை உள்ளிடவும்",
+                     "thoughtsLabel":  "இந்த தளத்தைப் பற்றி நீங்கள் என்ன நினைக்கிறீர்கள்?",
+                     "thoughtsPlaceholder":  "உங்கள் எண்ணங்களைப் பகிரவும்...",
+                     "improvementsLabel":  "நாம் எதை மேம்படுத்த வேண்டும்?",
+                     "improvementsPlaceholder":  "உங்கள் பரிந்துரைகள்...",
+                     "submitButton":  "கருத்தை சமர்ப்பிக்கவும்",
+                     "successMessage":  "உங்கள் கருத்துக்கு நன்றி!",
+                     "errorMessage":  "சமர்ப்பிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
+                 },
+    "districts":  {
+                      "all":  "அனைத்து மாவட்டங்களிலிருந்தும் தேடவும்",
+                      "colombo":  "கொழும்பு",
+                      "gampaha":  "கம்பஹா",
+                      "kalutara":  "களுத்துறை",
+                      "kandy":  "கண்டி",
+                      "matale":  "மாத்தளை",
+                      "nuwara_eliya":  "நுவரெலியா",
+                      "galle":  "காலி",
+                      "matara":  "மாத்தறை",
+                      "hambantota":  "ஹம்பாந்தோட்டை",
+                      "jaffna":  "யாழ்ப்பாணம்",
+                      "kilinochchi":  "கிளிநொச்சி",
+                      "mannar":  "மன்னார்",
+                      "vavuniya":  "வவுனியா",
+                      "mullaitivu":  "முல்லைத்தீவு",
+                      "batticaloa":  "மட்டக்களப்பு",
+                      "ampara":  "அம்பாறை",
+                      "trincomalee":  "திருகோணமலை",
+                      "kurunegala":  "குருநாகல்",
+                      "puttalam":  "புத்தளம்",
+                      "anuradhapura":  "அனுராதபுரம்",
+                      "polonnaruwa":  "பொலன்னறுவை",
+                      "badulla":  "பதுளை",
+                      "monaragala":  "மொனராகலை",
+                      "ratnapura":  "இரத்தினபுரி",
+                      "kegalle":  "கேகாலை"
+                  }
 }

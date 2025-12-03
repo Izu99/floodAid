@@ -189,24 +189,24 @@ export default function TransportPage() {
                                             </DialogTrigger>
                                             <DialogContent>
                                                 <DialogHeader>
-                                                    <DialogTitle>{offer.vehicleType}</DialogTitle>
+                                                    <DialogTitle>{t('transport.card.dialog.title', { vehicleType: offer.vehicleType })}</DialogTitle>
                                                     <DialogDescription>
                                                         {offer.location}, {t(`districts.${offer.district}`)}
                                                     </DialogDescription>
                                                 </DialogHeader>
                                                 <div className="py-4 max-h-[60vh] overflow-y-auto space-y-4">
                                                     <div>
-                                                        <h4 className="text-sm font-semibold mb-1">Capacity</h4>
+                                                        <h4 className="text-sm font-semibold mb-1">{t('transport.card.dialog.capacity')}</h4>
                                                         <p className="text-sm whitespace-pre-wrap">{offer.capacity}</p>
                                                     </div>
                                                     <div>
-                                                        <h4 className="text-sm font-semibold mb-1">Availability</h4>
+                                                        <h4 className="text-sm font-semibold mb-1">{t('transport.card.dialog.availability')}</h4>
                                                         <p className="text-sm whitespace-pre-wrap">{offer.availability}</p>
                                                     </div>
                                                 </div>
                                                 <DialogFooter>
                                                     <DialogClose asChild>
-                                                        <Button type="button">Close</Button>
+                                                        <Button type="button">{t('common.close')}</Button>
                                                     </DialogClose>
                                                 </DialogFooter>
                                             </DialogContent>
