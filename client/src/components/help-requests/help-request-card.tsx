@@ -26,7 +26,7 @@ interface HelpRequestCardProps {
 }
 
 export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProps) {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const [isUpdating, setIsUpdating] = useState(false);
     const [localStatus, setLocalStatus] = useState(request.status);
 
@@ -78,7 +78,7 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-600 mt-1">
                     <MapPin size={16} className="shrink-0" />
-                    <span>{getDistrictLabel(request.district)}</span>
+                    <span>{getDistrictLabel(request.district, language)}</span>
                 </div>
                 {request.category && (
                     <div className="flex items-center gap-2 mt-2">
@@ -93,18 +93,24 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
             <CardContent className="space-y-4 flex-1 flex flex-col">
                 <div className="space-y-3 flex-1">
                     <div>
-                        <p className="text-xs font-semibold text-gray-500 uppercase mb-1">{t('helpRequests.card.address')}</p>
+                        <p className="text-xs font-semibold text-gray-500 uppercase mb-1">
+                            {t('helpRequests.card.address')}
+                        </p>
                         <p className="text-sm text-gray-900 line-clamp-1">{request.address}</p>
                     </div>
 
                     <div>
-                        <p className="text-xs font-semibold text-gray-500 uppercase mb-1">{t('helpRequests.card.helpNeeded')}</p>
+                        <p className="text-xs font-semibold text-gray-500 uppercase mb-1">
+                            {t('helpRequests.card.helpNeeded')}
+                        </p>
                         <p className={`text-sm text-gray-900 ${helpDescriptionLineClamp}`}>{request.helpDescription}</p>
                     </div>
 
                     {request.additionalDetails && (
                         <div>
-                            <p className="text-xs font-semibold text-gray-500 uppercase mb-1">{t('helpRequests.card.additionalDetails')}</p>
+                            <p className="text-xs font-semibold text-gray-500 uppercase mb-1">
+                                {t('helpRequests.card.additionalDetails')}
+                            </p>
                             <p className="text-sm text-gray-700 line-clamp-1">{request.additionalDetails}</p>
                         </div>
                     )}
@@ -118,7 +124,7 @@ export function HelpRequestCard({ request, onStatusUpdate }: HelpRequestCardProp
                                 <DialogHeader>
                                     <DialogTitle>{t('helpRequests.card.dialogTitle', { name: request.name })}</DialogTitle>
                                     <DialogDescription>
-                                        {getDistrictLabel(request.district)}
+                                        {getDistrictLabel(request.district, language)}
                                     </DialogDescription>
                                 </DialogHeader>
                                 <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto">

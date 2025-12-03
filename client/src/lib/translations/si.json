@@ -1,374 +1,378 @@
 {
-    "main":  {
-                 "title":  "ශ්‍රී ලංකා ආධාර ලේඛනය",
-                 "subtitle":  "ගංවතුරෙන් පීඩාවට පත් ප්‍රජාවන්ට සහන",
-                 "helpCard":  {
-                                  "title":  "උදව් අවශ්‍යද?",
-                                  "description":  "ඔබට හෝ ඔබ දන්නා කෙනෙකුට උදව් අවශ්‍ය නම් ඉල්ලීම් කරන්න"
-                              },
-                 "donationsCard":  {
-                                       "title":  "උදව් ලබා දීම",
-                                       "description":  "විපතට පත් වූවන් සඳහා ආධාර ලබා දෙන්න"
-                                   },
-                 "locationsCard":  {
-                                       "title":  "එකතු කිරීමේ මධ්‍යස්ථාන",
-                                       "description":  "ආධාර භාර දිය හැකි ළඟම ඇති මධ්‍යස්ථාන සොයා ගන්න"
-                                   },
-                 "educationCard":  {
-                                       "title":  "අධ්‍යාපනය",
-                                       "description":  "අධ්‍යාපනික ද්‍රව්‍ය සහ සහාය ඉල්ලීම් කරන්න"
-                                   },
-                 "transportCard":  {
-                                       "title":  "ප්‍රවාහන පහසුකම්",
-                                       "description":  "ප්‍රවාහන පහසුකම් සොයා ගන්න හෝ ලබා දෙන්න"
-                                   },
-                 "volunteerCard":  {
-                                       "title":  "ස්වේච්ඡා සේවා",
-                                       "description":  "ස්වේච්ඡා සේවකයෙකු ලෙස ලියාපදිංචි වන්න හෝ සොයා ගන්න"
-                                   },
-                 "disclaimer":  "⚠️ ආරක්ෂක මතක් කිරීම: මෙහි ඉදිරිපත් කරන සියලුම තොරතුරු ප්‍රසිද්ධියේ සියලුම පුද්ගලයන්ට දැකගත හැක . කරුණාකර කිසිදු දුරකථන අංකයකට හෝ පුද්ගලයෙකුට මුදල් නොයවන්න; මෙම වේදිකාව මූල්‍ය ගනුදෙනු සිදු නොකරන අතර එවැනි ඉල්ලීම් වංචනික විය හැකිය."
-             },
-    "helpRequests":  {
-                         "title":  "උදව් ඉල්ලීම්",
-                         "subtitle":  "ඔබට හෝ ඔබ දන්නා කෙනෙකුට උදව් අවශ්‍ය නම් ඉල්ලීම් කරන්න. උදව් ලැබුණු පසු, කරුණාකර ඔබගේ ඉල්ලීම \u0027උදව් ලැබුණා\u0027 ලෙස සලකුණු කරන්න. එය අන් අයට උපකාරී වනු ඇත.",
-                         "noRequests":  "උදව් ඉල්ලීම් නොමැත",
-                         "firstRequest":  "පළමු ඉල්ලීම එක් කරන්න",
-                         "loading":  "තොරතුරු පූරණය වෙමින් පවතී...",
-                         "status":  {
-                                        "pending":  "උදව් අවශ්‍යයි",
-                                        "fulfilled":  "උදව් ලබුණා"
-                                    },
-                         "card":  {
-                                      "namePlaceholder":  "ඔබේ නම",
-                                      "district":  "දිස්ත්‍රික්කය",
-                                      "districtPlaceholder":  "තෝරන්න",
-                                      "address":  "ලිපිනය",
-                                      "addressPlaceholder":  "සම්පූර්ණ ලිපිනය",
-                                      "phone":  "දුරකථන අංකය",
-                                      "phonePlaceholder":  "07x xxxxxxx",
-                                      "additionalPhone":  "අමතර දුරකථන අංකය (විකල්ප)",
-                                      "helpDescription":  "අවශ්‍ය උදව්",
-                                      "helpDescriptionPlaceholder":  "උදා: ආහාර, පානීය ජලය, ඖෂධ",
-                                      "additionalDetails":  "අමතර විස්තර (විකල්ප)",
-                                      "additionalDetailsPlaceholder":  "අමතර තොරතුරු",
-                                      "note":  "සටහන: ඔබේ සම්බන්ධතා තොරතුරු පරිත්‍යාගශීලීන්ට දර්ශනය වනු ඇත.",
-                                      "category":  "ඔබට අවශ්‍ය කුමන උපකාරයක්ද?",
-                                      "categoryPlaceholder":  "තෝරන්න",
-                                      "dialogTitle":  "{{name}} ?? ??????"
-                                  },
-                         "categories":  {
-                                            "all":  "සියලුම වර්ග වලින් සොයන්න",
-                                            "food":  "ආහාර",
-                                            "education":  "අධ්‍යාපන",
-                                            "shelter":  "නවාතැන්",
-                                            "transport":  "ප්‍රවාහන",
-                                            "other":  "වෙනත්"
-                                        }
-                     },
-    "donations":  {
-                      "title":  "ආධාර",
-                      "subtitle":  "ගංවතුරෙන් පීඩාවට පත් ප්‍රජාවන්ට සහන",
-                      "instructions":  "ඔබට මෙම ද්‍රව්‍යඅවශ්‍ය නම්, කරුණාකර පරිත්‍යාගශීලියාගේ දුරකථන අංකය අමතන්න",
-                      "noDonations":  "ආධාර නොමැත",
-                      "loading":  "තොරතුරු පූරණය වෙමින් පවතී...",
-                      "status":  {
-                                     "available":  "ලබා ගත හැක",
-                                     "collected":  "එකතු කර ගන්නා ලදී"
-                                 },
-                      "card":  {
-                                   "label":  "ලබා ගත හැකි ආධාර",
-                                   "badge":  "ආධාර",
-                                   "collected":  "එකතු කර ගන්නා ලදී",
-                                   "address":  "ලිපිනය",
-                                   "description":  "විස්තරය",
-                                   "donor":  "පරිත්‍යාගශීලියා",
-                                   "donatedOn":  "පරිත්‍යාග කළ දිනය",
-                                   "collectButton":  "එකතු කර ගන්න",
-                                   "dialog":  {
-                                                  "title":  "ආධාර විස්තර",
-                                                  "itemsToDonate":  "පරිත්‍යාග කරන අයිතම",
-                                                  "address":  "ලිපිනය",
-                                                  "description":  "විස්තරය"
-                                              }
-                               },
-                      "form":  {
-                                   "title":  "ආධාරයක් එක් කරන්න",
-                                   "description":  "විස්තරය (විකල්ප)",
-                                   "name":  "නම",
-                                   "namePlaceholder":  "ඔබේ නම",
-                                   "district":  "දිස්ත්‍රික්කය",
-                                   "districtPlaceholder":  "තෝරන්න",
-                                   "address":  "ලිපිනය",
-                                   "addressPlaceholder":  "ආධාර එකතු කර ගත හැකි ස්ථානය",
-                                   "phone":  "දුරකථන අංකය",
-                                   "phonePlaceholder":  "07x xxxxxxx",
-                                   "items":  "පරිත්‍යාග කරන අයිතම",
-                                   "itemsPlaceholder":  "උදා: සහල්, කිරි පිටි, ජලය",
-                                   "descriptionPlaceholder":  "ද්‍රව්‍යපිළිබඳ අමතර තොරතුරු"
-                               }
-                  },
-    "locations":  {
-                      "title":  "ආධාර එකතු කිරීමේ මධ්‍යස්ථාන",
-                      "subtitle":  "ඔබට ආධාර භාර දිය හැකි මධ්‍යස්ථාන",
-                      "noLocations":  "මධ්‍යස්ථාන නොමැත",
-                      "loading":  "තොරතුරු පූරණය වෙමින් පවතී...",
-                      "card":  {
-                                   "address":  "ලිපිනය",
-                                   "time":  "වේලාව",
-                                   "description":  "විස්තරය",
-                                   "viewPhotos":  "මධ්‍යස්ථානයේ ඡායාරූප බලන්න",
-                                   "collectorInfo":  "එකතු කරන්නාගේ තොරතුරු (ආරක්ෂිතව සම්බන්ධ වන්න)",
-                                   "addedOn":  "එක් කළ දිනය"
-                               },
-                      "form":  {
-                                   "title":  "එකතු කිරීමේ මධ්‍යස්ථානයක් එක් කරන්න",
-                                   "description":  "විස්තරය",
-                                   "name":  "මධ්‍යස්ථානයේ නම",
-                                   "namePlaceholder":  "උදා: කොළඹ සහන මධ්‍යස්ථානය",
-                                   "district":  "දිස්ත්‍රික්කය",
-                                   "districtPlaceholder":  "තෝරන්න",
-                                   "address":  "ලිපිනය",
-                                   "addressPlaceholder":  "සම්පූර්ණ ලිපිනය",
-                                   "startDate":  "ආරම්භක දිනය",
-                                   "endDate":  "අවසාන දිනය",
-                                   "startTime":  "ආරම්භක වේලාව",
-                                   "endTime":  "අවසාන වේලාව",
-                                   "contactSection":  "සම්බන්ධතා තොරතුරු",
-                                   "contactName":  "සම්බන්ධ විය යුතු පුද්ගලයාගේ නම",
-                                   "contactNamePlaceholder":  "නම",
-                                   "contactPhone":  "දුරකථන අංකය",
-                                   "contactPhonePlaceholder":  "07x xxxxxxx",
-                                   "additionalPhone":  "අමතර දුරකථන අංකය (විකල්ප)",
-                                   "descriptionPlaceholder":  "මෙම ස්ථානයේ එකතු කරන ද්‍රව්‍යසඳහන් කරන්න (උදා: ආහාර, ඇඳුම්, ඖෂධ)",
-                                   "contactImage":  "සම්බන්ධ විය යුතු පුද්ගලයාගේ ඡායාරූපය (අවශ්‍යයි)",
-                                   "contactImageNote":  "මෙම ඡායාරූපය කාඩ්පතේ දර්ශනය වනු ඇත",
-                                   "locationImages":  "මධ්‍යස්ථානයේ ඡායාරූප (අවම 1 - උපරිම 5)"
-                               }
-                  },
-    "education":  {
-                      "title":  "අධ්‍යාපන සහාය",
-                      "subtitle":  "පීඩාවට පත් සිසුන් සඳහා අධ්‍යාපනික ද්‍රව්‍ය සහ සහාය ලබාදෙන්න",
-                      "requestsTabTitle":  "අධ්‍යාපන ඉල්ලීම්",
-                      "offersTabTitle":  "අධ්‍යාපන ආධාර",
-                      "addRequest":  "ඉල්ලීමක් එක් කරන්න",
-                      "noRequests":  "අධ්‍යාපන ඉල්ලීම් නොමැත",
-                      "noRequestsDesc":  "පළමු අධ්‍යාපන ඉල්ලීම එක් කරන්න",
-                      "addFirstRequest":  "පළමු ඉල්ලීම එක් කරන්න",
-                      "offers":  {
-                                     "noOffers":  "අධ්‍යාපන ආධාර නොමැත",
-                                     "noOffersDesc":  "පළමු අධ්‍යාපන ආධාර එක් කරන්න",
-                                     "addFirstOffer":  "පළමු ආධාර එක් කරන්න"
-                                 },
-                      "card":  {
-                                   "badge":  "අධ්‍යාපනය",
-                                   "needs":  "අවශ්‍යතා",
-                                   "dialog":  {
-                                                  "needs":  "????????",
-                                                  "title":  "{{name}}"
-                                              }
-                               },
-                      "form":  {
-                                   "title":  "අධ්‍යාපන ඉල්ලීමක් එක් කරන්න",
-                                   "description":  "සිසුන් සඳහා අධ්‍යාපනික ද්‍රව්‍ය ඉල්ලීම් කරන්න",
-                                   "name":  "ශිෂ්‍යයාගේ/දෙමාපියන්ගේ නම",
-                                   "namePlaceholder":  "නම",
-                                   "contactPerson":  "සම්බන්ධ විය යුතු පුද්ගලයා",
-                                   "contactPersonPlaceholder":  "සම්බන්ධ විය යුතු පුද්ගලයාගේ නම",
-                                   "phone":  "දුරකථන අංකය",
-                                   "phonePlaceholder":  "07x xxxxxxx",
-                                   "district":  "දිස්ත්‍රික්කය",
-                                   "districtPlaceholder":  "තෝරන්න",
-                                   "address":  "ලිපිනය",
-                                   "addressPlaceholder":  "සම්පූර්ණ ලිපිනය",
-                                   "school":  "පාසල (විකල්ප)",
-                                   "schoolPlaceholder":  "පාසලේ නම",
-                                   "grade":  "ශ්‍රේණිය (විකල්ප)",
-                                   "gradePlaceholder":  "උදා: 5 ශ්‍රේණිය",
-                                   "needs":  "අවශ්‍යතා",
-                                   "needsPlaceholder":  "උදා: පොත්, නිල ඇඳුම්, සපත්තු",
-                                   "additionalDetails":  "අමතර විස්තර (විකල්ප)",
-                                   "additionalDetailsPlaceholder":  "වෙනත් තොරතුරු",
-                                   "validation":  {
-                                                      "nameRequired":  "නම අවශ්‍යයි",
-                                                      "contactPersonRequired":  "සම්බන්ධ විය යුතු පුද්ගලයා අවශ්‍යයි",
-                                                      "phoneRequired":  "දුරකථන අංකය අවශ්‍යයි",
-                                                      "districtRequired":  "දිස්ත්‍රික්කය අවශ්‍යයි",
-                                                      "addressRequired":  "ලිපිනය අවශ්‍යයි",
-                                                      "needsRequired":  "අවශ්‍යතා සඳහන් කිරීම අවශ්‍යයි"
-                                                  }
-                               },
-                      "tabs":  {
-                                   "requests":  "අධ්‍යාපනික ද්‍රව්‍ය සහ සහාය ඉල්ලීම් කරන්න",
-                                   "offers":  "අධ්‍යාපනික ද්‍රව්‍ය සහ සහාය ලබාදෙන්න"
-                               }
-                  },
-    "transport":  {
-                      "title":  "ප්‍රවාහන පහසුකම්",
-                      "subtitle":  "සහන සේවා සඳහා ප්‍රවාහන පහසුකම් සොයා ගන්න හෝ ලබා දෙන්න",
-                      "addOffer":  "ප්‍රවාහන පහසුකමක් එක් කරන්න",
-                      "noOffers":  "ප්‍රවාහන පහසුකම් නොමැත",
-                      "noOffersDesc":  "පළමු ප්‍රවාහන පහසුකම එක් කරන්න",
-                      "addFirstOffer":  "පළමු පහසුකම එක් කරන්න",
-                      "status":  {
-                                     "available":  "ලබා ගත හැක",
-                                     "busy":  "කාර්යබහුලයි"
-                                 },
-                      "card":  {
-                                   "capacity":  "ධාරිතාව",
-                                   "availability":  "ලබා ගත හැකි වේලාවන්",
-                                   "dialog":  {
-                                                  "capacity":  "???????",
-                                                  "title":  "{{vehicleType}}",
-                                                  "availability":  "??? ?? ???? ???????"
-                                              }
-                               },
-                      "form":  {
-                                   "title":  "ප්‍රවාහන පහසුකමක් එක් කරන්න",
-                                   "description":  "සහන බෙදා හැරීම සඳහා ප්‍රවාහන පහසුකම් ලබා දෙන්න",
-                                   "name":  "සම්බන්ධ විය යුතු නම",
-                                   "namePlaceholder":  "ඔබේ නම",
-                                   "phone":  "දුරකථන අංකය",
-                                   "phonePlaceholder":  "07x xxxxxxx",
-                                   "district":  "දිස්ත්‍රික්කය",
-                                   "districtPlaceholder":  "තෝරන්න",
-                                   "location":  "දැනට සිටින ස්ථානය",
-                                   "locationPlaceholder":  "නගරය/ප්‍රදේශය",
-                                   "vehicleType":  "වාහන වර්ගය",
-                                   "vehicleTypePlaceholder":  "උදා: ලොරි, වෑන්, ත්‍රිරෝද රථ",
-                                   "capacity":  "ධාරිතාව",
-                                   "capacityPlaceholder":  "උදා: 1000kg හෝ පුද්ගලයින් 5",
-                                   "availability":  "ලබා ගත හැකි වේලාවන්",
-                                   "availabilityPlaceholder":  "උදා: පැය 24 පුරාම හෝ නිශ්චිත වේලාවන්",
-                                   "additionalDetails":  "අමතර විස්තර (විකල්ප)",
-                                   "additionalDetailsPlaceholder":  "වෙනත් තොරතුරු",
-                                   "validation":  {
-                                                      "nameRequired":  "නම අවශ්‍යයි",
-                                                      "phoneRequired":  "දුරකථන අංකය අවශ්‍යයි",
-                                                      "districtRequired":  "දිස්ත්‍රික්කය අවශ්‍යයි",
-                                                      "locationRequired":  "ස්ථානය අවශ්‍යයි",
-                                                      "vehicleTypeRequired":  "වාහන වර්ගය අවශ්‍යයි",
-                                                      "capacityRequired":  "ධාරිතාව අවශ්‍යයි",
-                                                      "availabilityRequired":  "ලබා ගත හැකි වේලාවන් අවශ්‍යයි"
-                                                  }
-                               }
-                  },
-    "volunteer":  {
-                      "title":  "ස්වේච්ඡා සේවා",
-                      "subtitle":  "පීඩාවට පත් ප්‍රජාවන්ට උදව් කිරීමට ස්වේච්ඡා සේවකයෙකු ලෙස ලියාපදිංචි වන්න",
-                      "addVolunteer":  "ස්වේච්ඡා සේවකයෙකු ලෙස ලියාපදිංචි වන්න",
-                      "noVolunteers":  "ස්වේච්ඡා සේවකයින් නොමැත",
-                      "noVolunteersDesc":  "පළමු ස්වේච්ඡා සේවකයා ලෙස ලියාපදිංචි වන්න",
-                      "addFirstVolunteer":  "දැන් ලියාපදිංචි වන්න",
-                      "status":  {
-                                     "available":  "ලබා ගත හැක",
-                                     "busy":  "කාර්යබහුලයි"
-                                 },
-                      "card":  {
-                                   "skills":  "හැකියාවන්",
-                                   "availability":  "ලබා ගත හැකි වේලාවන්"
-                               },
-                      "form":  {
-                                   "title":  "ස්වේච්ඡා සේවක ලියාපදිංචිය",
-                                   "description":  "සහන සේවා සඳහා උදව් කිරීමට ලියාපදිංචි වන්න",
-                                   "name":  "නම",
-                                   "namePlaceholder":  "ඔබේ නම",
-                                   "phone":  "දුරකථන අංකය",
-                                   "phonePlaceholder":  "07x xxxxxxx",
-                                   "district":  "දිස්ත්‍රික්කය",
-                                   "districtPlaceholder":  "තෝරන්න",
-                                   "skills":  "හැකියාවන් / කුසලතා",
-                                   "skillsPlaceholder":  "උදා: ප්‍රථමාධාර, ඉවුම් පිහුම්, රිය පැදවීම, ශ්‍රමය",
-                                   "availability":  "ලබා ගත හැකි වේලාවන්",
-                                   "availabilityPlaceholder":  "උදා: සති අන්තයේ, පූර්ණ කාලීන",
-                                   "additionalDetails":  "අමතර විස්තර (විකල්ප)",
-                                   "additionalDetailsPlaceholder":  "වෙනත් තොරතුරු",
-                                   "validation":  {
-                                                      "nameRequired":  "නම අවශ්‍යයි",
-                                                      "phoneRequired":  "දුරකථන අංකය අවශ්‍යයි",
-                                                      "districtRequired":  "දිස්ත්‍රික්කය අවශ්‍යයි",
-                                                      "skillsRequired":  "හැකියාවන් සඳහන් කිරීම අවශ්‍යයි",
-                                                      "availabilityRequired":  "ලබා ගත හැකි වේලාවන් අවශ්‍යයි"
-                                                  }
-                               }
-                  },
-    "common":  {
-                   "back":  "ආපසු",
-                   "submit":  "ඉදිරිපත් කරන්න",
-                   "cancel":  "අවලංගු කරන්න",
-                   "add":  "එක් කරන්න",
-                   "edit":  "සංස්කරණය",
-                   "delete":  "මකන්න",
-                   "save":  "සුරකින්න",
-                   "search":  "සොයන්න",
-                   "filter":  "පෙරහන්",
-                   "all":  "සියල්ල",
-                   "page":  "පිටුව",
-                   "previous":  "පෙර",
-                   "next":  "ඊළඟ",
-                   "loading":  "පූරණය වෙමින්...",
-                   "error":  "දෝෂයක් සිදු විය",
-                   "success":  "සාර්ථකයි",
-                   "close":  "වසන්න",
-                   "select":  "තෝරන්න",
-                   "note":  "සටහන",
-                   "dateLocale":  "si-LK",
-                   "filterByDistrict":  "දිස්ත්‍රික්කය අනුව තෝරන්න",
-                   "filterByCategory":  "උපකාරය අනුව තෝරන්න",
-                   "clearFilters":  "මකන්න",
-                   "selectDistrict":  "දිස්ත්‍රික්කය තෝරන්න",
-                   "validation":  {
-                                      "required":  "මෙම ක්ෂේත්‍රය අවශ්‍යයි",
-                                      "nameRequired":  "නම අවශ්‍යයි",
-                                      "phoneRequired":  "දුරකථන අංකය අවශ්‍යයි",
-                                      "districtRequired":  "දිස්ත්‍රික්කය අවශ්‍යයි",
-                                      "addressRequired":  "ලිපිනය අවශ්‍යයි",
-                                      "helpDescriptionRequired":  "උදව් ලබා ගැනීමට විස්තර නිවැරදිව ඇතුළත් කරන්න",
-                                      "itemsRequired":  "ද්‍රව්‍යඅවශ්‍යයි"
-                                  },
-                   "updating":  "යාවත්කාලීන කරමින්...",
-                   "readMore":  "වැඩිදුර කියවන්න",
-                   "noAdditionalDetails":  "අමතර විස්තර සපයා නැත"
-               },
-    "feedback":  {
-                     "button":  "ප්‍රතිචාර",
-                     "title":  "ඔබේ ප්‍රතිචාර බෙදා ගන්න",
-                     "description":  "මෙම වෙබ් අඩවිය වැඩිදියුණු කිරීමට ඔබේ යෝජනා අපට වැදගත් වේ.",
-                     "nameLabel":  "ඔබේ නම (විකල්ප)",
-                     "namePlaceholder":  "ඔබේ නම ඇතුළත් කරන්න",
-                     "thoughtsLabel":  "මෙම වෙබ් අඩවිය ගැන ඔබ සිතන්නේ කුමක්ද?",
-                     "thoughtsPlaceholder":  "ඔබේ අදහස් බෙදා ගන්න...",
-                     "improvementsLabel":  "අප වැඩිදියුණු කළ යුත්තේ මොනවාද?",
-                     "improvementsPlaceholder":  "ඔබේ යෝජනා...",
-                     "submitButton":  "ප්‍රතිචාරය ඉදිරිපත් කරන්න",
-                     "successMessage":  "ඔබේ ප්‍රතිචාරයට ස්තූතියි!",
-                     "errorMessage":  "ඉදිරිපත් කිරීමට අසමත් විය. කරුණාකර නැවත උත්සාහ කරන්න."
-                 },
-    "districts":  {
-                      "all":  "සියලුම දිස්ත්‍රික්ක වලින් සොයන්න",
-                      "colombo":  "කොළඹ",
-                      "gampaha":  "ගම්පහ",
-                      "kalutara":  "කළුතර",
-                      "kandy":  "මහනුවර",
-                      "matale":  "මාතලේ",
-                      "nuwara_eliya":  "නුවරඑළිය",
-                      "galle":  "ගාල්ල",
-                      "matara":  "මාතර",
-                      "hambantota":  "හම්බන්තොට",
-                      "jaffna":  "යාපනය",
-                      "kilinochchi":  "කිලිනොච්චිය",
-                      "mannar":  "මන්නාරම",
-                      "vavuniya":  "වවුනියාව",
-                      "mullaitivu":  "මුලතිව්",
-                      "batticaloa":  "මඩකලපුව",
-                      "ampara":  "අම්පාර",
-                      "trincomalee":  "ත්‍රිකුණාමලය",
-                      "kurunegala":  "කුරුණෑගල",
-                      "puttalam":  "පුත්තලම",
-                      "anuradhapura":  "අනුරාධපුරය",
-                      "polonnaruwa":  "පොළොන්නරුව",
-                      "badulla":  "බදුල්ල",
-                      "monaragala":  " මොණරාගල",
-                      "ratnapura":  "රත්නපුර",
-                      "kegalle":  "කෑගල්ල"
-                  }
+    "main": {
+        "title": "ශ්‍රී ලංකා ආධාර ලේඛනය",
+        "subtitle": "ගංවතුරෙන් පීඩාවට පත් ප්‍රජාවන්ට සහන",
+        "helpCard": {
+            "title": "උදව් අවශ්‍යද?",
+            "description": "ඔබට හෝ ඔබ දන්නා කෙනෙකුට උදව් අවශ්‍ය නම් ඉල්ලීම් කරන්න"
+        },
+        "donationsCard": {
+            "title": "උදව් ලබා දීම",
+            "description": "විපතට පත් වූවන් සඳහා ආධාර ලබා දෙන්න"
+        },
+        "locationsCard": {
+            "title": "එකතු කිරීමේ මධ්‍යස්ථාන",
+            "description": "ආධාර භාර දිය හැකි ළඟම ඇති මධ්‍යස්ථාන සොයා ගන්න"
+        },
+        "educationCard": {
+            "title": "අධ්‍යාපනය",
+            "description": "අධ්‍යාපනික ද්‍රව්‍ය සහ සහාය ඉල්ලීම් කරන්න"
+        },
+        "transportCard": {
+            "title": "ප්‍රවාහන පහසුකම්",
+            "description": "ප්‍රවාහන පහසුකම් සොයා ගන්න හෝ ලබා දෙන්න"
+        },
+        "volunteerCard": {
+            "title": "ස්වේච්ඡා සේවා",
+            "description": "ස්වේච්ඡා සේවකයෙකු ලෙස ලියාපදිංචි වන්න හෝ සොයා ගන්න"
+        },
+        "disclaimer": "⚠️ ආරක්ෂක මතක් කිරීම: මෙහි ඉදිරිපත් කරන සියලුම තොරතුරු ප්‍රසිද්ධියේ සියලුම පුද්ගලයන්ට දැකගත හැක . කරුණාකර කිසිදු දුරකථන අංකයකට හෝ පුද්ගලයෙකුට මුදල් නොයවන්න; මෙම වේදිකාව මූල්‍ය ගනුදෙනු සිදු නොකරන අතර එවැනි ඉල්ලීම් වංචනික විය හැකිය."
+    },
+    "helpRequests": {
+        "title": "උදව් ඉල්ලීම්",
+        "subtitle": "ඔබට හෝ ඔබ දන්නා කෙනෙකුට උදව් අවශ්‍ය නම් ඉල්ලීම් කරන්න. උදව් ලැබුණු පසු, කරුණාකර ඔබගේ ඉල්ලීම \u0027උදව් ලැබුණා\u0027 ලෙස සලකුණු කරන්න. එය අන් අයට උපකාරී වනු ඇත.",
+        "noRequests": "උදව් ඉල්ලීම් නොමැත",
+        "firstRequest": "පළමු ඉල්ලීම එක් කරන්න",
+        "loading": "තොරතුරු පූරණය වෙමින් පවතී...",
+        "status": {
+            "pending": "උදව් අවශ්‍යයි",
+            "fulfilled": "උදව් ලබුණා"
+        },
+        "card": {
+            "namePlaceholder": "ඔබේ නම",
+            "district": "දිස්ත්‍රික්කය",
+            "districtPlaceholder": "තෝරන්න",
+            "address": "ලිපිනය",
+            "addressPlaceholder": "සම්පූර්ණ ලිපිනය",
+            "phone": "දුරකථන අංකය",
+            "phonePlaceholder": "07x xxxxxxx",
+            "additionalPhone": "අමතර දුරකථන අංකය (විකල්ප)",
+            "helpDescription": "අවශ්‍ය උදව්",
+            "helpDescriptionPlaceholder": "උදා: ආහාර, පානීය ජලය, ඖෂධ",
+            "additionalDetails": "අමතර විස්තර (විකල්ප)",
+            "additionalDetailsPlaceholder": "අමතර තොරතුරු",
+            "note": "සටහන: ඔබේ සම්බන්ධතා තොරතුරු පරිත්‍යාගශීලීන්ට දර්ශනය වනු ඇත.",
+            "category": "ඔබට අවශ්‍ය කුමන උපකාරයක්ද?",
+            "categoryPlaceholder": "තෝරන්න",
+            "dialogTitle": "{{name}} ගේ ඉල්ලීම",
+            "markAsReceived": "උදව් ලැබුණා ලෙස සලකුණු කරන්න",
+            "confirmStatusUpdate": "ඔබට මෙම ඉල්ලීම 'උදව් ලැබුණා' ලෙස සලකුණු කිරීමට අවශ්‍ය බව විශ්වාසද?",
+            "helpNeeded": "අවශ්‍ය උදව්",
+            "contactInfo": "සම්බන්ධතා තොරතුරු"
+        },
+        "categories": {
+            "all": "සියලුම වර්ග වලින් සොයන්න",
+            "food": "ආහාර",
+            "education": "අධ්‍යාපන",
+            "shelter": "නවාතැන්",
+            "transport": "ප්‍රවාහන",
+            "other": "වෙනත්"
+        }
+    },
+    "donations": {
+        "title": "ආධාර",
+        "subtitle": "ගංවතුරෙන් පීඩාවට පත් ප්‍රජාවන්ට සහන",
+        "instructions": "ඔබට මෙම ද්‍රව්‍යඅවශ්‍ය නම්, කරුණාකර පරිත්‍යාගශීලියාගේ දුරකථන අංකය අමතන්න",
+        "noDonations": "ආධාර නොමැත",
+        "loading": "තොරතුරු පූරණය වෙමින් පවතී...",
+        "status": {
+            "available": "ලබා ගත හැක",
+            "collected": "එකතු කර ගන්නා ලදී"
+        },
+        "card": {
+            "label": "ලබා ගත හැකි ආධාර",
+            "badge": "ආධාර",
+            "collected": "එකතු කර ගන්නා ලදී",
+            "address": "ලිපිනය",
+            "description": "විස්තරය",
+            "donor": "පරිත්‍යාගශීලියා",
+            "donatedOn": "පරිත්‍යාග කළ දිනය",
+            "collectButton": "එකතු කර ගන්න",
+            "dialog": {
+                "title": "ආධාර විස්තර",
+                "itemsToDonate": "පරිත්‍යාග කරන අයිතම",
+                "address": "ලිපිනය",
+                "description": "විස්තරය"
+            }
+        },
+        "form": {
+            "title": "ආධාරයක් එක් කරන්න",
+            "description": "විස්තරය (විකල්ප)",
+            "name": "නම",
+            "namePlaceholder": "ඔබේ නම",
+            "district": "දිස්ත්‍රික්කය",
+            "districtPlaceholder": "තෝරන්න",
+            "address": "ලිපිනය",
+            "addressPlaceholder": "ආධාර එකතු කර ගත හැකි ස්ථානය",
+            "phone": "දුරකථන අංකය",
+            "phonePlaceholder": "07x xxxxxxx",
+            "items": "පරිත්‍යාග කරන අයිතම",
+            "itemsPlaceholder": "උදා: සහල්, කිරි පිටි, ජලය",
+            "descriptionPlaceholder": "ද්‍රව්‍යපිළිබඳ අමතර තොරතුරු"
+        }
+    },
+    "locations": {
+        "title": "ආධාර එකතු කිරීමේ මධ්‍යස්ථාන",
+        "subtitle": "ඔබට ආධාර භාර දිය හැකි මධ්‍යස්ථාන",
+        "noLocations": "මධ්‍යස්ථාන නොමැත",
+        "loading": "තොරතුරු පූරණය වෙමින් පවතී...",
+        "card": {
+            "address": "ලිපිනය",
+            "time": "වේලාව",
+            "description": "විස්තරය",
+            "viewPhotos": "මධ්‍යස්ථානයේ ඡායාරූප බලන්න",
+            "collectorInfo": "එකතු කරන්නාගේ තොරතුරු (ආරක්ෂිතව සම්බන්ධ වන්න)",
+            "addedOn": "එක් කළ දිනය"
+        },
+        "form": {
+            "title": "එකතු කිරීමේ මධ්‍යස්ථානයක් එක් කරන්න",
+            "description": "විස්තරය",
+            "name": "මධ්‍යස්ථානයේ නම",
+            "namePlaceholder": "උදා: කොළඹ සහන මධ්‍යස්ථානය",
+            "district": "දිස්ත්‍රික්කය",
+            "districtPlaceholder": "තෝරන්න",
+            "address": "ලිපිනය",
+            "addressPlaceholder": "සම්පූර්ණ ලිපිනය",
+            "startDate": "ආරම්භක දිනය",
+            "endDate": "අවසාන දිනය",
+            "startTime": "ආරම්භක වේලාව",
+            "endTime": "අවසාන වේලාව",
+            "contactSection": "සම්බන්ධතා තොරතුරු",
+            "contactName": "සම්බන්ධ විය යුතු පුද්ගලයාගේ නම",
+            "contactNamePlaceholder": "නම",
+            "contactPhone": "දුරකථන අංකය",
+            "contactPhonePlaceholder": "07x xxxxxxx",
+            "additionalPhone": "අමතර දුරකථන අංකය (විකල්ප)",
+            "descriptionPlaceholder": "මෙම ස්ථානයේ එකතු කරන ද්‍රව්‍යසඳහන් කරන්න (උදා: ආහාර, ඇඳුම්, ඖෂධ)",
+            "contactImage": "සම්බන්ධ විය යුතු පුද්ගලයාගේ ඡායාරූපය (අවශ්‍යයි)",
+            "contactImageNote": "මෙම ඡායාරූපය කාඩ්පතේ දර්ශනය වනු ඇත",
+            "locationImages": "මධ්‍යස්ථානයේ ඡායාරූප (අවම 1 - උපරිම 5)"
+        }
+    },
+    "education": {
+        "title": "අධ්‍යාපන සහාය",
+        "subtitle": "පීඩාවට පත් සිසුන් සඳහා අධ්‍යාපනික ද්‍රව්‍ය සහ සහාය ලබාදෙන්න",
+        "requestsTabTitle": "අධ්‍යාපන ඉල්ලීම්",
+        "offersTabTitle": "අධ්‍යාපන ආධාර",
+        "addRequest": "ඉල්ලීමක් එක් කරන්න",
+        "noRequests": "අධ්‍යාපන ඉල්ලීම් නොමැත",
+        "noRequestsDesc": "පළමු අධ්‍යාපන ඉල්ලීම එක් කරන්න",
+        "addFirstRequest": "පළමු ඉල්ලීම එක් කරන්න",
+        "offers": {
+            "noOffers": "අධ්‍යාපන ආධාර නොමැත",
+            "noOffersDesc": "පළමු අධ්‍යාපන ආධාර එක් කරන්න",
+            "addFirstOffer": "පළමු ආධාර එක් කරන්න"
+        },
+        "card": {
+            "badge": "අධ්‍යාපනය",
+            "needs": "අවශ්‍යතා",
+            "dialog": {
+                "needs": "????????",
+                "title": "{{name}}"
+            }
+        },
+        "form": {
+            "title": "අධ්‍යාපන ඉල්ලීමක් එක් කරන්න",
+            "description": "සිසුන් සඳහා අධ්‍යාපනික ද්‍රව්‍ය ඉල්ලීම් කරන්න",
+            "name": "ශිෂ්‍යයාගේ/දෙමාපියන්ගේ නම",
+            "namePlaceholder": "නම",
+            "contactPerson": "සම්බන්ධ විය යුතු පුද්ගලයා",
+            "contactPersonPlaceholder": "සම්බන්ධ විය යුතු පුද්ගලයාගේ නම",
+            "phone": "දුරකථන අංකය",
+            "phonePlaceholder": "07x xxxxxxx",
+            "district": "දිස්ත්‍රික්කය",
+            "districtPlaceholder": "තෝරන්න",
+            "address": "ලිපිනය",
+            "addressPlaceholder": "සම්පූර්ණ ලිපිනය",
+            "school": "පාසල (විකල්ප)",
+            "schoolPlaceholder": "පාසලේ නම",
+            "grade": "ශ්‍රේණිය (විකල්ප)",
+            "gradePlaceholder": "උදා: 5 ශ්‍රේණිය",
+            "needs": "අවශ්‍යතා",
+            "needsPlaceholder": "උදා: පොත්, නිල ඇඳුම්, සපත්තු",
+            "additionalDetails": "අමතර විස්තර (විකල්ප)",
+            "additionalDetailsPlaceholder": "වෙනත් තොරතුරු",
+            "validation": {
+                "nameRequired": "නම අවශ්‍යයි",
+                "contactPersonRequired": "සම්බන්ධ විය යුතු පුද්ගලයා අවශ්‍යයි",
+                "phoneRequired": "දුරකථන අංකය අවශ්‍යයි",
+                "districtRequired": "දිස්ත්‍රික්කය අවශ්‍යයි",
+                "addressRequired": "ලිපිනය අවශ්‍යයි",
+                "needsRequired": "අවශ්‍යතා සඳහන් කිරීම අවශ්‍යයි"
+            }
+        },
+        "tabs": {
+            "requests": "අධ්‍යාපනික ද්‍රව්‍ය සහ සහාය ඉල්ලීම් කරන්න",
+            "offers": "අධ්‍යාපනික ද්‍රව්‍ය සහ සහාය ලබාදෙන්න"
+        }
+    },
+    "transport": {
+        "title": "ප්‍රවාහන පහසුකම්",
+        "subtitle": "සහන සේවා සඳහා ප්‍රවාහන පහසුකම් සොයා ගන්න හෝ ලබා දෙන්න",
+        "addOffer": "ප්‍රවාහන පහසුකමක් එක් කරන්න",
+        "noOffers": "ප්‍රවාහන පහසුකම් නොමැත",
+        "noOffersDesc": "පළමු ප්‍රවාහන පහසුකම එක් කරන්න",
+        "addFirstOffer": "පළමු පහසුකම එක් කරන්න",
+        "status": {
+            "available": "ලබා ගත හැක",
+            "busy": "කාර්යබහුලයි"
+        },
+        "card": {
+            "capacity": "ධාරිතාව",
+            "availability": "ලබා ගත හැකි වේලාවන්",
+            "dialog": {
+                "capacity": "???????",
+                "title": "{{vehicleType}}",
+                "availability": "??? ?? ???? ???????"
+            }
+        },
+        "form": {
+            "title": "ප්‍රවාහන පහසුකමක් එක් කරන්න",
+            "description": "සහන බෙදා හැරීම සඳහා ප්‍රවාහන පහසුකම් ලබා දෙන්න",
+            "name": "සම්බන්ධ විය යුතු නම",
+            "namePlaceholder": "ඔබේ නම",
+            "phone": "දුරකථන අංකය",
+            "phonePlaceholder": "07x xxxxxxx",
+            "district": "දිස්ත්‍රික්කය",
+            "districtPlaceholder": "තෝරන්න",
+            "location": "දැනට සිටින ස්ථානය",
+            "locationPlaceholder": "නගරය/ප්‍රදේශය",
+            "vehicleType": "වාහන වර්ගය",
+            "vehicleTypePlaceholder": "උදා: ලොරි, වෑන්, ත්‍රිරෝද රථ",
+            "capacity": "ධාරිතාව",
+            "capacityPlaceholder": "උදා: 1000kg හෝ පුද්ගලයින් 5",
+            "availability": "ලබා ගත හැකි වේලාවන්",
+            "availabilityPlaceholder": "උදා: පැය 24 පුරාම හෝ නිශ්චිත වේලාවන්",
+            "additionalDetails": "අමතර විස්තර (විකල්ප)",
+            "additionalDetailsPlaceholder": "වෙනත් තොරතුරු",
+            "validation": {
+                "nameRequired": "නම අවශ්‍යයි",
+                "phoneRequired": "දුරකථන අංකය අවශ්‍යයි",
+                "districtRequired": "දිස්ත්‍රික්කය අවශ්‍යයි",
+                "locationRequired": "ස්ථානය අවශ්‍යයි",
+                "vehicleTypeRequired": "වාහන වර්ගය අවශ්‍යයි",
+                "capacityRequired": "ධාරිතාව අවශ්‍යයි",
+                "availabilityRequired": "ලබා ගත හැකි වේලාවන් අවශ්‍යයි"
+            }
+        }
+    },
+    "volunteer": {
+        "title": "ස්වේච්ඡා සේවා",
+        "subtitle": "පීඩාවට පත් ප්‍රජාවන්ට උදව් කිරීමට ස්වේච්ඡා සේවකයෙකු ලෙස ලියාපදිංචි වන්න",
+        "addVolunteer": "ස්වේච්ඡා සේවකයෙකු ලෙස ලියාපදිංචි වන්න",
+        "noVolunteers": "ස්වේච්ඡා සේවකයින් නොමැත",
+        "noVolunteersDesc": "පළමු ස්වේච්ඡා සේවකයා ලෙස ලියාපදිංචි වන්න",
+        "addFirstVolunteer": "දැන් ලියාපදිංචි වන්න",
+        "status": {
+            "available": "ලබා ගත හැක",
+            "busy": "කාර්යබහුලයි"
+        },
+        "card": {
+            "skills": "හැකියාවන්",
+            "availability": "ලබා ගත හැකි වේලාවන්"
+        },
+        "form": {
+            "title": "ස්වේච්ඡා සේවක ලියාපදිංචිය",
+            "description": "සහන සේවා සඳහා උදව් කිරීමට ලියාපදිංචි වන්න",
+            "name": "නම",
+            "namePlaceholder": "ඔබේ නම",
+            "phone": "දුරකථන අංකය",
+            "phonePlaceholder": "07x xxxxxxx",
+            "district": "දිස්ත්‍රික්කය",
+            "districtPlaceholder": "තෝරන්න",
+            "skills": "හැකියාවන් / කුසලතා",
+            "skillsPlaceholder": "උදා: ප්‍රථමාධාර, ඉවුම් පිහුම්, රිය පැදවීම, ශ්‍රමය",
+            "availability": "ලබා ගත හැකි වේලාවන්",
+            "availabilityPlaceholder": "උදා: සති අන්තයේ, පූර්ණ කාලීන",
+            "additionalDetails": "අමතර විස්තර (විකල්ප)",
+            "additionalDetailsPlaceholder": "වෙනත් තොරතුරු",
+            "validation": {
+                "nameRequired": "නම අවශ්‍යයි",
+                "phoneRequired": "දුරකථන අංකය අවශ්‍යයි",
+                "districtRequired": "දිස්ත්‍රික්කය අවශ්‍යයි",
+                "skillsRequired": "හැකියාවන් සඳහන් කිරීම අවශ්‍යයි",
+                "availabilityRequired": "ලබා ගත හැකි වේලාවන් අවශ්‍යයි"
+            }
+        }
+    },
+    "common": {
+        "back": "ආපසු",
+        "submit": "ඉදිරිපත් කරන්න",
+        "cancel": "අවලංගු කරන්න",
+        "add": "එක් කරන්න",
+        "edit": "සංස්කරණය",
+        "delete": "මකන්න",
+        "save": "සුරකින්න",
+        "search": "සොයන්න",
+        "filter": "පෙරහන්",
+        "all": "සියල්ල",
+        "page": "පිටුව",
+        "previous": "පෙර",
+        "next": "ඊළඟ",
+        "loading": "පූරණය වෙමින්...",
+        "error": "දෝෂයක් සිදු විය",
+        "success": "සාර්ථකයි",
+        "close": "වසන්න",
+        "select": "තෝරන්න",
+        "note": "සටහන",
+        "dateLocale": "si-LK",
+        "filterByDistrict": "දිස්ත්‍රික්කය අනුව තෝරන්න",
+        "filterByCategory": "උපකාරය අනුව තෝරන්න",
+        "clearFilters": "මකන්න",
+        "selectDistrict": "දිස්ත්‍රික්කය තෝරන්න",
+        "validation": {
+            "required": "මෙම ක්ෂේත්‍රය අවශ්‍යයි",
+            "nameRequired": "නම අවශ්‍යයි",
+            "phoneRequired": "දුරකථන අංකය අවශ්‍යයි",
+            "districtRequired": "දිස්ත්‍රික්කය අවශ්‍යයි",
+            "addressRequired": "ලිපිනය අවශ්‍යයි",
+            "helpDescriptionRequired": "උදව් ලබා ගැනීමට විස්තර නිවැරදිව ඇතුළත් කරන්න",
+            "itemsRequired": "ද්‍රව්‍යඅවශ්‍යයි"
+        },
+        "updating": "යාවත්කාලීන කරමින්...",
+        "readMore": "වැඩිදුර කියවන්න",
+        "noAdditionalDetails": "අමතර විස්තර සපයා නැත"
+    },
+    "feedback": {
+        "button": "ප්‍රතිචාර",
+        "title": "ඔබේ ප්‍රතිචාර බෙදා ගන්න",
+        "description": "මෙම වෙබ් අඩවිය වැඩිදියුණු කිරීමට ඔබේ යෝජනා අපට වැදගත් වේ.",
+        "nameLabel": "ඔබේ නම (විකල්ප)",
+        "namePlaceholder": "ඔබේ නම ඇතුළත් කරන්න",
+        "thoughtsLabel": "මෙම වෙබ් අඩවිය ගැන ඔබ සිතන්නේ කුමක්ද?",
+        "thoughtsPlaceholder": "ඔබේ අදහස් බෙදා ගන්න...",
+        "improvementsLabel": "අප වැඩිදියුණු කළ යුත්තේ මොනවාද?",
+        "improvementsPlaceholder": "ඔබේ යෝජනා...",
+        "submitButton": "ප්‍රතිචාරය ඉදිරිපත් කරන්න",
+        "successMessage": "ඔබේ ප්‍රතිචාරයට ස්තූතියි!",
+        "errorMessage": "ඉදිරිපත් කිරීමට අසමත් විය. කරුණාකර නැවත උත්සාහ කරන්න."
+    },
+    "districts": {
+        "all": "සියලුම දිස්ත්‍රික්ක වලින් සොයන්න",
+        "colombo": "කොළඹ",
+        "gampaha": "ගම්පහ",
+        "kalutara": "කළුතර",
+        "kandy": "මහනුවර",
+        "matale": "මාතලේ",
+        "nuwara_eliya": "නුවරඑළිය",
+        "galle": "ගාල්ල",
+        "matara": "මාතර",
+        "hambantota": "හම්බන්තොට",
+        "jaffna": "යාපනය",
+        "kilinochchi": "කිලිනොච්චිය",
+        "mannar": "මන්නාරම",
+        "vavuniya": "වවුනියාව",
+        "mullaitivu": "මුලතිව්",
+        "batticaloa": "මඩකලපුව",
+        "ampara": "අම්පාර",
+        "trincomalee": "ත්‍රිකුණාමලය",
+        "kurunegala": "කුරුණෑගල",
+        "puttalam": "පුත්තලම",
+        "anuradhapura": "අනුරාධපුරය",
+        "polonnaruwa": "පොළොන්නරුව",
+        "badulla": "බදුල්ල",
+        "monaragala": " මොණරාගල",
+        "ratnapura": "රත්නපුර",
+        "kegalle": "කෑගල්ල"
+    }
 }
